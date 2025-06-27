@@ -4,90 +4,116 @@ import "./index.css";
 function App() {
   return (
     <>
-      {/* <LoginForm /> */}
       <CreateAccount />
+      {/* <LoginForm /> */}
     </>
   );
 }
 
 function LoginForm() {
   return (
-    <div className="container">
-      <div class="login-heading">
-        <h1 className="heading">Login</h1>
+    <div className="account-container">
+      <div className="account-header">
+        <h1 className="account-h1">Login</h1>
         <p className="sub-heading">Hi, Welcome back 👋</p>
       </div>
+
       <form>
-        <label htmlFor="email" className="login-label">
+        <label htmlFor="email" className="account-label">
           Email
         </label>
-        <input type="email" required className="email" />
+        <input
+          type="email"
+          name="email"
+          className="input-email"
+          placeholder="johdoe@domain.com"
+          required
+        />
 
-        <label htmlFor="passwd" className="login-label">
+        <label htmlFor="passwd" className="account-label">
           Password
         </label>
-        <input type="password" className="password" />
+        <input type="password" name="passwd" className="input-password" />
 
-        <div className="loginRemember">
+        <div className="account-container--remember">
           <div>
-            <input type="checkbox" className="checkbox" />
-            <p className="remember">Remember Me</p>
+            <input type="checkbox" className="input-checkbox" />
+            <p className="text-remember">Remember Me</p>
           </div>
-
-          <p className="forgot">Forgot Password?</p>
+          <p className="text-forgot">Forgot Password?</p>
         </div>
 
-        <button className="btn-login">Login</button>
+        <button type="submit" className="btn btn-acc">
+          Login
+        </button>
       </form>
-      <p>
-        Not registered ? {"  "}
-        <span>
-          <a href="" className="create-account">
-            Create an Account &#x2197;
-          </a>
-        </span>
-      </p>
+      <div className="login-additional">
+        <p>Not registered ?</p>
+        <a href="" className="create-account-link">
+          Create an Account &#x2197;
+        </a>
+      </div>
     </div>
   );
 }
 
 function CreateAccount() {
   return (
-    <div className="container">
-      <div className="login-heading">
-        <h1 className="create-heading">Create Account</h1>
+    <div className="account-container">
+      <div className="account-header">
+        <h1 className="account-h1 create">Create Account</h1>
         <p className="sub-heading create">Provide Your Info</p>
       </div>
 
       <form action="">
-        <label htmlFor="flname" className="login-label">
+        <label htmlFor="flname" className="account-label">
           Full name
         </label>
-        <input type="text" className="email" />
+        <input
+          type="text"
+          placeholder="John Doe"
+          name="flname"
+          className="input-email"
+        />
 
-        <label htmlFor="email" className="login-label">
+        <label htmlFor="email" className="account-label">
           Email
         </label>
-        <input type="email" class="fname" className="email" />
+        <input
+          type="email"
+          placeholder="johndoe@domain.com"
+          name="email"
+          className="input-email"
+        />
 
-        <label htmlFor="password" className="login-label">
+        <label htmlFor="password" className="account-label">
           Password
         </label>
-        <input type="password" class="password create" />
+        <input
+          type="password"
+          name="password"
+          className="input-password create"
+        />
 
-        <label htmlFor="cpassword" className="login-label">
+        <label htmlFor="password" className="account-label">
           Confirm Password
         </label>
-        <input type="password" class="password create" />
+        <input
+          type="password"
+          name="password"
+          className="input-password create"
+        />
 
-        <button className="btn-login">Sign up</button>
+        <button type="submit" className="btn btn-acc">
+          Sign up
+        </button>
       </form>
 
-      <div className="terms-privacy">
+      <div className="account-container--termsc">
         <p>
           By signing up you agree to our{" "}
-          <span className="terms">Terms of use</span> and{" "}
-          <span className="privacy">Privacy Policy</span>
+          <span className="text-terms">Terms of use</span> and{" "}
+          <span className="text-privacy">Privacy Policy</span>
         </p>
       </div>
     </div>

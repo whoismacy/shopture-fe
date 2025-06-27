@@ -1,8 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/*
+Margin-Spacing, Padding-Spacing: multiples of two
+font-: multiples of two;
+*/
+
+:root {
+  --primary-white: #f0e6d8;
+  --primary-orange: #de5509;
+  --secondary-orange: #e17131;
+  --third-orange: #ebc5a9;
+  --primary-dark: #181716;
+  --primary-grey: #605c56;
+  --secondary-grey: #484541;
+  --faint-grey: #f8f3ec;
+
+  --border-radius-small: 5px;
+  --border-radius-medium: 9px;
+  --border-radius-max: 11px;
+
+  --box-shadow-small: 0 0 6px 6px rgba(0, 0, 0, 0.06);
+  --box-shadow-medium: 0 0 7px 7px rgba(0, 0, 0, 0.08);
+  --box-shadow-large: 0 0 8px 8px rgba(0, 0, 0, 0.1);
+
+  --border-small: 1px solid var(--primary-grey);
+  --border-medium: 3px solid var(--secondary-grey);
+  --border-large: 5px solid var(--secondary-grey);
 }
 
 html {
@@ -13,21 +42,23 @@ body {
   font-family: Rubik, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   position: relative;
+  font-size: 16px;
+  color: var(--primary-dark);
 }
 
-.container {
-  max-width: 40rem;
-  min-width: 35rem;
+.account-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, 50%);
-  padding: 3.6rem 1.8rem;
-  border-radius: 9px;
-  box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.1);
+  max-width: 40rem;
+  min-width: 35rem;
+  padding: 2.8rem 1.8rem;
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--box-shadow-large);
 }
 
-.login-heading {
+.account-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,41 +66,52 @@ body {
   margin-bottom: 1.8rem;
 }
 
-.create-heading {
-  color: oklch(74.61% 0.171 51.56);
+.account-h1 {
+  font-size: 3.2rem;
+  color: var(--primary-orange);
   margin-bottom: 0.6rem;
+}
+
+.account-h1.create {
+  color: var(--primary-orange);
+  margin-bottom: 0.6rem;
+}
+
+.sub-heading {
+  font-size: 1.4rem;
 }
 
 .sub-heading.create {
-  color: black;
+  color: var(--primary-dark);
 }
 
-.heading {
-  font-size: 3.2rem;
-  color: oklch(74.61% 0.171 51.56);
-  letter-spacing: 0.1rem;
-  margin-bottom: 0.6rem;
-}
-
-.login-label {
+.account-label {
   display: block;
   color: #333;
 }
 
-.email,
-.password {
-  padding: 0.8rem;
+input {
+  font-size: 1.2rem;
+}
+
+input::placeholder {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--primary-grey);
+}
+
+.input-email,
+.input-password {
+  padding: 0.8rem 1.2rem;
   margin-top: 0.6rem;
   width: 100%;
   border-radius: 9px;
-  border: 1px solid #888;
+  border: none;
+  background-color: var(--faint-grey);
 }
 
-.email {
-  margin-bottom: 1.6rem;
-}
-
-.password.create {
+.input-email,
+.input-password.create {
   margin-bottom: 1.6rem;
 }
 
@@ -77,59 +119,74 @@ input:focus {
   outline: none;
 }
 
-.loginRemember {
+.account-container--remember {
   display: flex;
   justify-content: space-between;
   margin-top: 1.6rem;
   margin-bottom: 2rem;
 }
 
-.remember {
+.text-remember {
   display: inline;
   margin-left: 0.4rem;
 }
 
-.forgot {
-  color: oklch(74.61% 0.171 51.56);
+.text-forgot {
+  color: var(--primary-orange);
   cursor: pointer;
 }
 
-.btn-login {
-  width: 100%;
+.btn {
   padding: 0.8rem 2.4rem;
-  margin-bottom: 2rem;
-  font-size: 1.2rem;
-  color: #fff;
-  background-color: oklch(74.61% 0.171 51.56);
-  border: none;
-  border-radius: 9px;
+  font-size: 1.6rem;
+  background-color: var(--primary-orange);
   cursor: pointer;
+  border: none;
+  color: #fff;
+  font-weight: 600;
 }
 
+.btn-acc {
+  width: 100%;
+  margin-bottom: 2rem;
+  border-radius: 9px;
+  transition: all 0.4s ease-out;
+}
+
+.btn-acc:hover {
+  background-color: var(--secondary-orange);
+}
+
+.login-additional {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+}
 .create-account {
   cursor: pointer;
   text-decoration: none;
 }
 
-.create-account:link,
-.create-account:visited,
-.create-account:active {
-  color: oklch(74.61% 0.171 51.56);
+.create-account-link:link,
+.create-account-link:visited,
+.create-account-link:active {
+  color: var(--primary-orange);
   cursor: pointer;
 }
 
-.terms-privacy {
+.account-container--termsc {
   display: flex;
   justify-content: center;
-  color: #777;
+  color: var(--secondary-grey);
   line-height: 1.75rem;
 }
-.terms-privacy p {
-  width: 65%;
+
+.account-container--termsc p {
+  width: 52%;
 }
 
-.terms,
-.privacy {
-  color: black;
+.text-terms,
+.text-privacy {
+  color: var(--primary-dark);
   cursor: pointer;
 }
