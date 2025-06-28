@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Email from "./Email";
-import Password from "./Password";
-import ConfirmPassword from "./ConfirmPassword";
-import FormButton from "./FormButton";
+import Email from "../shared/Email";
+import Password from "../shared/Password";
+import ConfirmPassword from "../shared/ConfirmPassword";
+import FormButton from "../common/Button";
 
 export default function CreateAccount() {
   const [email, setEmail] = useState("");
@@ -10,10 +10,24 @@ export default function CreateAccount() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [fullName, setFullName] = useState("");
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const data = { email, password, confirmPassword, fullName };
-    console.log(data);
+    try {
+      const response = await fetch("backend/auth/create-account/api", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        await response.json();
+      } else {
+        console.error("Failed fetching data");
+      }
+    } catch (networkError) {
+      console.error("Ensure you are connected to the Internet", networkError);
+    }
     setEmail("");
     setPassword("");
     setFullName("");
@@ -79,6 +93,15 @@ export default function CreateAccount() {
 
         <FormButton type="submit" info="Sign up" />
       </form>
+
+      <p class="create-login-text">
+        Already have an account ?{" "}
+        <span>
+          <a href="" className="text-forgot">
+            Login
+          </a>
+        </span>
+      </p>
 
       <div className="account-container--termsc">
         <p>

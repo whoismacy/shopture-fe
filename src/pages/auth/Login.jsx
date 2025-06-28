@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Email from "./Email";
-import Password from "./Password";
-import FormButton from "./FormButton";
+import Email from "../shared/Email";
+import Password from "../shared/Password";
+import FormButton from "../common/Button";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -16,14 +16,33 @@ export default function LoginForm() {
     setPassword(event.target.value);
   }
 
-  function handleCheckbox(event) {
-    setCheckbox(event.target.checked);
-  }
-
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const data = { email, password, checkbox };
-    console.log(data);
+
+    try {
+      const response = await fetch("/backend-api/auth/login/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        await response.json();
+        // redirect user.
+      } else {
+        const errorData = await response.json();
+        console.error("Login Failed", errorData);
+      }
+    } catch (networkError) {
+      console.error("Network error during login:", networkError);
+    }
+
+    setEmail("");
+    setPassword("");
+    setCheckbox(false);
   }
 
   return (
@@ -50,15 +69,6 @@ export default function LoginForm() {
         />
 
         <div className="account-container--remember">
-          <div>
-            <input
-              type="checkbox"
-              className="input-checkbox"
-              value={checkbox}
-              onChange={handleCheckbox}
-            />
-            <p className="text-remember">Remember Me</p>
-          </div>
           <a href="" className="text-forgot">
             Forgot Password?
           </a>

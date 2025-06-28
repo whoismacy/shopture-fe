@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Password from "./Password";
-import ConfirmPassword from "./ConfirmPassword";
-import FormButton from "./FormButton";
+import Password from "../../components/shared/Password";
+import ConfirmPassword from "../../components/shared/ConfirmPassword";
+import FormButton from "../../components/common/Button";
 
 export default function NewPassword() {
   const [password, setPassword] = useState("");

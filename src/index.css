@@ -63,7 +63,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.8rem;
+  margin-bottom: 4.8rem;
 }
 
 .account-h1 {
@@ -131,7 +131,13 @@ input:focus {
   text-decoration: none;
 }
 
+.create-login-text {
+  margin-top: 2.4rem;
+}
+
 .text-forgot {
+  font-weight: 500;
+  font-size: 1.2rem;
   cursor: pointer;
   text-decoration: none;
 }
@@ -213,6 +219,9 @@ input:focus {
   color: var(--secondary-grey);
   line-height: 1.75rem;
   margin-top: 2.4rem;
+
+  font-weight: 300;
+  font-style: italic;
 }
 
 .account-container--termsc p {
@@ -223,4 +232,5 @@ input:focus {
 .text-privacy {
   color: var(--primary-dark);
   cursor: pointer;
+  font-weight: 400;
 }
