@@ -1,17 +1,15 @@
-import React from "react";
+import styles from "./EmailPassword.module.css";
 
 export default function Email({
   type = "email",
   name = "email",
   value,
   onChange,
-  className,
-  labelClass,
   placeholder,
 }) {
   return (
-    <React.Fragment>
-      <label htmlFor="email" className={labelClass}>
+    <div className={styles.inputGroup}>
+      <label htmlFor="email" className={styles.label}>
         Email:
       </label>
       <input
@@ -19,10 +17,10 @@ export default function Email({
         name={name}
         value={value}
         onChange={onChange}
-        className={className}
+        className={styles.inputField}
         placeholder={placeholder}
         required
       />
-    </React.Fragment>
+    </div>
   );
 }

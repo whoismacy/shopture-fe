@@ -26,20 +26,13 @@ export default function NewPassword() {
         <p className="sub-heading">Input a new unique password</p>
       </div>
       <form onSubmit={handleSubmit}>
-        <Password
-          value={password}
-          onChange={handlePassword}
-          className="input-password"
-          labelClass="account-label"
-        />
+        <Password value={password} onChange={handlePassword} />
         <ConfirmPassword
           value={confirmPassword}
           onChange={handleConfirmPassword}
-          className="input-password"
-          labelClass="account-label"
         />
 
-        <FormButton type="submit" info="Submit" />
+        <FormButton variant="primary">Submit</FormButton>
       </form>
     </div>
   );

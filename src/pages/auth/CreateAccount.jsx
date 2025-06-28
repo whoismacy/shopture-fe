@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Email from "../shared/Email";
-import Password from "../shared/Password";
-import ConfirmPassword from "../shared/ConfirmPassword";
-import FormButton from "../common/Button";
+import Email from "../../components/shared/Email";
+import Password from "../../components/shared/Password";
+import ConfirmPassword from "../../components/shared/ConfirmPassword";
+import FormButton from "../../components/common/Button";
 
 export default function CreateAccount() {
   const [email, setEmail] = useState("");
@@ -58,14 +58,14 @@ export default function CreateAccount() {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="flname" className="account-label">
+        <label htmlFor="flname" className="label">
           Full name
         </label>
         <input
           type="text"
           placeholder="John Doe"
           name="flname"
-          className="input-email"
+          className="inputField"
           value={fullName}
           onChange={handleFullName}
         />
@@ -73,25 +73,16 @@ export default function CreateAccount() {
         <Email
           value={email}
           onChange={handleEmail}
-          className="input-email"
           placeholder="johndoe@domain.com"
-          labelClass="account-label"
         />
-        <Password
-          value={password}
-          onChange={handlePassword}
-          className="input-password"
-          labelClass="account-label"
-        />
+        <Password value={password} onChange={handlePassword} />
 
         <ConfirmPassword
           value={confirmPassword}
           onChange={handleConfirmPassword}
-          className="input-password"
-          labelClass="account-label"
         />
 
-        <FormButton type="submit" info="Sign up" />
+        <FormButton variant="primary">Sign Up</FormButton>
       </form>
 
       <p class="create-login-text">

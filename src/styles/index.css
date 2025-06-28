@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-white: #f0e6d8;
+  --primary-orange: #de5509;
+  --secondary-orange: #e5773a;
+  --third-orange: #eb996b;
+
+  --primary-dark: #181716;
+  --primary-grey: #605c56;
+  --secondary-grey: #484541;
+  --faint-grey: #f8f3ec;
+
+  --lavender: #c589e8;
+
+  --border-radius-small: 5px;
+  --border-radius-medium: 9px;
+  --border-radius-max: 11px;
+
+  --font-size-base: 1.2rem;
+  --font-size-sm: 1.4rem;
+  --font-size-md: 1.8rem;
+  --font-size-lg: 3.2rem;
+
+  --box-shadow-small: 0 0 6px 6px rgba(0, 0, 0, 0.06);
+  --box-shadow-medium: 0 0 7px 7px rgba(0, 0, 0, 0.08);
+  --box-shadow-large: 0 0 8px 8px rgba(0, 0, 0, 0.1);
+
+  --border-small: 1px solid var(--primary-grey);
+  --border-medium: 3px solid var(--secondary-grey);
+  --border-large: 5px solid var(--secondary-grey);
+}
+
+html {
+  font-size: 62.5;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Rubik, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: var(--font-size-base);
+  color: var(--primary-dark);
+}
+
+.account-container {
+  max-width: 40rem;
+  min-width: 35rem;
+  padding: 2.8rem 1.8rem;
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--box-shadow-large);
+}
+
+.account-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4.8rem;
+}
+
+.account-h1 {
+  font-size: 3.2rem;
+  color: var(--primary-orange);
+  margin-bottom: 0.6rem;
+}
+
+.account-h1.create {
+  color: var(--primary-orange);
+  margin-bottom: 0.6rem;
+}
+
+.sub-heading {
+  font-size: 1.4rem;
+}
+
+.sub-heading.create {
+  color: var(--primary-dark);
+}
+
+.account-container--remember {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.text-remember {
+  display: inline;
+  margin-left: 0.4rem;
+  text-decoration: none;
+}
+
+.create-login-text {
+  margin-top: 2.4rem;
+}
+
+.text-forgot {
+  font-weight: 500;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.text-forgot:link {
+  color: var(--primary-orange);
+}
+
+.text-forgot:visited {
+  color: var(--lavender);
+}
+
+.text-forgot:active,
+.text-forgot:hover {
+  color: var(--third-orange);
+}
+
+.text-forgot:focus {
+  outline: none;
+}
+.text-forgot:focus-visible {
+  outline: 2px dashed var(--primary-dark);
+  outline-offset: 2px;
+}
+
+.login-additional {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+.create-account {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.create-account-link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.create-account-link:link {
+  color: var(--primary-orange);
+}
+.create-account-link:visited {
+  color: var(--lavender);
+}
+.create-account-link:active,
+.create-account-link:hover {
+  color: var(--secondary-orange);
+}
+
+.create-account:focus {
+  outline: none;
+}
+.create-account:focus-visible {
+  outline: 2px dashed var(--primary-dark);
+  outline-offset: 2px;
+}
+
+.account-container--termsc {
+  display: flex;
+  justify-content: center;
+  color: var(--secondary-grey);
+  line-height: 1.75rem;
+  margin-top: 2.4rem;
+
+  font-weight: 300;
+  font-style: italic;
+}
+
+.account-container--termsc p {
+  width: 52%;
+}
+
+.text-terms,
+.text-privacy {
+  color: var(--primary-dark);
+  cursor: pointer;
+  font-weight: 400;
+}

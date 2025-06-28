@@ -1,26 +1,24 @@
-import React from "react";
+import styles from "./EmailPassword.module.css";
 
 export default function Password({
   type = "password",
   name = "password",
-  className,
   value,
   onChange,
-  labelClass,
 }) {
   return (
-    <React.Fragment>
-      <label htmlFor="password" className={labelClass}>
+    <div className={styles.inputGroup}>
+      <label htmlFor="password" className={styles.label}>
         Password
       </label>
       <input
         type={type}
         name={name}
         value={value}
-        className={className}
+        className={styles.inputField}
         onChange={onChange}
         required
       />
-    </React.Fragment>
+    </div>
   );
 }

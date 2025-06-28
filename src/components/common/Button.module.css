@@ -1,0 +1,29 @@
+.btn {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  padding: 0.8rem 2.4rem;
+  color: var(--primary-white);
+  border: none;
+  border-radius: var(--border-radius-medium);
+  transition: all 0.4s ease-out;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  padding: 1.2rem 2.4rem;
+  background-color: var(--primary-orange);
+  width: 100%;
+}
+
+.btnPrimary:hover {
+  background-color: var(--secondary-orange);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:focus-visible {
+  outline: 2px dashed var(--primary-dark);
+  outline-offset: 2px;
+}

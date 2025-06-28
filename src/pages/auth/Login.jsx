@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Email from "../shared/Email";
-import Password from "../shared/Password";
-import FormButton from "../common/Button";
+import Email from "../../components/shared/Email";
+import Password from "../../components/shared/Password";
+import FormButton from "../../components/common/Button";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -56,17 +56,10 @@ export default function LoginForm() {
         <Email
           value={email}
           onChange={handleEmail}
-          className="input-email"
           placeholder="johndoe@domain.com"
-          labelClass="account-label"
         />
 
-        <Password
-          value={password}
-          onChange={handlePassword}
-          className="input-password"
-          labelClass="account-label"
-        />
+        <Password value={password} onChange={handlePassword} />
 
         <div className="account-container--remember">
           <a href="" className="text-forgot">
@@ -74,7 +67,7 @@ export default function LoginForm() {
           </a>
         </div>
 
-        <FormButton type="submit" info="Login" />
+        <FormButton variant="primary">Log In</FormButton>
       </form>
       <div className="login-additional">
         <p>Not registered ?</p>

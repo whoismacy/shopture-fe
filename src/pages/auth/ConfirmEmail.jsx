@@ -28,13 +28,10 @@ export default function ResetPassword() {
           <Email
             value={email}
             onChange={handleEmail}
-            className="input-email"
-            labelClass="account-label"
             placeholder="Enter your email address"
-            required
           />
 
-          <FormButton info="Submit" />
+          <FormButton variant="primary">Submit</FormButton>
         </form>
       </div>
     </React.Fragment>

@@ -1,11 +1,11 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
-import "./index.css";
+import "./styles/index.css";
 import App from "./App.jsx";
-import CreateAccount from "./components/auth/CreateAccount.jsx";
-import LoginForm from "./components/auth/Login.jsx";
-import ResetPassword from "./components/auth/ResetPassword.jsx";
-import NewPassword from "./components/auth/NewPassword.jsx";
+import CreateAccount from "./pages/auth/CreateAccount.jsx";
+import LoginForm from "./pages/auth/Login.jsx";
+import ConfirmEmail from "./pages/auth/ConfirmEmail.jsx";
+import NewPassword from "./pages/auth/NewPassword.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -14,7 +14,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="auth">
         <Route path="create-account" element={<CreateAccount />} />
         <Route path="login" element={<LoginForm />} />
-        <Route path="confirm-email" element={<ResetPassword />} />
+        <Route path="confirm-email" element={<ConfirmEmail />} />
         <Route path="reset-password" element={<NewPassword />} />
       </Route>
     </Routes>

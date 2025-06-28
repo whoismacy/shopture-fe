@@ -1,7 +1,6 @@
 import "./App.css";
-import "./index.css";
-import "./components/auth/CreateAccount";
-import CreateAccount from "./components/auth/CreateAccount";
+import "./styles/index.css";
+import CreateAccount from "./pages/auth/CreateAccount";
 
 export default function App() {
   return (
