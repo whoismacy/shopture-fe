@@ -2,6 +2,7 @@ import { useState } from "react";
 import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import FormButton from "../../components/common/Button";
+import styles from "./Auth.module.css";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -46,10 +47,10 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="account-container">
-      <div className="account-header">
-        <h1 className="account-h1">Login</h1>
-        <p className="sub-heading">Hi, Welcome back 👋</p>
+    <div className={styles.authContainer}>
+      <div className={styles.authHeader}>
+        <h1 className={styles.authHeading}>Login</h1>
+        <p className={styles["sub-heading"]}>Hi, Welcome back 👋</p>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -61,17 +62,17 @@ export default function LoginForm() {
 
         <Password value={password} onChange={handlePassword} />
 
-        <div className="account-container--remember">
-          <a href="" className="text-forgot">
+        <div className="forgotPassword">
+          <a href="" className="forgotPasswordLink">
             Forgot Password?
           </a>
         </div>
 
         <FormButton variant="primary">Log In</FormButton>
       </form>
-      <div className="login-additional">
+      <div className="loginAdditional">
         <p>Not registered ?</p>
-        <a href="" className="create-account-link">
+        <a href="" className="createAccountLink">
           Create an Account &#x2197;
         </a>
       </div>

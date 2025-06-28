@@ -1,0 +1,30 @@
+.forgotPassword {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.rememberMeText {
+  display: inline;
+  margin-left: 0.4rem;
+  text-decoration: none;
+  color: var(--primary-dark); /* Explicitly set text color */
+}
+
+.forgotPasswordLink {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.loginAdditional {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.createAccountLink {
+  text-decoration: none;
+  font-weight: 500;
+}

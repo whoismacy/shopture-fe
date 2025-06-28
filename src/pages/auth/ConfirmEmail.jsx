@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Email from "../../components/shared/Email";
 import FormButton from "../../components/common/Button";
+import styles from "./Auth.module.css";
 
 export default function ResetPassword() {
   const [email, setEmail] = useState("");
@@ -19,9 +20,9 @@ export default function ResetPassword() {
 
   return (
     <React.Fragment>
-      <div className="account-container">
-        <div className="account-header">
-          <h3 className="account-h1">Reset Account</h3>
+      <div className={styles.authContainer}>
+        <div className={styles.authHeader}>
+          <h3 className={styles.authHeading}>Reset Account</h3>
           <p>Provide last used email address for account</p>
         </div>
         <form onSubmit={handleSubmit}>

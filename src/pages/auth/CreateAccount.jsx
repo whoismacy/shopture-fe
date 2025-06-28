@@ -3,6 +3,8 @@ import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import ConfirmPassword from "../../components/shared/ConfirmPassword";
 import FormButton from "../../components/common/Button";
+import styles from "./Auth.module.css";
+import styles1 from "../../components/shared/EmailPassword.module.css";
 
 export default function CreateAccount() {
   const [email, setEmail] = useState("");
@@ -51,25 +53,28 @@ export default function CreateAccount() {
   }
 
   return (
-    <div className="account-container">
-      <div className="account-header">
-        <h1 className="account-h1 create">Create Account</h1>
-        <p className="sub-heading create">Provide Your Info</p>
+    <div className={styles.authContainer}>
+      <div className={styles.authHeader}>
+        <h1 className={styles.authHeading}>Create Account</h1>
+        <p className={styles["sub-heading"]}>Provide Your Info</p>
       </div>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="flname" className="label">
-          Full name
-        </label>
-        <input
-          type="text"
-          placeholder="John Doe"
-          name="flname"
-          className="inputField"
-          value={fullName}
-          onChange={handleFullName}
-        />
-
+        <div className={styles.inputGroup}>
+          <div className={styles1.inputGroup}>
+            <label htmlFor="flname" className={styles1.label}>
+              Full name
+            </label>
+            <input
+              type="text"
+              placeholder="John Doe"
+              name="flname"
+              className={styles1.inputField}
+              value={fullName}
+              onChange={handleFullName}
+            />
+          </div>
+        </div>
         <Email
           value={email}
           onChange={handleEmail}
@@ -94,7 +99,7 @@ export default function CreateAccount() {
         </span>
       </p>
 
-      <div className="account-container--termsc">
+      <div className={styles.termsAndConditions}>
         <p>
           By signing up you agree to our{" "}
           <span className="text-terms">Terms of use</span> and{" "}

@@ -52,110 +52,71 @@ body {
   color: var(--primary-dark);
 }
 
-.account-container {
-  max-width: 40rem;
-  min-width: 35rem;
-  padding: 2.8rem 1.8rem;
-  border-radius: var(--border-radius-medium);
-  box-shadow: var(--box-shadow-large);
+.create-login-text {
+  margin-top: 2.4rem;
 }
 
-.account-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 4.8rem;
-}
-
-.account-h1 {
-  font-size: 3.2rem;
-  color: var(--primary-orange);
-  margin-bottom: 0.6rem;
-}
-
-.account-h1.create {
-  color: var(--primary-orange);
-  margin-bottom: 0.6rem;
-}
-
-.sub-heading {
-  font-size: 1.4rem;
-}
-
-.sub-heading.create {
-  color: var(--primary-dark);
-}
-
-.account-container--remember {
+.forgotPassword {
   display: flex;
   justify-content: space-between;
   margin-top: 1.6rem;
   margin-bottom: 2rem;
 }
 
-.text-remember {
-  display: inline;
-  margin-left: 0.4rem;
-  text-decoration: none;
-}
-
-.create-login-text {
-  margin-top: 2.4rem;
-}
-
-.text-forgot {
+.forgotPasswordLink {
   font-weight: 500;
   font-size: 1.2rem;
   cursor: pointer;
   text-decoration: none;
 }
 
-.text-forgot:link {
+.forgotPasswordLink:link {
   color: var(--primary-orange);
 }
 
-.text-forgot:visited {
+.forgotPasswordLink:visited {
   color: var(--lavender);
 }
 
-.text-forgot:active,
-.text-forgot:hover {
+.forgotPasswordLink:active,
+.forgotPasswordLink:hover {
   color: var(--third-orange);
 }
 
-.text-forgot:focus {
+.forgotPasswordLink:focus {
   outline: none;
 }
-.text-forgot:focus-visible {
+
+.forgotPasswordLink:focus-visible {
   outline: 2px dashed var(--primary-dark);
   outline-offset: 2px;
 }
 
-.login-additional {
+.loginAdditional {
   display: flex;
   justify-content: center;
   gap: 0.8rem;
   margin-top: 1.8rem;
 }
+
 .create-account {
   cursor: pointer;
   text-decoration: none;
 }
 
-.create-account-link {
+.createAccountLink {
   cursor: pointer;
   text-decoration: none;
 }
 
-.create-account-link:link {
+.createAccountLink:link {
   color: var(--primary-orange);
 }
-.create-account-link:visited {
+.createAccountLink:visited {
   color: var(--lavender);
 }
-.create-account-link:active,
-.create-account-link:hover {
+.createAccountLink:active,
+.createAccountLink:hover {
   color: var(--secondary-orange);
 }
 
@@ -165,21 +126,6 @@ body {
 .create-account:focus-visible {
   outline: 2px dashed var(--primary-dark);
   outline-offset: 2px;
-}
-
-.account-container--termsc {
-  display: flex;
-  justify-content: center;
-  color: var(--secondary-grey);
-  line-height: 1.75rem;
-  margin-top: 2.4rem;
-
-  font-weight: 300;
-  font-style: italic;
-}
-
-.account-container--termsc p {
-  width: 52%;
 }
 
 .text-terms,
