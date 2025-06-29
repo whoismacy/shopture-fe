@@ -21,4 +21,4 @@ createRoot(document.getElementById("root")).render(
   </BrowserRouter>
 );
 
-//using outlet, useNavigate, hashing a password ?
+// Auth & React-Router

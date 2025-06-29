@@ -1,17 +1,20 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import ConfirmPassword from "../../components/shared/ConfirmPassword";
 import FormButton from "../../components/common/Button";
 import styles from "./Auth.module.css";
-import styles1 from "../../components/shared/EmailPassword.module.css";
+import emailpasswordstyles from "../../components/shared/EmailPassword.module.css";
 
 export default function CreateAccount() {
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [fullName, setFullName] = useState("");
 
+  // jwt token
+  // before user accesses page signup / login get request, authcheck json header with credentials true.
   async function handleSubmit(event) {
     event.preventDefault();
     const data = { email, password, confirmPassword, fullName };
@@ -61,15 +64,15 @@ export default function CreateAccount() {
 
       <form onSubmit={handleSubmit}>
         <div className={styles.inputGroup}>
-          <div className={styles1.inputGroup}>
-            <label htmlFor="flname" className={styles1.label}>
+          <div className={emailpasswordstyles.inputGroup}>
+            <label htmlFor="full-name" className={emailpasswordstyles.label}>
               Full name
             </label>
             <input
               type="text"
               placeholder="John Doe"
               name="flname"
-              className={styles1.inputField}
+              className={emailpasswordstyles.inputField}
               value={fullName}
               onChange={handleFullName}
             />
@@ -93,9 +96,11 @@ export default function CreateAccount() {
       <p class="create-login-text">
         Already have an account ?{" "}
         <span>
-          <a href="" className="text-forgot">
-            Login
-          </a>
+          <Link to="/auth/login">
+            <a href="" className="text-forgot">
+              Login
+            </a>
+          </Link>
         </span>
       </p>
 

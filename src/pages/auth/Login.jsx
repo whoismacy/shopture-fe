@@ -3,6 +3,7 @@ import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import FormButton from "../../components/common/Button";
 import styles from "./Auth.module.css";
+import { Link } from "react-router-dom";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -63,18 +64,22 @@ export default function LoginForm() {
         <Password value={password} onChange={handlePassword} />
 
         <div className="forgotPassword">
-          <a href="" className="forgotPasswordLink">
-            Forgot Password?
-          </a>
+          <Link to="/auth/confirm-email">
+            <a href="" className="forgotPasswordLink">
+              Forgot Password?
+            </a>
+          </Link>
         </div>
 
         <FormButton variant="primary">Log In</FormButton>
       </form>
       <div className="loginAdditional">
         <p>Not registered ?</p>
-        <a href="" className="createAccountLink">
-          Create an Account &#x2197;
-        </a>
+        <Link to="/auth/create-account">
+          <a href="" className="createAccountLink">
+            Create an Account &#x2197;
+          </a>
+        </Link>
       </div>
     </div>
   );
