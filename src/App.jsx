@@ -1,19 +1,26 @@
-import "./App.css";
-import "./styles/index.css";
-import LoginForm from "./pages/auth/Login";
-import NotFound from "./pages/NotFoundPage";
-import Home from "./pages/HomePage";
 import { useState } from "react";
 import { useEffect } from "react";
 import { createBrowserRouter, Route } from "react-router-dom";
 import { createRoutesFromElements } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
+import "./styles/index.css";
+import LoginForm from "./pages/auth/Login";
+import NotFound from "./pages/NotFoundPage";
+import Home from "./pages/HomePage";
 import ResetPassword from "./pages/auth/ConfirmEmail";
 import NewPassword from "./pages/auth/NewPassword";
 import CreateAccount from "./pages/auth/CreateAccount";
+import RootLayout from "./layouts/ RootLayout";
+import AuthLayout from "./layouts/AuthLayout";
+import Children from "./pages/Children";
+import Adults from "./pages/Adults";
+import OfficeWear from "./pages/OfficeWear";
+import WorkWear from "./pages/WorkWear";
+import ProductLayout from "./layouts/ProductLayout";
 
 export default function App() {
   const [token, setToken] = useState(null);
+  console.log(token);
 
   useEffect(() => {
     const storedToken = localStorage.getItem("jwt_token");
@@ -30,11 +37,11 @@ export default function App() {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="products" element={<RootLayout />}>
-          <Route path="adults" />
-          <Route path="children" />
-          <Route path="office-wear" />
-          <Route path="work-wear" />
+        <Route path="products" element={<ProductLayout />}>
+          <Route path="adults" element={<Adults />} />
+          <Route path="children" element={<Children />} />
+          <Route path="office-wear" element={<OfficeWear />} />
+          <Route path="work-wear" element={<WorkWear />} />
         </Route>
         <Route path="auth" element={<AuthLayout />}>
           <Route
@@ -43,7 +50,7 @@ export default function App() {
           />
           <Route
             path="create-account"
-            elment={<CreateAccount onCreation={handleToken} />}
+            element={<CreateAccount onCreation={handleToken} />}
           />
           <Route path="confirm-email" element={<ResetPassword />} />
           <Route path="reset-password" element={<NewPassword />} />
@@ -54,5 +61,3 @@ export default function App() {
 
   return <RouterProvider router={router} />;
 }
-
-// Route Pages to Adults, Children, OfficeWear, Workwear.
