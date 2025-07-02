@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import ConfirmPassword from "../../components/shared/ConfirmPassword";
@@ -7,31 +8,26 @@ import FormButton from "../../components/common/Button";
 import styles from "./Auth.module.css";
 import emailpasswordstyles from "../../components/shared/EmailPassword.module.css";
 
-export default function CreateAccount() {
+export default function CreateAccount({ onCreation }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  // jwt token
-  // before user accesses page signup / login get request, authcheck json header with credentials true.
   async function handleSubmit(event) {
     event.preventDefault();
-    const data = { email, password, confirmPassword, fullName };
-    try {
-      const response = await fetch("backend/auth/create-account/api", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(data),
-      });
 
-      if (response.ok) {
-        await response.json();
-      } else {
-        console.error("Failed fetching data");
-      }
-    } catch (networkError) {
-      console.error("Ensure you are connected to the Internet", networkError);
+    const data = { email, password, fullName };
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/reigister",
+        data
+      );
+      // should have a pop-up to give user feedback, account has been created successfully
+      const token = response.data.token;
+      onCreation(token);
+    } catch (error) {
+      console.error("Registration Failed. Please try again.", error);
     }
     setEmail("");
     setPassword("");
@@ -92,6 +88,8 @@ export default function CreateAccount() {
 
         <FormButton variant="primary">Sign Up</FormButton>
       </form>
+
+      <p className={styles.confirmPassword}>Passwords do not match</p>
 
       <p class="create-login-text">
         Already have an account ?{" "}

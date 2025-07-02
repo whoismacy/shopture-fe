@@ -16,6 +16,16 @@
   text-align: center;
 }
 
+.authWrapper {
+}
+
+.confirmPassword {
+  display: none;
+  color: red;
+  font-weight: 500;
+  font-size: var(--font-size-md);
+}
+
 .sub-heading {
   font-size: var(--font-size-sm);
   color: var(--primary-dark);
