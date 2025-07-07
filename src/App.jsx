@@ -16,7 +16,7 @@ import Children from "./pages/Children";
 import Adults from "./pages/Adults";
 import OfficeWear from "./pages/OfficeWear";
 import WorkWear from "./pages/WorkWear";
-import ProductLayout from "./layouts/ProductLayout";
+import ProductCategory from "./pages/ProductCategory";
 
 export default function App() {
   const [token, setToken] = useState(null);
@@ -37,7 +37,8 @@ export default function App() {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="products" element={<ProductLayout />}>
+        <Route path="products">
+          <Route index element={<ProductCategory />} />
           <Route path="adults" element={<Adults />} />
           <Route path="children" element={<Children />} />
           <Route path="office-wear" element={<OfficeWear />} />
@@ -60,4 +61,12 @@ export default function App() {
   );
 
   return <RouterProvider router={router} />;
+}
+
+function ErrorComponent(error) {
+  return (
+    <div>
+      <p>⚠️ Error {error}</p>
+    </div>
+  );
 }

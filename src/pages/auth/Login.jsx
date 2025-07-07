@@ -55,9 +55,7 @@ export default function LoginForm({ onCreation }) {
 
         <div className="forgotPassword">
           <Link to="/auth/confirm-email">
-            <a href="" className="forgotPasswordLink">
-              Forgot Password?
-            </a>
+            <p className="forgotPasswordLink">Forgot Password?</p>
           </Link>
         </div>
 

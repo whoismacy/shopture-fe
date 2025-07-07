@@ -1,5 +1,4 @@
 import instance from "./axiosConfig";
-import { useNavigate } from "react-router-dom";
 
 instance.interceptors.request.use(
   (config) => {
@@ -15,8 +14,6 @@ instance.interceptors.request.use(
 );
 
 instance.interceptors.response.use(
-  const navigate = useNavigate();
-
   (response) => response,
 
   (error) => {
@@ -37,3 +34,6 @@ instance.interceptors.response.use(
 
 // The return values of the error object (unsuccessful HTTP request)
 // message, name, code, config, request, response(obj)
+{
+  isOpen && content;
+}

@@ -6,12 +6,12 @@
   border: none;
   border-radius: var(--border-radius-medium);
   transition: all 0.4s ease-out;
+  background-color: var(--primary-orange);
   cursor: pointer;
 }
 
 .btnPrimary {
   padding: 1.2rem 2.4rem;
-  background-color: var(--primary-orange);
   width: 100%;
 }
 
