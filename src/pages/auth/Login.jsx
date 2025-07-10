@@ -64,9 +64,7 @@ export default function LoginForm({ onCreation }) {
       <div className="loginAdditional">
         <p>Not registered ?</p>
         <Link to="/auth/create-account">
-          <a href="" className="createAccountLink">
-            Create an Account &#x2197;
-          </a>
+          <p className="createAccountLink">Create an Account &#x2197;</p>
         </Link>
       </div>
     </div>

@@ -6,14 +6,17 @@ import SortBy from "../components/common/SortBy";
 export default function Home() {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  function handleData(d) {
+    setData(d);
+  }
 
   useEffect(function () {
     const controller = new AbortController();
     async function getData() {
       try {
         setError("");
-        setLoading(true);
         const response = await fetch("https://fakestoreapi.com/products", {
           signal: controller.signal,
         });
@@ -42,9 +45,10 @@ export default function Home() {
   return (
     <>
       {loading && <Loader />}
+      {error && <ErrorComponent error={error} />}
       {!loading && !error && (
         <div className="container">
-          <SortBy data={data} onClickSet={setData} />
+          <SortBy data={data} onClickSet={handleData} />
           <div className="Container">
             {data.map((item) => (
               <ItemContainer item={item} key={item.id} />
@@ -52,7 +56,6 @@ export default function Home() {
           </div>
         </div>
       )}
-      {error && <ErrorComponent error={error} />}
     </>
   );
 }

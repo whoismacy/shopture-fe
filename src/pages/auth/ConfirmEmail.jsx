@@ -32,8 +32,6 @@ export default function ResetPassword() {
             placeholder="Enter your email address"
           />
           <FormButton variant="primary">Submit</FormButton>
-          {/* // if successful route to create new password (details little blurry) */}
-          {/* <Link to="/auth/create-password"></Link> or we could use useNavigate still unsure*/}
         </form>
       </div>
     </React.Fragment>

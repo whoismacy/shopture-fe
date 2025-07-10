@@ -1,27 +1,30 @@
 export default function SortBy({ data, onClickSet }) {
   function AlphabeticalSort() {
-    const d = data.sort((a, b) =>
+    const sorted = [...data].sort((a, b) =>
       a.title.localeCompare(b.title, { ignorePunctuation: true })
     );
-    onClickSet(d);
+    onClickSet(sorted);
   }
-  function RecencySort() {
-    onClickSet(data);
+  function CategorySort() {
+    const sorted = [...data].sort((a, b) =>
+      a.category.localeCompare(b.category, { ignorePunctuation: true })
+    );
+    onClickSet(sorted);
   }
   function PriceSort() {
-    const d = data.sort((a, b) => a - b);
-    onClickSet(d);
+    const sorted = [...data].sort((a, b) => a.price - b.price);
+    onClickSet(sorted);
   }
   return (
     <>
       <div className="sortContainer">
-        <button className="btn btnShopNow" onClick={() => RecencySort()}>
-          Sort by Recency
+        <button className="btn btnShopNow" onClick={CategorySort}>
+          Sort by Category
         </button>
-        <button className="btn btnShopNow" onClick={() => AlphabeticalSort()}>
+        <button className="btn btnShopNow" onClick={AlphabeticalSort}>
           Sort by Alphabetical Order
         </button>
-        <button className="btn btnShopNow" onClick={() => PriceSort()}>
+        <button className="btn btnShopNow" onClick={PriceSort}>
           Sort by Price
         </button>
       </div>

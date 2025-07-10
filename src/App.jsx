@@ -12,11 +12,7 @@ import NewPassword from "./pages/auth/NewPassword";
 import CreateAccount from "./pages/auth/CreateAccount";
 import RootLayout from "./layouts/ RootLayout";
 import AuthLayout from "./layouts/AuthLayout";
-import Children from "./pages/Children";
-import Adults from "./pages/Adults";
-import OfficeWear from "./pages/OfficeWear";
-import WorkWear from "./pages/WorkWear";
-import ProductCategory from "./pages/ProductCategory";
+import FAQ from "./pages/FAQ";
 
 export default function App() {
   const [token, setToken] = useState(null);
@@ -37,13 +33,7 @@ export default function App() {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="products">
-          <Route index element={<ProductCategory />} />
-          <Route path="adults" element={<Adults />} />
-          <Route path="children" element={<Children />} />
-          <Route path="office-wear" element={<OfficeWear />} />
-          <Route path="work-wear" element={<WorkWear />} />
-        </Route>
+        <Route path="faqs" element={<FAQ />} />
         <Route path="auth" element={<AuthLayout />}>
           <Route
             path="login"
@@ -69,4 +59,14 @@ function ErrorComponent(error) {
       <p>⚠️ Error {error}</p>
     </div>
   );
+}
+
+{
+  /* <Route path="products">
+          <Route index element={<ProductCategory />} />
+          <Route path="adults" element={<Adults />} />
+          <Route path="children" element={<Children />} />
+          <Route path="office-wear" element={<OfficeWear />} />
+          <Route path="work-wear" element={<WorkWear />} />
+        </Route> */
 }
