@@ -1,10 +1,11 @@
-import styles from "./Button.module.css";
+let style;
 
 export default function FormButton({ children, variant = "primary" }) {
-  const classes = [styles.btn];
   if (variant === "primary") {
-    classes.push(styles.btnPrimary);
+    style = "btn btnPrimary";
+  } else {
+    style = "btn";
   }
 
-  return <button className={classes.join(" ")}>{children}</button>;
+  return <button className={style}>{children}</button>;
 }

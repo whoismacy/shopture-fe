@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import styles from "../components/common/Button.module.css";
 
 export default function NotFound() {
   const navigate = useNavigate();
@@ -7,7 +6,7 @@ export default function NotFound() {
   return (
     <div>
       <h1 style={{ marginBottom: "48px" }}>404 Error: Page Not Found</h1>
-      <button onClick={() => navigate("/")} className={styles.btn}>
+      <button onClick={() => navigate("/")} className="btn">
         Go Home
       </button>
     </div>

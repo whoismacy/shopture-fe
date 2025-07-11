@@ -1,5 +1,3 @@
-import styles from "./EmailPassword.module.css";
-
 export default function Email({
   type = "email",
   name = "email",
@@ -8,8 +6,8 @@ export default function Email({
   placeholder,
 }) {
   return (
-    <div className={styles.inputGroup}>
-      <label htmlFor="email" className={styles.label}>
+    <div className="inputGroup">
+      <label htmlFor="email" className="label">
         Email:
       </label>
       <input
@@ -17,7 +15,7 @@ export default function Email({
         name={name}
         value={value}
         onChange={onChange}
-        className={styles.inputField}
+        className="inputField"
         placeholder={placeholder}
         required
       />

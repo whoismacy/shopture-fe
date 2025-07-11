@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "./HomePage.module.css";
 import ItemContainer from "../components/common/ItemContainer";
 import SortBy from "../components/common/SortBy";
 

@@ -1,5 +1,3 @@
-import styles from "./EmailPassword.module.css";
-
 export default function Password({
   type = "password",
   name = "password",
@@ -7,15 +5,15 @@ export default function Password({
   onChange,
 }) {
   return (
-    <div className={styles.inputGroup}>
-      <label htmlFor="password" className={styles.label}>
+    <div className="inputGroup">
+      <label htmlFor="password" className="label">
         Password
       </label>
       <input
         type={type}
         name={name}
         value={value}
-        className={styles.inputField}
+        className="inputField"
         onChange={onChange}
         required
       />

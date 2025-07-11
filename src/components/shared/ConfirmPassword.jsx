@@ -1,5 +1,3 @@
-import styles from "./EmailPassword.module.css";
-
 export default function ConfirmPassword({
   type = "password",
   name = "password",
@@ -7,9 +5,9 @@ export default function ConfirmPassword({
   onChange,
 }) {
   return (
-    <div className={styles.inputGroup}>
-      <div className={styles.inputGroup}>
-        <label htmlFor="password" className={styles.label}>
+    <div className="inputGroup">
+      <div className="inputGroup">
+        <label htmlFor="password" className="label">
           Confirm Password
         </label>
         <input
@@ -17,7 +15,7 @@ export default function ConfirmPassword({
           name={name}
           value={value}
           onChange={onChange}
-          className={styles.inputField}
+          className="inputField"
           required
         />
       </div>
