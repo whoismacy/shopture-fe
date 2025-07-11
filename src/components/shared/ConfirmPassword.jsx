@@ -8,7 +8,7 @@ export default function ConfirmPassword({
     <div className="inputGroup">
       <div className="inputGroup">
         <label htmlFor="password" className="label">
-          Confirm Password
+          Confirm Password:
         </label>
         <input
           type={type}

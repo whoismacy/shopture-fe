@@ -145,8 +145,10 @@
 
 .label {
   display: block;
+  font-weight: 600;
+  font-size: 1.8rem;
   color: var(--primary-dark);
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
 }
 
 input {
@@ -164,15 +166,19 @@ input::placeholder {
 }
 
 .inputField {
-  padding: 0.8rem 1.2rem;
+  padding: 1rem 1.2rem;
   width: 100%;
-  border-radius: var(--border-radius-medium);
-  border: none;
+  border: 1px solid grey;
   background-color: var(--faint-grey);
+  background-color: #fff;
 }
 
 .inputField:focus {
   outline: none;
+}
+
+.inputField:focus-visible {
+  border: 1px solid var(--primary-orange);
 }
 
 .forgotPassword {
@@ -202,6 +208,16 @@ input::placeholder {
 }
 
 .createAccountLink {
+  color: var(--lavender);
   text-decoration: none;
   font-weight: 500;
+}
+
+.textForgot {
+  color: var(--lavender);
+  border-bottom: 1px solid var(--lavender);
+}
+
+.textForgot:hover {
+  color: var(--secondary-orange);
 }

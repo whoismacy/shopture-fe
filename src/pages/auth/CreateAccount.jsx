@@ -53,7 +53,6 @@ export default function CreateAccount({ onCreation }) {
     <div className="authContainer">
       <div className="authHeader">
         <h1 className="authHeading">Create Account</h1>
-        <p className="sub-heading">Provide Your Info</p>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -93,9 +92,7 @@ export default function CreateAccount({ onCreation }) {
         Already have an account ?{" "}
         <span>
           <Link to="/auth/login">
-            <a href="" className="text-forgot">
-              Login
-            </a>
+            <span className="textForgot">Login</span>
           </Link>
         </span>
       </p>

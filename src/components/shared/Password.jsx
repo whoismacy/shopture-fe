@@ -3,11 +3,12 @@ export default function Password({
   name = "password",
   value,
   onChange,
+  children,
 }) {
   return (
     <div className="inputGroup">
       <label htmlFor="password" className="label">
-        Password
+        {children ? children : "Password:"}
       </label>
       <input
         type={type}

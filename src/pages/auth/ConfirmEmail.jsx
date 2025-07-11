@@ -22,7 +22,6 @@ export default function ResetPassword() {
       <div className="authContainer">
         <div className="authHeader">
           <h3 className="authHeading">Reset Account</h3>
-          <p>Provide last used email address for account</p>
         </div>
         <form onSubmit={handleSubmit}>
           <Email

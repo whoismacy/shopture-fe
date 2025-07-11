@@ -8,6 +8,8 @@ import "./styles/footer.css";
 import "./styles/itemContainer.css";
 import "./styles/nav.css";
 import "./styles/queries.css";
+import "./styles/auth.css";
+import "./styles/faqs.css";
 import LoginForm from "./pages/auth/Login";
 import NotFound from "./pages/NotFoundPage";
 import Home from "./pages/HomePage";

@@ -23,10 +23,11 @@ export default function NewPassword() {
     <div className="authContainer">
       <div className="authHeader">
         <h3 className="authHeading">Reset Password</h3>
-        <p className="sub-heading">Input a new unique password</p>
       </div>
       <form onSubmit={handleSubmit}>
-        <Password value={password} onChange={handlePassword} />
+        <Password value={password} onChange={handlePassword}>
+          New Password:
+        </Password>
         <ConfirmPassword
           value={confirmPassword}
           onChange={handleConfirmPassword}

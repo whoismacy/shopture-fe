@@ -40,7 +40,6 @@ export default function LoginForm({ onCreation }) {
     <div className="authContainer">
       <div className="authHeader">
         <h1 className="authHeading">Login</h1>
-        <p className="sub-heading">Hi, Welcome back 👋</p>
       </div>
 
       <form onSubmit={handleSubmit}>
