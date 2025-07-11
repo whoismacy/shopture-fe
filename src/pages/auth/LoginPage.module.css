@@ -9,7 +9,7 @@
   display: inline;
   margin-left: 0.4rem;
   text-decoration: none;
-  color: var(--primary-dark); /* Explicitly set text color */
+  color: var(--primary-dark);
 }
 
 .forgotPasswordLink {

@@ -34,6 +34,3 @@ instance.interceptors.response.use(
 
 // The return values of the error object (unsuccessful HTTP request)
 // message, name, code, config, request, response(obj)
-{
-  isOpen && content;
-}

@@ -5,8 +5,6 @@ import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import ConfirmPassword from "../../components/shared/ConfirmPassword";
 import FormButton from "../../components/common/Button";
-import styles from "./Auth.module.css";
-import emailpasswordstyles from "../../components/shared/EmailPassword.module.css";
 
 export default function CreateAccount({ onCreation }) {
   const [fullName, setFullName] = useState("");
@@ -52,23 +50,23 @@ export default function CreateAccount({ onCreation }) {
   }
 
   return (
-    <div className={styles.authContainer}>
-      <div className={styles.authHeader}>
-        <h1 className={styles.authHeading}>Create Account</h1>
-        <p className={styles["sub-heading"]}>Provide Your Info</p>
+    <div className="authContainer">
+      <div className="authHeader">
+        <h1 className="authHeading">Create Account</h1>
+        <p className="sub-heading">Provide Your Info</p>
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div className={styles.inputGroup}>
-          <div className={emailpasswordstyles.inputGroup}>
-            <label htmlFor="full-name" className={emailpasswordstyles.label}>
+        <div className="inputGroup">
+          <div className="inputGroup">
+            <label htmlFor="full-name" className="label">
               Full name
             </label>
             <input
               type="text"
               placeholder="John Doe"
               name="flname"
-              className={emailpasswordstyles.inputField}
+              className="inputField"
               value={fullName}
               onChange={handleFullName}
             />
@@ -89,7 +87,7 @@ export default function CreateAccount({ onCreation }) {
         <FormButton variant="primary">Sign Up</FormButton>
       </form>
 
-      <p className={styles.confirmPassword}>Passwords do not match</p>
+      <p className="confirmPassword">Passwords do not match</p>
 
       <p class="create-login-text">
         Already have an account ?{" "}
@@ -102,7 +100,7 @@ export default function CreateAccount({ onCreation }) {
         </span>
       </p>
 
-      <div className={styles.termsAndConditions}>
+      <div className="termsAndConditions">
         <p>
           By signing up you agree to our{" "}
           <span className="text-terms">Terms of use</span> and{" "}

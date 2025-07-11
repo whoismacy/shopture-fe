@@ -16,6 +16,7 @@ export default function Home() {
     const controller = new AbortController();
     async function getData() {
       try {
+        setLoading(true);
         setError("");
         const response = await fetch("https://fakestoreapi.com/products", {
           signal: controller.signal,

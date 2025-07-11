@@ -4,6 +4,10 @@ import { createBrowserRouter, Route } from "react-router-dom";
 import { createRoutesFromElements } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import "./styles/index.css";
+import "./styles/footer.css";
+import "./styles/itemContainer.css";
+import "./styles/nav.css";
+import "./styles/queries.css";
 import LoginForm from "./pages/auth/Login";
 import NotFound from "./pages/NotFoundPage";
 import Home from "./pages/HomePage";
@@ -59,14 +63,4 @@ function ErrorComponent(error) {
       <p>⚠️ Error {error}</p>
     </div>
   );
-}
-
-{
-  /* <Route path="products">
-          <Route index element={<ProductCategory />} />
-          <Route path="adults" element={<Adults />} />
-          <Route path="children" element={<Children />} />
-          <Route path="office-wear" element={<OfficeWear />} />
-          <Route path="work-wear" element={<WorkWear />} />
-        </Route> */
 }

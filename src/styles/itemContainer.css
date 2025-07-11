@@ -1,0 +1,81 @@
+.itemContainer {
+  margin: 1.2rem;
+  padding: 2.4rem;
+  box-shadow: var(--box-shadow-medium);
+  max-width: 35rem;
+  background-color: #fff;
+  border-radius: 11px;
+  transition: all 0.4s ease;
+}
+.itemContainer:hover {
+  transform: translateY(-6px);
+  background-color: var(--faint-orange);
+  box-shadow: var(--box-shadow-large);
+}
+
+.itemImageContainer {
+  position: relative;
+  height: 30rem;
+  width: 30rem;
+}
+
+.itemImage {
+  position: absolute;
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.itemTitle {
+  margin-top: 2.4rem;
+  margin-bottom: 1.2rem;
+  font-size: 2.2rem;
+}
+
+.itemCategory {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--primary-grey);
+  margin-bottom: 1.2rem;
+}
+
+.itemDescription {
+  margin-bottom: 2.4rem;
+  font-style: italic;
+  color: var(--primary-black);
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+.itemRating {
+  display: flex;
+  gap: 2.4rem;
+  margin-bottom: 1.8rem;
+  align-items: center;
+}
+
+.itemRatingText {
+  font-style: italic;
+}
+
+.itemCurrency {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.itemPrice {
+  margin-bottom: 3.2rem;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.priceButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4.8rem;
+}

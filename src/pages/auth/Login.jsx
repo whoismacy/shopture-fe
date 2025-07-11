@@ -4,7 +4,6 @@ import axios from "axios";
 import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import FormButton from "../../components/common/Button";
-import styles from "./Auth.module.css";
 
 export default function LoginForm({ onCreation }) {
   const [email, setEmail] = useState("");
@@ -38,10 +37,10 @@ export default function LoginForm({ onCreation }) {
   }
 
   return (
-    <div className={styles.authContainer}>
-      <div className={styles.authHeader}>
-        <h1 className={styles.authHeading}>Login</h1>
-        <p className={styles["sub-heading"]}>Hi, Welcome back 👋</p>
+    <div className="authContainer">
+      <div className="authHeader">
+        <h1 className="authHeading">Login</h1>
+        <p className="sub-heading">Hi, Welcome back 👋</p>
       </div>
 
       <form onSubmit={handleSubmit}>
