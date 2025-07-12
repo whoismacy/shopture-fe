@@ -10,6 +10,7 @@ import "./styles/nav.css";
 import "./styles/queries.css";
 import "./styles/auth.css";
 import "./styles/faqs.css";
+import "./styles/cart.css";
 import LoginForm from "./pages/auth/Login";
 import NotFound from "./pages/NotFoundPage";
 import Home from "./pages/HomePage";
@@ -19,9 +20,12 @@ import CreateAccount from "./pages/auth/CreateAccount";
 import RootLayout from "./layouts/ RootLayout";
 import AuthLayout from "./layouts/AuthLayout";
 import FAQ from "./pages/FAQ";
+import Cart from "./pages/Cart";
 
 export default function App() {
   const [token, setToken] = useState(null);
+  const [cart, setCart] = useState([]);
+
   console.log(token);
 
   useEffect(() => {
@@ -40,6 +44,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="*" element={<NotFound />} />
         <Route path="faqs" element={<FAQ />} />
+        <Route path="cart" element={<Cart cart={cart} onCart={setCart} />} />
         <Route path="auth" element={<AuthLayout />}>
           <Route
             path="login"

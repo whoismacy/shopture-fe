@@ -15,6 +15,12 @@ export default function SortBy({ data, onClickSet }) {
     const sorted = [...data].sort((a, b) => a.price - b.price);
     onClickSet(sorted);
   }
+
+  function RatingSort() {
+    const sorted = [...data].sort((a, b) => a.rating.count - b.rating.count);
+    const sortedRating = sorted.sort((a, b) => b.rating.rate - a.rating.rate);
+    onClickSet(sortedRating);
+  }
   return (
     <>
       <div className="sortContainer">
@@ -26,6 +32,9 @@ export default function SortBy({ data, onClickSet }) {
         </button>
         <button className="btn btnShopNow" onClick={PriceSort}>
           Sort by Price
+        </button>
+        <button className="btn btnShopNow" onClick={RatingSort}>
+          Sort by Rating
         </button>
       </div>
     </>

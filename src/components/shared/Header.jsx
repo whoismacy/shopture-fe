@@ -28,7 +28,7 @@ export default function Header() {
               <span>Home</span>
             </li>
           </NavLink>
-          <NavLink to="*">
+          <NavLink to="cart">
             <li className="category">
               <span>
                 <svg

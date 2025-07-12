@@ -133,6 +133,11 @@ a.active {
   outline-offset: 2px;
 }
 
+.btnCart {
+  font-size: 2.4rem;
+  width: 25rem;
+}
+
 .Container {
   display: grid;
   grid-template-columns: repeat(4, auto);
