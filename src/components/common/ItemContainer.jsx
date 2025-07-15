@@ -1,7 +1,6 @@
 import StarRating from "./StarRating";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function ItemContainer({ item }) {
+export default function ItemContainer({ item, dispatch }) {
   const {
     title,
     category,
@@ -32,7 +31,10 @@ export default function ItemContainer({ item }) {
         <p className="itemCurrency">
           KShs <span className="itemPrice">{price * 100}</span>
         </p>
-        <button className="btn btnShopNow">
+        <button
+          className="btn btnShopNow"
+          onClick={() => dispatch({ type: "addToCart", load: item })}
+        >
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ItemContainer from "../components/common/ItemContainer";
 import SortBy from "../components/common/SortBy";
 
-export default function Home() {
+export default function Home({ dispatch }) {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
@@ -51,7 +51,7 @@ export default function Home() {
           <SortBy data={data} onClickSet={handleData} />
           <div className="Container">
             {data.map((item) => (
-              <ItemContainer item={item} key={item.id} />
+              <ItemContainer item={item} key={item.id} dispatch={dispatch} />
             ))}
           </div>
         </div>

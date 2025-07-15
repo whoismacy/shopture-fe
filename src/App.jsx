@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { useEffect } from "react";
 import { createBrowserRouter, Route } from "react-router-dom";
 import { createRoutesFromElements } from "react-router-dom";
@@ -22,9 +22,18 @@ import AuthLayout from "./layouts/AuthLayout";
 import FAQ from "./pages/FAQ";
 import Cart from "./pages/Cart";
 
+function reducer(state, action) {
+  switch (action.type) {
+    case "addToCart":
+      return [...state, action.load];
+  }
+}
+
+const initialState = [];
+
 export default function App() {
   const [token, setToken] = useState(null);
-  const [cart, setCart] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   console.log(token);
 
@@ -41,10 +50,10 @@ export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
-        <Route index element={<Home />} />
+        <Route index element={<Home dispatch={dispatch} />} />
         <Route path="*" element={<NotFound />} />
         <Route path="faqs" element={<FAQ />} />
-        <Route path="cart" element={<Cart cart={cart} onCart={setCart} />} />
+        <Route path="cart" element={<Cart data={state} />} />
         <Route path="auth" element={<AuthLayout />}>
           <Route
             path="login"

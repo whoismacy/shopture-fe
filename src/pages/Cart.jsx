@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-export default function Cart({ cart, onCart }) {
+export default function Cart({ data }) {
   const navigate = useNavigate();
+  const d = [...new Set([...data])];
 
   return (
     <>
-      {cart.length > 0 ? (
-        cart.map((item, index) => <CartItem data={item} key={index + 1} />)
+      {d.length > 0 ? (
+        <CartItem data={d} />
       ) : (
         <div className="cartHeading">
           <h3 className="faqHeading">You have no items in Your Cart :( </h3>
@@ -20,10 +22,42 @@ export default function Cart({ cart, onCart }) {
 }
 
 function CartItem({ data }) {
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(
+    function () {
+      const total = data.reduce((a, b) => a + b.price, 0);
+      setTotalPrice(total * 100);
+    },
+    [data]
+  );
   return (
-    <div>
-      <div></div>
-      <div></div>
-    </div>
+    <>
+      <h1 className="cartHeading">Cart</h1>
+      <div className="cartContainer">
+        {data.map((item) => (
+          <div className="cartItem">
+            <div>
+              <h3 className="cartSubHeading">{item.title}</h3>
+              <p className="cartDescription">
+                {item.description.length > 50
+                  ? `${item.description.slice(0, 50)}...`
+                  : item.description}
+              </p>
+            </div>
+            <div className="cartPriceExit">
+              <p className="cartPrice">Kshs. {item.price * 100}</p>
+              <button className="btnRemove">X</button>
+            </div>
+          </div>
+        ))}
+        <div className="cartLower">
+          <button className="btn btnShopNow btnCheckOut">Checkout</button>
+          <p className="cartPriceText">
+            Total Price: <span className="cartPrice">Kshs. {totalPrice}</span>
+          </p>
+        </div>
+      </div>
+    </>
   );
 }

@@ -1,5 +1,42 @@
-.cartHeading {
+.cartContainer {
   display: flex;
   flex-direction: column;
+  gap: 3.2rem;
+  padding: 24px;
+}
+
+.cartHeading {
+  text-align: center;
+  font-size: 4.8rem;
+}
+
+.cartItem {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 2.4rem 3.2rem;
+  box-shadow: var(--box-shadow-small);
+  border-radius: 9px;
+}
+
+.cartLower {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cartPriceText {
+  font-weight: 400;
+  font-style: italic;
+  font-size: 2rem;
+}
+
+.cartPrice {
+  font-weight: 600;
+  font-size: 2.4rem;
+}
+
+.cartPriceExit {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
 }
