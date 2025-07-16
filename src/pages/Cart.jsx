@@ -1,14 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export default function Cart({ data }) {
+export default function Cart({ data, dispatch }) {
   const navigate = useNavigate();
-  const d = [...new Set([...data])];
 
   return (
     <>
-      {d.length > 0 ? (
-        <CartItem data={d} />
+      {data.length > 0 ? (
+        <CartItem data={data} dispatch={dispatch} />
       ) : (
         <div className="cartHeading">
           <h3 className="faqHeading">You have no items in Your Cart :( </h3>
@@ -21,7 +20,7 @@ export default function Cart({ data }) {
   );
 }
 
-function CartItem({ data }) {
+function CartItem({ data, dispatch }) {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(
@@ -36,7 +35,7 @@ function CartItem({ data }) {
       <h1 className="cartHeading">Cart</h1>
       <div className="cartContainer">
         {data.map((item) => (
-          <div className="cartItem">
+          <div className="cartItem" key={item.id}>
             <div>
               <h3 className="cartSubHeading">{item.title}</h3>
               <p className="cartDescription">
@@ -47,7 +46,12 @@ function CartItem({ data }) {
             </div>
             <div className="cartPriceExit">
               <p className="cartPrice">Kshs. {item.price * 100}</p>
-              <button className="btnRemove">X</button>
+              <button
+                className="btnRemove"
+                onClick={() => dispatch({ type: "dropItem", load: item })}
+              >
+                X
+              </button>
             </div>
           </div>
         ))}
@@ -61,3 +65,6 @@ function CartItem({ data }) {
     </>
   );
 }
+
+// drop an item
+// toast icons, react-toastify

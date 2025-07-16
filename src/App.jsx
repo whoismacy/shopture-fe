@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { createBrowserRouter, Route } from "react-router-dom";
 import { createRoutesFromElements } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
+import { toast, ToastContainer, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./styles/index.css";
 import "./styles/footer.css";
 import "./styles/itemContainer.css";
@@ -22,10 +24,30 @@ import AuthLayout from "./layouts/AuthLayout";
 import FAQ from "./pages/FAQ";
 import Cart from "./pages/Cart";
 
+function notify(message) {
+  toast(message, {
+    position: "top-center",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Zoom,
+  });
+}
+
 function reducer(state, action) {
   switch (action.type) {
     case "addToCart":
+      notify("Item added to Cart :)");
       return [...state, action.load];
+    case "dropItem":
+      notify("Removed item from Cart");
+      return [...state].filter((item) => item.id !== action.load.id);
+    default:
+      return state;
   }
 }
 
@@ -34,7 +56,6 @@ const initialState = [];
 export default function App() {
   const [token, setToken] = useState(null);
   const [state, dispatch] = useReducer(reducer, initialState);
-
   console.log(token);
 
   useEffect(() => {
@@ -53,7 +74,12 @@ export default function App() {
         <Route index element={<Home dispatch={dispatch} />} />
         <Route path="*" element={<NotFound />} />
         <Route path="faqs" element={<FAQ />} />
-        <Route path="cart" element={<Cart data={state} />} />
+        <Route
+          path="cart"
+          element={
+            <Cart data={Array.from(new Set(state))} dispatch={dispatch} />
+          }
+        />
         <Route path="auth" element={<AuthLayout />}>
           <Route
             path="login"
@@ -70,7 +96,25 @@ export default function App() {
     )
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        limit={2}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Zoom}
+      />
+    </>
+  );
 }
 
 function ErrorComponent(error) {
