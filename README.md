@@ -1,6 +1,6 @@
 # Shopture --vite
 
-## How to run the Container
+## How to run the Docker Container
 
 ### Ensure you have docker installed on your machine - (obviously)
 
@@ -19,4 +19,4 @@
 - The `--name shopture-vite` simply assigns a name for the running container, which you can optionally stop using `docker stop shopture-vite`
 - The `shopture-vite:v1.0` is the name of the Docker image, realise it is similar to the one we used in the build command.
 
-- If the `docker run -p 9090:9090 --name shopture-vite shopture-vite:v1.0` is _successful_ open _http://localhost:9090/_ on your preferred browser and there you can view the vite app
+- If the `docker run -p 9090:9090 --name shopture-vite shopture-vite:v1.0` command is _successful_ open _http://localhost:9090/_ on your preferred browser and there you can view the vite app

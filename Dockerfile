@@ -16,4 +16,3 @@ RUN npm run build
 EXPOSE 9090
 
 CMD ["serve", "-s", "dist", "-l", "9090"]
-

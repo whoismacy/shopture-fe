@@ -1,16 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import logo from "../../../public/assets/shopTureT.png";
 
 export default function Header() {
   return (
     <>
       <header className="navContainer">
-        <NavLink to="/">
-          <img
-            src="../../../public/assets/shopTureT.png"
-            alt="logo"
-            className="logoImg"
-          />
-        </NavLink>
+        <Link to="/">
+          <img src={logo} alt="logo" className="logoImg" />
+        </Link>
         <ul className="endNav">
           <NavLink to="/">
             <li className="category">
