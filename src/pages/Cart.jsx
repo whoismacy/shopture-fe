@@ -22,6 +22,7 @@ export default function Cart({ data, dispatch }) {
 
 function CartItem({ data, dispatch }) {
   const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(
     function () {
@@ -56,7 +57,12 @@ function CartItem({ data, dispatch }) {
           </div>
         ))}
         <div className="cartLower">
-          <button className="btn btnShopNow btnCheckOut">Checkout</button>
+          <button
+            onClick={() => navigate("/checkout")}
+            className="btn btnShopNow btnCheckOut"
+          >
+            Checkout
+          </button>
           <p className="cartPriceText">
             Total Price: <span className="cartPrice">Kshs. {totalPrice}</span>
           </p>

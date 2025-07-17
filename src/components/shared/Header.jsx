@@ -1,12 +1,15 @@
 import { NavLink, Link } from "react-router-dom";
-import logo from "../../../public/assets/shopTureT.png";
 
 export default function Header() {
   return (
     <>
       <header className="navContainer">
         <Link to="/">
-          <img src={logo} alt="logo" className="logoImg" />
+          <img
+            src="../../../src/assets/shopTureT.png"
+            alt="logo"
+            className="logoImg"
+          />
         </Link>
         <ul className="endNav">
           <NavLink to="/">

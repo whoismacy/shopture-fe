@@ -1,0 +1,16 @@
+.info {
+  font-size: 2.4rem;
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 3.2rem;
+}
+
+.delivery {
+  font-weight: 600;
+  color: #000;
+}
+
+.container {
+  margin: 25rem auto;
+  padding: 2.4rem;
+}

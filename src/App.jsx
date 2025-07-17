@@ -25,6 +25,7 @@ import FAQ from "./pages/FAQ";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Address from "./pages/Address";
+import CompletePurchase from "./pages/CompletePurchase";
 
 function notify(message) {
   toast(message, {
@@ -53,24 +54,12 @@ function reducer(state, action) {
   }
 }
 
-function addressReducer(state, action) {
-  switch (action.type) {
-    case "set":
-      notify("Address successfully added.");
-      return [...state, action.load];
-  }
-}
-
 const initialState = [];
-const addressInitialState = [];
 
 export default function App() {
   const [token, setToken] = useState(null);
+  const [location, setLocation] = useState({});
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [address, dispatchAddress] = useReducer(
-    addressReducer,
-    addressInitialState
-  );
 
   console.log(token);
 
@@ -90,10 +79,17 @@ export default function App() {
         <Route index element={<Home dispatch={dispatch} />} />
         <Route path="*" element={<NotFound />} />
         <Route path="faqs" element={<FAQ />} />
-        <Route path="checkout" element={<Checkout />} items={state} />
+        <Route
+          path="success-checkout"
+          element={<CompletePurchase len={state.length} data={[location]} />}
+        />
+        <Route
+          path="checkout"
+          element={<Checkout items={state} location={location} />}
+        />
         <Route
           path="address"
-          element={<Address items={address} dispatch={dispatchAddress} />}
+          element={<Address items={location} dispatch={setLocation} />}
         />
         <Route
           path="cart"

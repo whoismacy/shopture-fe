@@ -1,5 +1,22 @@
 import { useState } from "react";
 import styles from "./Address.module.css";
+import { toast, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+
+function notify(message) {
+  toast(message, {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Zoom,
+  });
+}
 
 export default function Address({ dispatch }) {
   const [county, setCounty] = useState("");
@@ -7,11 +24,14 @@ export default function Address({ dispatch }) {
   const [street, setStreet] = useState("");
   const [phone, setPhone] = useState("");
   const [note, setNote] = useState("");
+  const navigate = useNavigate();
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (!county || !building || !street || !phone) return;
-    dispatch({ type: "set", load: { county, building, street, phone, note } });
+  function reset() {
+    setCounty("");
+    setBuilding("");
+    setStreet("");
+    setPhone("");
+    setNote("");
   }
 
   return (
@@ -63,7 +83,14 @@ export default function Address({ dispatch }) {
           />
         </div>
         <button
-          onClick={handleSubmit}
+          onClick={(event) => {
+            event.preventDefault();
+            if (!county || !building || !street || !phone) return;
+            dispatch({ county, building, street, phone, note });
+            reset();
+            notify("Successfully Completed Purchase.");
+            navigate("/success-checkout");
+          }}
           className={`btn btnShopNow ${styles.btnCO}`}
         >
           Complete Purchase
