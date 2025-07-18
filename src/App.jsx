@@ -1,10 +1,11 @@
 import { useReducer, useState } from "react";
-import { useEffect } from "react";
 import { createBrowserRouter, Route } from "react-router-dom";
 import { createRoutesFromElements } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
+
 import { toast, ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import "./styles/index.css";
 import "./styles/footer.css";
 import "./styles/itemContainer.css";
@@ -13,6 +14,7 @@ import "./styles/queries.css";
 import "./styles/auth.css";
 import "./styles/faqs.css";
 import "./styles/cart.css";
+
 import LoginForm from "./pages/auth/Login";
 import NotFound from "./pages/NotFoundPage";
 import Home from "./pages/HomePage";
@@ -26,6 +28,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Address from "./pages/Address";
 import CompletePurchase from "./pages/CompletePurchase";
+import Profile from "./pages/Profile";
 
 function notify(message) {
   toast(message, {
@@ -49,6 +52,8 @@ function reducer(state, action) {
     case "dropItem":
       notify("Removed item from Cart");
       return [...state].filter((item) => item.id !== action.load.id);
+    case "reset":
+      return [];
     default:
       return state;
   }
@@ -57,21 +62,11 @@ function reducer(state, action) {
 const initialState = [];
 
 export default function App() {
-  const [token, setToken] = useState(null);
   const [location, setLocation] = useState({});
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [user, setUser] = useState({});
 
-  console.log(token);
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem("jwt_token");
-    if (storedToken) setToken(storedToken);
-  }, []);
-
-  function handleToken(newToken) {
-    setToken(newToken);
-    localStorage.setItem("jwt_token", newToken);
-  }
+  let stateLength = state.length;
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -79,9 +74,16 @@ export default function App() {
         <Route index element={<Home dispatch={dispatch} />} />
         <Route path="*" element={<NotFound />} />
         <Route path="faqs" element={<FAQ />} />
+        <Route path="profile" element={<Profile />} />
         <Route
           path="success-checkout"
-          element={<CompletePurchase len={state.length} data={[location]} />}
+          element={
+            <CompletePurchase
+              len={stateLength}
+              data={[location]}
+              dispatch={dispatch}
+            />
+          }
         />
         <Route
           path="checkout"
@@ -98,13 +100,10 @@ export default function App() {
           }
         />
         <Route path="auth" element={<AuthLayout />}>
-          <Route
-            path="login"
-            element={<LoginForm onCreation={handleToken} />}
-          />
+          <Route path="login" element={<LoginForm setUser={setUser} />} />
           <Route
             path="create-account"
-            element={<CreateAccount onCreation={handleToken} />}
+            element={<CreateAccount setUser={setUser} />}
           />
           <Route path="confirm-email" element={<ResetPassword />} />
           <Route path="reset-password" element={<NewPassword />} />
@@ -116,20 +115,7 @@ export default function App() {
   return (
     <>
       <RouterProvider router={router} />
-      <ToastContainer
-        position="top-center"
-        autoClose={1500}
-        limit={2}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        transition={Zoom}
-      />
+      <ToastContainer />
     </>
   );
 }
@@ -141,3 +127,9 @@ function ErrorComponent(error) {
     </div>
   );
 }
+
+// handle vite image error
+// fix no.of items checkout error
+// position of the spinner / loader
+// compose.yaml
+// axios httpOnly cookie

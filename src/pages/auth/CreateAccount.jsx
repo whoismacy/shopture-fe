@@ -1,36 +1,42 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import instance from "../../provider/axiosConfig";
 import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import ConfirmPassword from "../../components/shared/ConfirmPassword";
 import FormButton from "../../components/common/Button";
 
-export default function CreateAccount({ onCreation }) {
+export default function CreateAccount() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     const data = { email, password, fullName };
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/reigister",
-        data
+      const response = await instance.post("/register", data);
+      console.log(
+        "Registration Successful! Backend response data: ",
+        response.data
       );
-      // should have a pop-up to give user feedback, account has been created successfully
-      const token = response.data.token;
-      onCreation(token);
+      // setUser({ id: response.data.newUser, name: email });
+      navigate("auth/create-account");
+      setEmail("");
+      setPassword("");
+      setFullName("");
+      setConfirmPassword("");
     } catch (error) {
       console.error("Registration Failed. Please try again.", error);
+      if (error.response) {
+        if (error.response.status === 400) {
+          console.error("An unexpected error occurred");
+        }
+      }
     }
-    setEmail("");
-    setPassword("");
-    setFullName("");
-    setConfirmPassword("");
   }
 
   function handleEmail(event) {

@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import FormButton from "../../components/common/Button";
+import instance from "../../provider/axiosConfig";
 
-export default function LoginForm({ onCreation }) {
+export default function LoginForm({ setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   function handleEmail(event) {
     setEmail(event.target.value);
@@ -22,14 +23,17 @@ export default function LoginForm({ onCreation }) {
     const data = { email, password };
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/login",
-        data
-      );
-      const token = response.data.token;
-      onCreation(token);
-    } catch (networkError) {
-      console.error("Network error during login:", networkError);
+      const response = await instance.post("/login", data);
+      if (response.data) {
+        const user_id = response.data.id;
+        console.log("Login Successful!:", response.data);
+        setUser({ id: user_id, name: email });
+        navigate("/");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        console.error("Login Failed. Invalid Credentials");
+      }
     }
 
     setEmail("");
