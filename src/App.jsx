@@ -64,7 +64,7 @@ const initialState = [];
 export default function App() {
   const [location, setLocation] = useState({});
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
 
   const stateLength = () => state.length;
 
