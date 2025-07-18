@@ -5,6 +5,22 @@ import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import ConfirmPassword from "../../components/shared/ConfirmPassword";
 import FormButton from "../../components/common/Button";
+import { toast, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+function notify(message) {
+  toast(message, {
+    position: "top-center",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Zoom,
+  });
+}
 
 export default function CreateAccount() {
   const [fullName, setFullName] = useState("");
@@ -18,13 +34,13 @@ export default function CreateAccount() {
 
     const data = { email, password, fullName };
     try {
-      const response = await instance.post("/register", data);
+      const response = await instance.post("/signup", data);
       console.log(
         "Registration Successful! Backend response data: ",
         response.data
       );
-      // setUser({ id: response.data.newUser, name: email });
-      navigate("auth/create-account");
+      navigate("auth/login");
+      notify("Account Created Successfully, You can now log in.");
       setEmail("");
       setPassword("");
       setFullName("");

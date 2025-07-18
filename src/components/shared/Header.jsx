@@ -47,7 +47,7 @@ export default function Header() {
               <span>Cart</span>
             </li>
           </NavLink>
-          <NavLink to="auth/login">
+          <NavLink to="profile">
             <li className="category">
               <span>
                 <svg

@@ -64,9 +64,12 @@ const initialState = [];
 export default function App() {
   const [location, setLocation] = useState({});
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    email: "johndoe@gmail.com",
+    id: crypto.randomUUID(),
+  });
 
-  let stateLength = state.length;
+  const stateLength = () => state.length;
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -74,7 +77,7 @@ export default function App() {
         <Route index element={<Home dispatch={dispatch} />} />
         <Route path="*" element={<NotFound />} />
         <Route path="faqs" element={<FAQ />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="profile" element={<Profile data={user} />} />
         <Route
           path="success-checkout"
           element={

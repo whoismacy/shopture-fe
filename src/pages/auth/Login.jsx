@@ -4,6 +4,22 @@ import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import FormButton from "../../components/common/Button";
 import instance from "../../provider/axiosConfig";
+import { toast, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+function notify(message) {
+  toast(message, {
+    position: "top-center",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Zoom,
+  });
+}
 
 export default function LoginForm({ setUser }) {
   const [email, setEmail] = useState("");
@@ -24,15 +40,19 @@ export default function LoginForm({ setUser }) {
 
     try {
       const response = await instance.post("/login", data);
-      if (response.data) {
-        const user_id = response.data.id;
+      if (response.data && response.data.user) {
+        const user_id = response.data.user;
         console.log("Login Successful!:", response.data);
         setUser({ id: user_id, name: email });
         navigate("/");
+        notify("Successfully logged in.");
       }
     } catch (error) {
+      console.error("Login failed", error);
       if (error.response && error.response.status === 400) {
         console.error("Login Failed. Invalid Credentials");
+      } else if (error.response.status === 409) {
+        console.error("Registration failed. Email already in Use.");
       }
     }
 
