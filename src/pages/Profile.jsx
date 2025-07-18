@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import styles from "./Profile.module.css";
 import instance from "../provider/axiosConfig";
-import { toast, ToastContainer, Zoom } from "react-toastify";
+import { toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function notify(message) {
