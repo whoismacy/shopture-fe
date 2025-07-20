@@ -17,6 +17,11 @@
   padding: 2.4rem 3.2rem;
   box-shadow: var(--box-shadow-small);
   border-radius: 9px;
+  transition: all ease-in 0.3s;
+}
+
+.cartItem:hover {
+  background-color: var(--faint-orange);
 }
 
 .cartLower {

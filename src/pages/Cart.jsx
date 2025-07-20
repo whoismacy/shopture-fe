@@ -59,7 +59,7 @@ function CartItem({ data, dispatch }) {
         <div className="cartLower">
           <button
             onClick={() => navigate("/checkout")}
-            className="btn btnShopNow btnCheckOut"
+            className="btn btnShopNow btnCancel"
           >
             Checkout
           </button>
