@@ -4,7 +4,7 @@ metadata:
   name: frontend-shopture-service
 spec:
   selector:
-    app: frontend-shopture # This must match the labels in your Deployment
+    app: frontend-shopture
   ports:
     - protocol: TCP
       port: 80
