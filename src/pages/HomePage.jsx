@@ -12,14 +12,11 @@ export default function Home({ dispatch }) {
   }
 
   useEffect(function () {
-    const controller = new AbortController();
     async function getData() {
       try {
         setLoading(true);
         setError("");
-        const response = await fetch("https://fakestoreapi.com/products", {
-          signal: controller.signal,
-        });
+        const response = await fetch("https://fakestoreapi.com/products");
 
         if (!response.ok) throw new Error("Failed to Fetch Information");
 
@@ -27,19 +24,13 @@ export default function Home({ dispatch }) {
 
         setData(data);
       } catch (error) {
-        if (error.name !== "AbortError") {
-          setError(`Error: ${error.message}`);
-        }
+        setError(`Error: ${error.message}`);
       } finally {
         setLoading(false);
       }
     }
 
     getData();
-
-    return function () {
-      controller.abort();
-    };
   }, []);
 
   return (

@@ -184,6 +184,7 @@ a.active {
 }
 
 .loader {
+  margin: 0 auto;
   width: 6rem;
   height: 6rem;
   border: 10px solid var(--primary-orange);

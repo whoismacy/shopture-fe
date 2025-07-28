@@ -21,6 +21,7 @@ function notify(message) {
   });
 }
 
+// only returns user
 export default function LoginForm({ setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,7 +43,7 @@ export default function LoginForm({ setUser }) {
       const response = await instance.post("/login", data);
       if (response.data && response.data.user) {
         const user_id = response.data.user;
-        console.log("Login Successful!:", response.data);
+        console.log("Login Successful!", response.data);
         setUser({ id: user_id, name: email });
         navigate("/");
         notify("Successfully logged in.");

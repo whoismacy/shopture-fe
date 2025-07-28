@@ -22,7 +22,8 @@ function notify(message) {
   });
 }
 
-export default function CreateAccount() {
+// only returns newUser
+export default function CreateAccount({ setUser }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,6 +42,7 @@ export default function CreateAccount() {
       );
       navigate("auth/login");
       notify("Account Created Successfully, You can now log in.");
+      setUser({ id: response.data.newUser, name: email });
       setEmail("");
       setPassword("");
       setFullName("");

@@ -21,9 +21,10 @@ function notify(message) {
 
 export default function Profile({ data }) {
   const navigate = useNavigate();
+
   async function logOut() {
+    //eslint-disable-next-line
     const response = await instance.post("/logout");
-    console.log("Logout response: ", response.data);
     navigate("/", { replace: true });
     notify("Successfully logged out.");
   }

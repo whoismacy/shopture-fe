@@ -5,11 +5,7 @@ export default function Header() {
     <>
       <header className="navContainer">
         <Link to="/">
-          <img
-            src="../../assets/shopTureB.png"
-            alt="logo"
-            className="logoImg"
-          />
+          <img src="../../shopTureB.png" alt="logo" className="logoImg" />
         </Link>
         <ul className="endNav">
           <NavLink to="/">
