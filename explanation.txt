@@ -1,0 +1,153 @@
+This document explains the purpose of the four files created for deploying the shopture-fe application to Kubernetes.
+
+--------------------------------------------------
+File 1: .dockerignore
+--------------------------------------------------
+Purpose: This file tells Docker which files and directories to exclude when building the container image. This is important for keeping the image small, speeding up build times, and avoiding the inclusion of sensitive or unnecessary files.
+
+# Dependencies
+node_modules      # Excludes the local node modules folder, as dependencies should be installed inside the container.
+npm-debug.log     # Excludes npm debug logs if any are generated.
+
+# Build artifacts
+dist              # Excludes the build output directory. The `npm run build` command inside the Dockerfile will generate this.
+.DS_Store         # Excludes a metadata file created by macOS.
+
+# Git
+.git              # Excludes the Git version control directory.
+.gitignore        # Excludes the .gitignore file itself.
+
+# Docker
+Dockerfile        # Excludes the Dockerfile from being copied into the image.
+
+# Local environment
+.env              # Excludes local environment variable files.
+.vscode           # Excludes editor-specific settings for Visual Studio Code.
+README.md         # Excludes the README file, which is not needed for the application to run.
+
+--------------------------------------------------
+File 2: deployment.yaml
+--------------------------------------------------
+Purpose: This Kubernetes manifest defines how to run the application. It creates a "Deployment" object that manages a set of identical pods, ensuring that a specified number of them are always running.
+
+apiVersion: apps/v1
+# Specifies the version of the Kubernetes API to use for this object. `apps/v1` is the standard for Deployments.
+
+kind: Deployment
+# Specifies the type of Kubernetes object to create.
+
+metadata:
+  name: shopture-fe-deployment
+  # The name of the Deployment object itself.
+  labels:
+    app: shopture-fe
+    # Labels are key-value pairs that are attached to objects. They are used to organize and select groups of objects.
+
+spec:
+# The specification for the Deployment, which describes its desired state.
+
+  replicas: 2
+  # Tells the Deployment to run and maintain 2 identical pods (instances) of the application. This provides high availability.
+
+  selector:
+    matchLabels:
+      app: shopture-fe
+      # This tells the Deployment which pods to manage. It looks for pods with a label that matches `app: shopture-fe`.
+
+  template:
+  # This is the blueprint for the pods that the Deployment will create.
+
+    metadata:
+      labels:
+        app: shopture-fe
+        # Assigns the label `app: shopture-fe` to each pod. This is how the Deployment's selector finds them.
+
+    spec:
+    # The specification for the pods themselves.
+
+      containers:
+      - name: shopture-fe
+        # The name of the container running inside the pod.
+
+        image: your-registry/shopture-fe:latest
+        # IMPORTANT: The Docker image to use for the container. You must replace this with the path to your image in a container registry (like Docker Hub, GCR, or ECR).
+
+        imagePullPolicy: Always
+        # Tells Kubernetes to always pull the image from the registry before creating a pod. This ensures the latest version is used.
+
+        ports:
+        - containerPort: 9090
+          # The port that the application is listening on inside the container. This must match the port exposed in your Dockerfile.
+
+--------------------------------------------------
+File 3: service.yaml
+--------------------------------------------------
+Purpose: This manifest creates a "Service" object, which provides a stable network endpoint (a consistent IP address and DNS name) for the pods managed by the Deployment. It allows other parts of the system to reliably connect to the application without needing to know the individual IP addresses of the pods, which can change.
+
+apiVersion: v1
+# Specifies the API version for a Service object.
+
+kind: Service
+# The type of Kubernetes object.
+
+metadata:
+  name: shopture-fe-service
+  # The name of the Service.
+
+spec:
+# The specification for the Service.
+
+  selector:
+    app: shopture-fe
+    # This tells the Service which pods to send traffic to. It selects all pods with the label `app: shopture-fe`, which are the pods created by our Deployment.
+
+  ports:
+    - protocol: TCP
+      # The network protocol.
+      port: 80
+      # The port that the Service itself will be exposed on within the cluster's internal network.
+      targetPort: 9090
+      # The port on the container where the traffic should be sent. This must match the `containerPort` in the Deployment.
+
+  type: ClusterIP
+  # The type of service. `ClusterIP` exposes the service on an internal IP address that is only reachable from within the Kubernetes cluster. This is the default type.
+
+--------------------------------------------------
+File 4: ingress.yaml
+--------------------------------------------------
+Purpose: This manifest creates an "Ingress" object, which manages external access to the services in the cluster, typically HTTP and HTTPS. It routes traffic from a public URL to the internal `shopture-fe-service`.
+
+apiVersion: networking.k8s.io/v1
+# The API version for an Ingress object.
+
+kind: Ingress
+# The type of Kubernetes object.
+
+metadata:
+  name: shopture-fe-ingress
+  # The name of the Ingress object.
+  # annotations:
+  #   kubernetes.io/ingress.class: "nginx"
+  #   cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  # Annotations are used to configure additional behavior. These commented-out examples show how you might specify an NGINX Ingress controller or enable automatic SSL certificates with cert-manager.
+
+spec:
+# The specification for the Ingress.
+
+  rules:
+  - host: "shopture.your-domain.com"
+    # IMPORTANT: The domain name that this rule applies to. You must change this to your actual public domain.
+
+    http:
+      paths:
+      - path: /
+        # The URL path to match. `/` matches all incoming traffic for the host.
+        pathType: Prefix
+        # Specifies that the path should be matched as a prefix.
+        backend:
+          service:
+            name: shopture-fe-service
+            # The name of the Service to route traffic to. This must match the `name` in `service.yaml`.
+            port:
+              number: 80
+              # The port on the Service to send the traffic to. This must match the `port` in `service.yaml`.
