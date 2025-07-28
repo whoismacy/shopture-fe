@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend-shopture
-          image: rosesanddaisies/frontend-shopture:latest
+          image: rosesanddaisies/frontendshopture
           imagePullPolicy: Always
           ports:
             - containerPort: 9090
