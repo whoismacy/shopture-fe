@@ -4,11 +4,11 @@ export default function Header() {
   return (
     <>
       <header className="navContainer">
-        <Link to="/">
+        <Link to="/" viewTransition>
           <img src="../../shopTureB.png" alt="logo" className="logoImg" />
         </Link>
         <ul className="endNav">
-          <NavLink to="/">
+          <NavLink to="/" viewTransition>
             <li className="category">
               <span>
                 <svg
@@ -24,7 +24,7 @@ export default function Header() {
               <span>Home</span>
             </li>
           </NavLink>
-          <NavLink to="cart">
+          <NavLink to="cart" viewTransition>
             <li className="category">
               <span>
                 <svg
@@ -43,7 +43,7 @@ export default function Header() {
               <span>Cart</span>
             </li>
           </NavLink>
-          <NavLink to="profile">
+          <NavLink to="profile" viewTransition>
             <li className="category">
               <span>
                 <svg
@@ -62,7 +62,7 @@ export default function Header() {
               <span>Profile</span>
             </li>
           </NavLink>
-          <NavLink to="faqs">
+          <NavLink to="faqs" viewTransition>
             <li className="category">
               <span>
                 <svg
