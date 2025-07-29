@@ -1,37 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useItemContext } from "../contexts/useItemContext";
 import ItemContainer from "../components/common/ItemContainer";
 import SortBy from "../components/common/SortBy";
 
 export default function Home({ dispatch }) {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(true);
+  const { body, error, loading } = useItemContext();
+  const [sorted, setSortedData] = useState(null);
+  const displayData = sorted || body;
 
   function handleData(d) {
-    setData(d);
+    setSortedData(d);
   }
-
-  useEffect(function () {
-    async function getData() {
-      try {
-        setLoading(true);
-        setError("");
-        const response = await fetch("https://fakestoreapi.com/products");
-
-        if (!response.ok) throw new Error("Failed to Fetch Information");
-
-        const data = await response.json();
-
-        setData(data);
-      } catch (error) {
-        setError(`Error: ${error.message}`);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    getData();
-  }, []);
 
   return (
     <>
@@ -39,9 +18,9 @@ export default function Home({ dispatch }) {
       {error && <ErrorComponent error={error} />}
       {!loading && !error && (
         <div className="container">
-          <SortBy data={data} onClickSet={handleData} />
+          <SortBy data={body} onClickSet={handleData} />
           <div className="Container">
-            {data.map((item) => (
+            {displayData.map((item) => (
               <ItemContainer item={item} key={item.id} dispatch={dispatch} />
             ))}
           </div>

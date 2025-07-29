@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useReducer, useState } from "react";
 import { createBrowserRouter, Route } from "react-router-dom";
 import { createRoutesFromElements } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
@@ -66,8 +66,6 @@ export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [user, setUser] = useState({});
   const stateLength = () => state.length;
-
-  useEffect(function () {}, []);
 
   const router = createBrowserRouter(
     createRoutesFromElements(

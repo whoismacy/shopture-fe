@@ -64,7 +64,8 @@ function CartItem({ data, dispatch }) {
             Checkout
           </button>
           <p className="cartPriceText">
-            Total Price: <span className="cartPrice">Kshs. {totalPrice}</span>
+            Total Price:{" "}
+            <span className="cartPrice">Kshs. {Math.round(totalPrice)}</span>
           </p>
         </div>
       </div>
