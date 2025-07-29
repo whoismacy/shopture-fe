@@ -20,3 +20,8 @@
 - The `shopture-vite:v1.0` is the name of the Docker image, realise it is similar to the one we used in the build command.
 
 - If the `docker run -p 9090:9090 --name shopture-vite shopture-vite:v1.0` command is _successful_ open _http://localhost:9090/_ on your preferred browser and there you can view the vite app
+
+# Alternatively:
+
+- run `docker pull rosesanddaisies/frontend-shopture`
+- then `docker run -d -p 9090:9090 rosesanddaisies/frontend-shopture` then you can view the website on _http://localhost:9090/_

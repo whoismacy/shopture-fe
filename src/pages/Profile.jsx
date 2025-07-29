@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useAuth } from "../contexts/useAuthContext";
+
 import styles from "./Profile.module.css";
+
 import instance from "../provider/axiosConfig";
+
 import { toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,33 +22,26 @@ function notify(message) {
   });
 }
 
-export default function Profile({ data }) {
+export default function Profile() {
   const navigate = useNavigate();
+  const { email, id, dropCredentials } = useAuth();
 
   async function logOut() {
     //eslint-disable-next-line
     const response = await instance.post("/logout");
+    dropCredentials();
     navigate("/", { replace: true });
     notify("Successfully logged out.");
   }
 
-  useEffect(
-    function () {
-      if (!data || Object.keys(data).length < 1) {
-        navigate("/auth/login", { replace: true });
-      }
-    },
-    [data, navigate]
-  );
-
   return (
     <div className={styles.container}>
-      <h1>Welcome Back {data?.email} 🥳🥳</h1>
+      <h1>Welcome Back {email.split("@")[0]} 🥳 🥳 🥳</h1>
       <p className={styles.paragraph}>
-        Email: <span className={styles.info}>{data?.email}</span>{" "}
+        Email: <span className={styles.info}>{email}</span>{" "}
       </p>
       <p className={styles.paragraph}>
-        id: <span className={styles.info}>{data?.id}</span>
+        id: <span className={styles.info}>{id}</span>
       </p>
       <button className="btn" onClick={logOut}>
         Log Out

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/useAuthContext";
+
 import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import FormButton from "../../components/common/Button";
 import instance from "../../provider/axiosConfig";
+
 import { toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,10 +25,11 @@ function notify(message) {
 }
 
 // only returns user
-export default function LoginForm({ setUser }) {
+export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { setCredentials } = useAuth();
 
   function handleEmail(event) {
     setEmail(event.target.value);
@@ -43,9 +47,9 @@ export default function LoginForm({ setUser }) {
       const response = await instance.post("/login", data);
       if (response.data && response.data.user) {
         const user_id = response.data.user;
-        console.log("Login Successful!", response.data);
-        setUser({ id: user_id, name: email });
-        navigate("/");
+        console.log("Login Successful!");
+        setCredentials(email, user_id);
+        navigate("/", { replace: true });
         notify("Successfully logged in.");
       }
     } catch (error) {

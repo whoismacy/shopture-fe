@@ -29,6 +29,7 @@ import Checkout from "./pages/Checkout";
 import Address from "./pages/Address";
 import CompletePurchase from "./pages/CompletePurchase";
 import Profile from "./pages/Profile";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 function notify(message) {
   toast(message, {
@@ -64,7 +65,6 @@ const initialState = [];
 export default function App() {
   const [location, setLocation] = useState({});
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [user, setUser] = useState({});
   const stateLength = () => state.length;
 
   const router = createBrowserRouter(
@@ -73,24 +73,41 @@ export default function App() {
         <Route index element={<Home dispatch={dispatch} />} />
         <Route path="*" element={<NotFound />} />
         <Route path="faqs" element={<FAQ />} />
-        <Route path="profile" element={<Profile data={user} />} />
+        <Route
+          path="profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="success-checkout"
           element={
-            <CompletePurchase
-              len={stateLength}
-              data={[location]}
-              dispatch={dispatch}
-            />
+            <ProtectedRoute>
+              <CompletePurchase
+                len={stateLength}
+                data={[location]}
+                dispatch={dispatch}
+              />
+            </ProtectedRoute>
           }
         />
         <Route
           path="checkout"
-          element={<Checkout items={state} location={location} />}
+          element={
+            <ProtectedRoute>
+              <Checkout items={state} location={location} />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="address"
-          element={<Address items={location} dispatch={setLocation} />}
+          element={
+            <ProtectedRoute>
+              <Address items={location} dispatch={setLocation} />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="cart"
@@ -99,13 +116,31 @@ export default function App() {
           }
         />
         <Route path="auth" element={<AuthLayout />}>
-          <Route path="login" element={<LoginForm setUser={setUser} />} />
+          <Route path="login" element={<LoginForm />} />
           <Route
             path="create-account"
-            element={<CreateAccount setUser={setUser} />}
+            element={
+              <ProtectedRoute>
+                <CreateAccount />
+              </ProtectedRoute>
+            }
           />
-          <Route path="confirm-email" element={<ResetPassword />} />
-          <Route path="reset-password" element={<NewPassword />} />
+          <Route
+            path="confirm-email"
+            element={
+              <ProtectedRoute>
+                <ResetPassword />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="reset-password"
+            element={
+              <ProtectedRoute>
+                <NewPassword />
+              </ProtectedRoute>
+            }
+          />
         </Route>
       </Route>
     )

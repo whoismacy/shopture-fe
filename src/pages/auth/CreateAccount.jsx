@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/useAuthContext";
+
 import instance from "../../provider/axiosConfig";
 import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import ConfirmPassword from "../../components/shared/ConfirmPassword";
 import FormButton from "../../components/common/Button";
+
 import { toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -23,12 +26,13 @@ function notify(message) {
 }
 
 // only returns newUser
-export default function CreateAccount({ setUser }) {
+export default function CreateAccount() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
+  const { setCredentials } = useAuth();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -36,17 +40,12 @@ export default function CreateAccount({ setUser }) {
     const data = { email, password, fullName };
     try {
       const response = await instance.post("/signup", data);
-      console.log(
-        "Registration Successful! Backend response data: ",
-        response.data
-      );
-      navigate("auth/login");
-      notify("Account Created Successfully, You can now log in.");
-      setUser({ id: response.data.newUser, name: email });
-      setEmail("");
-      setPassword("");
-      setFullName("");
-      setConfirmPassword("");
+      if (response.data && response.data.newUser) {
+        console.log("Registration Successful");
+        navigate("/auth/login", { replace: true });
+        notify("Account Created Successfully, You can now log in.");
+        setCredentials(email, response.data.newUser);
+      }
     } catch (error) {
       console.error("Registration Failed. Please try again.", error);
       if (error.response) {
@@ -54,6 +53,11 @@ export default function CreateAccount({ setUser }) {
           console.error("An unexpected error occurred");
         }
       }
+    } finally {
+      setEmail("");
+      setPassword("");
+      setFullName("");
+      setConfirmPassword("");
     }
   }
 
