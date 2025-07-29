@@ -161,9 +161,3 @@ function ErrorComponent(error) {
     </div>
   );
 }
-
-// handle vite image error
-// fix no.of items checkout error
-// position of the spinner / loader
-// compose.yaml
-// axios httpOnly cookie

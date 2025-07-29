@@ -36,7 +36,7 @@ export default function Profile() {
 
   return (
     <div className={styles.container}>
-      <h1>Welcome Back {email.split("@")[0]} 🥳 🥳 🥳</h1>
+      <h1>Welcome Back {email?.split("@")[0]} 🥳 🥳 🥳</h1>
       <p className={styles.paragraph}>
         Email: <span className={styles.info}>{email}</span>{" "}
       </p>
