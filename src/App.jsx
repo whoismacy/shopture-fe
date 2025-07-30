@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer, useState, lazy } from "react";
 import { createBrowserRouter, Route } from "react-router-dom";
 import { createRoutesFromElements } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
@@ -18,21 +18,21 @@ import "./styles/auth.css";
 import "./styles/faqs.css";
 import "./styles/cart.css";
 
-import LoginForm from "./pages/auth/Login";
-import NotFound from "./pages/NotFoundPage";
-import Home from "./pages/HomePage";
-import ResetPassword from "./pages/auth/ConfirmEmail";
-import NewPassword from "./pages/auth/NewPassword";
-import CreateAccount from "./pages/auth/CreateAccount";
+import ProtectedRoute from "./pages/ProtectedRoute";
 import RootLayout from "./layouts/ RootLayout";
 import AuthLayout from "./layouts/AuthLayout";
-import FAQ from "./pages/FAQ";
-import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
-import Address from "./pages/Address";
-import CompletePurchase from "./pages/CompletePurchase";
-import Profile from "./pages/Profile";
-import ProtectedRoute from "./pages/ProtectedRoute";
+const CreateAccount = lazy(() => import("./pages/auth/CreateAccount"));
+const LoginForm = lazy(() => import("./pages/auth/Login"));
+const ResetPassword = lazy(() => import("./pages/auth/ConfirmEmail"));
+const NewPassword = lazy(() => import("./pages/auth/NewPassword"));
+const Home = lazy(() => import("./pages/HomePage"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const Address = lazy(() => import("./pages/Address"));
+const Profile = lazy(() => import("./pages/Profile"));
+const CompletePurchase = lazy(() => import("./pages/CompletePurchase"));
+const NotFound = lazy(() => import("./pages/NotFoundPage"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const Cart = lazy(() => import("./pages/Cart"));
 
 function reducer(state, action) {
   switch (action.type) {
