@@ -182,7 +182,17 @@ a.active {
   background-color: #fff;
 }
 
-.sortContainer button {
-  font-size: 1.8rem;
+.sortContainer select {
   font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  border: none;
+  transition: all 0.32s ease-in-out;
+  border-radius: 9px;
+}
+
+.sortContainer select:hover {
+  background-color: var(--faint-orange);
 }

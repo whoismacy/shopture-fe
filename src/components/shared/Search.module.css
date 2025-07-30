@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.container input {
+  padding: 1.2rem 0.6rem;
+  font-family: inherit;
+  font-size: 1.6rem;
+}
+
+.container span {
+  font-weight: 700;
+}
+.container p {
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.container button {
+  font-family: inherit;
+}
+
+.container input::placeholder {
+  font-size: 1.5rem;
+  text-align: left;
+}
