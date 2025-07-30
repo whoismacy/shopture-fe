@@ -13,6 +13,7 @@ export default function CompletePurchase({ len, data, dispatch }) {
         src="../../assets/success-svgrepo-com.svg"
         alt="successful-delivery-alt-png"
       />
+
       <p className={styles.info}>
         You will receive your shopping of{" "}
         <span className={styles.delivery}>{len}</span> items at{" "}

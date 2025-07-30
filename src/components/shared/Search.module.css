@@ -6,6 +6,8 @@
 }
 
 .container input {
+  border: 1px solid grey;
+  border-radius: 9px;
   padding: 1.2rem 0.6rem;
   font-family: inherit;
   font-size: 1.6rem;

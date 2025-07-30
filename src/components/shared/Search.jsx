@@ -1,4 +1,5 @@
 import { useItemContext } from "../../contexts/useItemContext";
+import { showInfoToast } from "../../utils/toast";
 import styles from "./Search.module.css";
 
 export default function Search() {
@@ -9,9 +10,17 @@ export default function Search() {
         type="text"
         value={searchQuery}
         onChange={(event) => setSearchQuery(event.target.value)}
-        placeholder="Search"
+        placeholder="Search Products...."
       />
-      <button className="btn" onClick={() => setSearchQuery("")}>
+      <button
+        className="btn"
+        onClick={() => {
+          if (searchQuery.length > 0) {
+            showInfoToast("Cleared Search Query");
+          }
+          setSearchQuery("");
+        }}
+      >
         Clear Search
       </button>
       <p>

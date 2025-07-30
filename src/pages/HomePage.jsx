@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useItemContext } from "../contexts/useItemContext";
+
 import Loader from "./Loader";
 import ItemContainer from "../components/common/ItemContainer";
 import SortBy from "../components/common/SortBy";
+import NoSearchMatch from "../components/common/NoSearchMatch";
 
 export default function Home({ dispatch }) {
   const { body, error, loading } = useItemContext();
@@ -27,6 +29,7 @@ export default function Home({ dispatch }) {
           </div>
         </div>
       )}
+      {displayData.length === 0 && <NoSearchMatch />}
     </>
   );
 }
