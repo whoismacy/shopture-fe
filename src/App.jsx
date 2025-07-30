@@ -3,8 +3,11 @@ import { createBrowserRouter, Route } from "react-router-dom";
 import { createRoutesFromElements } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 
-import { toast, ToastContainer, Zoom } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import { showSuccessToast } from "./utils/toast";
+import { showErrorToast } from "./utils/toast";
 
 import "./styles/index.css";
 import "./styles/footer.css";
@@ -31,27 +34,13 @@ import CompletePurchase from "./pages/CompletePurchase";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./pages/ProtectedRoute";
 
-function notify(message) {
-  toast(message, {
-    position: "top-center",
-    autoClose: 1500,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-    transition: Zoom,
-  });
-}
-
 function reducer(state, action) {
   switch (action.type) {
     case "addToCart":
-      notify("Item added to Cart :)");
+      showSuccessToast("Item added to Cart :)");
       return [...state, action.load];
     case "dropItem":
-      notify("Removed item from Cart");
+      showErrorToast("Removed item from Cart");
       return [...state].filter((item) => item.id !== action.load.id);
     case "reset":
       return [];

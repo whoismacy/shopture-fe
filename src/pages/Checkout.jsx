@@ -1,21 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./Checkout.module.css";
-import { toast, Zoom } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { showInfoToast, showSuccessToast } from "../utils/toast";
 
-function notify(message) {
-  toast(message, {
-    position: "top-center",
-    autoClose: 1500,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-    transition: Zoom,
-  });
-}
+import styles from "./Checkout.module.css";
 
 export default function Checkout({ items, location }) {
   let lengthItems = items?.length;
@@ -54,10 +40,10 @@ export default function Checkout({ items, location }) {
         <button
           onClick={() => {
             if (Object.keys(location).length < 1) {
-              notify("Input address to complete purchase.");
+              showInfoToast("Input address to complete purchase.");
               navigate("/address");
             } else {
-              notify("Successfully completed purchase.");
+              showSuccessToast("Successfully completed purchase.");
               navigate("/success-checkout");
             }
           }}

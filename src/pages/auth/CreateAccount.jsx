@@ -1,29 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/useAuthContext";
+import { showSuccessToast } from "../../utils/toast";
 
 import instance from "../../provider/axiosConfig";
 import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import ConfirmPassword from "../../components/shared/ConfirmPassword";
 import FormButton from "../../components/common/Button";
-
-import { toast, Zoom } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-function notify(message) {
-  toast(message, {
-    position: "top-center",
-    autoClose: 1500,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-    transition: Zoom,
-  });
-}
 
 // only returns newUser
 export default function CreateAccount() {
@@ -43,7 +27,7 @@ export default function CreateAccount() {
       if (response.data && response.data.newUser) {
         console.log("Registration Successful");
         navigate("/auth/login", { replace: true });
-        notify("Account Created Successfully, You can now log in.");
+        showSuccessToast("Account Created Successfully, You can now log in.");
         setCredentials(email, response.data.newUser);
       }
     } catch (error) {

@@ -1,22 +1,8 @@
 import { useState } from "react";
-import styles from "./Address.module.css";
-import { toast, Zoom } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { showSuccessToast } from "../utils/toast";
 
-function notify(message) {
-  toast(message, {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-    transition: Zoom,
-  });
-}
+import styles from "./Address.module.css";
 
 export default function Address({ dispatch }) {
   const [county, setCounty] = useState("");
@@ -88,7 +74,7 @@ export default function Address({ dispatch }) {
             if (!county || !building || !street || !phone) return;
             dispatch({ county, building, street, phone, note });
             reset();
-            notify("Successfully Completed Purchase.");
+            showSuccessToast("Successfully Completed Purchase.");
             navigate("/success-checkout");
           }}
           className={`btn btnShopNow ${styles.btnCO}`}

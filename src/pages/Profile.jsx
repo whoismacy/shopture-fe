@@ -1,26 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/useAuthContext";
+import { showSuccessToast } from "../utils/toast";
 
 import styles from "./Profile.module.css";
-
 import instance from "../provider/axiosConfig";
-
-import { toast, Zoom } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-function notify(message) {
-  toast(message, {
-    position: "top-center",
-    autoClose: 1500,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-    transition: Zoom,
-  });
-}
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -31,7 +14,7 @@ export default function Profile() {
     const response = await instance.post("/logout");
     dropCredentials();
     navigate("/", { replace: true });
-    notify("Successfully logged out.");
+    showSuccessToast("Successfully logged out.");
   }
 
   return (

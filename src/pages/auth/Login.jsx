@@ -1,28 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/useAuthContext";
+import { showSuccessToast } from "../../utils/toast";
 
 import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
 import FormButton from "../../components/common/Button";
 import instance from "../../provider/axiosConfig";
-
-import { toast, Zoom } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-function notify(message) {
-  toast(message, {
-    position: "top-center",
-    autoClose: 1500,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-    transition: Zoom,
-  });
-}
 
 // only returns user
 export default function LoginForm() {
@@ -50,7 +34,7 @@ export default function LoginForm() {
         console.log("Login Successful!");
         setCredentials(email, user_id);
         navigate("/", { replace: true });
-        notify("Successfully logged in.");
+        showSuccessToast("Successfully logged in.");
       }
     } catch (error) {
       console.error("Login failed", error);

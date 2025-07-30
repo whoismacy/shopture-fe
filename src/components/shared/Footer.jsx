@@ -1,4 +1,19 @@
+import { useState } from "react";
+import { showSuccessToast } from "../../utils/toast";
+import { showErrorToast } from "../../utils/toast";
+
 export default function Footer() {
+  const [email, setEmail] = useState("");
+
+  function handleEmail() {
+    if (!email) {
+      showErrorToast("Input a valid email address.");
+    } else {
+      showSuccessToast(`Newsletter subscription for ${email} Successful !!`);
+      setEmail("");
+    }
+  }
+
   return (
     <>
       <footer>
@@ -6,8 +21,13 @@ export default function Footer() {
           <div className="footerNewsLetter">
             <p>Sign Up For Our Newsletter</p>
             <div className="emailInput">
-              <input type="text" placeholder="Input your email address" />
-              <p>Submit</p>
+              <input
+                type="text"
+                placeholder="Input your email address"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+              <button onClick={handleEmail}>Submit</button>
             </div>
           </div>
           <div className="footerExtras">
