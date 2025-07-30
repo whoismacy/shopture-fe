@@ -29,7 +29,7 @@ export default function Home({ dispatch }) {
           </div>
         </div>
       )}
-      {displayData.length === 0 && <NoSearchMatch />}
+      {!loading && !error && displayData.length === 0 && <NoSearchMatch />}
     </>
   );
 }
