@@ -18,8 +18,8 @@ export const showSuccessToast = (message) => {
     style: {
       fontFamily: "'Poppins', sans-serif",
       fontWeight: "500",
-      fontSize: "14px",
-      backgroundColor: "#10B981",
+      fontSize: "15px",
+      backgroundColor: "#008000",
       color: "#ffffff",
     },
   });
@@ -32,9 +32,9 @@ export const showErrorToast = (message) => {
     style: {
       fontFamily: "'Poppins', sans-serif",
       fontWeight: "500",
-      fontSize: "14px",
-      backgroundColor: "#EF4444",
-      color: "#ffffff",
+      fontSize: "15px",
+      backgroundColor: "#ff4545",
+      color: "#fff1f1",
     },
   });
 };
@@ -46,8 +46,8 @@ export const showInfoToast = (message) => {
     style: {
       fontFamily: "'Poppins', sans-serif",
       fontWeight: "400",
-      fontSize: "14px",
-      backgroundColor: "#3B82F6",
+      fontSize: "15px",
+      backgroundColor: "#4052d6",
       color: "#ffffff",
     },
   });
