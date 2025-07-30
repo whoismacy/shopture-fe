@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/useAuthContext";
-import { showSuccessToast } from "../../utils/toast";
+import { showErrorToast, showSuccessToast } from "../../utils/toast";
 
 import instance from "../../provider/axiosConfig";
 import Email from "../../components/shared/Email";
@@ -32,9 +32,10 @@ export default function CreateAccount() {
       }
     } catch (error) {
       console.error("Registration Failed. Please try again.", error);
+      showErrorToast(`Account Creation Faild: ${error.message}`);
       if (error.response) {
         if (error.response.status === 400) {
-          console.error("An unexpected error occurred");
+          showErrorToast("An Unexpected error Occurred.");
         }
       }
     } finally {

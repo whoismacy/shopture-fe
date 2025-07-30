@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/useAuthContext";
-import { showSuccessToast } from "../../utils/toast";
+import { showErrorToast, showSuccessToast } from "../../utils/toast";
 
 import Email from "../../components/shared/Email";
 import Password from "../../components/shared/Password";
@@ -38,10 +38,9 @@ export default function LoginForm() {
       }
     } catch (error) {
       console.error("Login failed", error);
+      showErrorToast(`Login failed ${error.message}`);
       if (error.response && error.response.status === 400) {
-        console.error("Login Failed. Invalid Credentials");
-      } else if (error.response.status === 409) {
-        console.error("Registration failed. Email already in Use.");
+        showErrorToast("Login Failed. Invalid Credentials");
       }
     }
 

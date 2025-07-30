@@ -106,14 +106,7 @@ export default function App() {
         />
         <Route path="auth" element={<AuthLayout />}>
           <Route path="login" element={<LoginForm />} />
-          <Route
-            path="create-account"
-            element={
-              <ProtectedRoute>
-                <CreateAccount />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="create-account" element={<CreateAccount />} />
           <Route
             path="confirm-email"
             element={
