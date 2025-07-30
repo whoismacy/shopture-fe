@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useItemContext } from "../contexts/useItemContext";
 
 import Loader from "./Loader";
@@ -7,13 +6,7 @@ import SortBy from "../components/common/SortBy";
 import NoSearchMatch from "../components/common/NoSearchMatch";
 
 export default function Home({ dispatch }) {
-  const { body, error, loading } = useItemContext();
-  const [sorted, setSortedData] = useState(null);
-  const displayData = sorted || body;
-
-  function handleData(d) {
-    setSortedData(d);
-  }
+  const { searchedData: displayData, error, loading } = useItemContext();
 
   return (
     <>
@@ -21,7 +14,7 @@ export default function Home({ dispatch }) {
       {error && <ErrorComponent error={error} />}
       {!loading && !error && (
         <div className="container">
-          <SortBy data={body} onClickSet={handleData} />
+          <SortBy />
           <div className="Container">
             {displayData.map((item) => (
               <ItemContainer item={item} key={item.id} dispatch={dispatch} />

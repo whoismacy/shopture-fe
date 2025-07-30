@@ -24,7 +24,7 @@ export default function Search() {
         Clear Search
       </button>
       <p>
-        <span>{resultsLength}</span> item{resultsLength > 1 ? "s" : ""} found.
+        <span>{resultsLength}</span> item{resultsLength !== 1 ? "s" : ""} found.
       </p>
     </div>
   );

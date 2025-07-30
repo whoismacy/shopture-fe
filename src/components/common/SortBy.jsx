@@ -1,7 +1,9 @@
-import { useState } from "react";
 import Search from "../shared/Search";
+import { useItemContext } from "../../contexts/useItemContext";
+import { useState } from "react";
 
-export default function SortBy({ data, onClickSet }) {
+export default function SortBy() {
+  const { searchedData, setData } = useItemContext();
   const [sortStat, setSortStat] = useState("");
 
   function handleChange(state) {
@@ -26,33 +28,35 @@ export default function SortBy({ data, onClickSet }) {
   }
 
   function NormalSort() {
-    const sorted = [...data];
-    onClickSet(sorted);
+    const sorted = [...searchedData];
+    setData(sorted);
   }
 
   function AlphabeticalSort() {
-    const sorted = [...data].sort((a, b) =>
+    const sorted = [...searchedData].sort((a, b) =>
       a.title.localeCompare(b.title, { ignorePunctuation: true })
     );
-    onClickSet(sorted);
+    setData(sorted);
   }
 
   function CategorySort() {
-    const sorted = [...data].sort((a, b) =>
+    const sorted = [...searchedData].sort((a, b) =>
       a.category.localeCompare(b.category, { ignorePunctuation: true })
     );
-    onClickSet(sorted);
+    setData(sorted);
   }
 
   function PriceSort() {
-    const sorted = [...data].sort((a, b) => a.price - b.price);
-    onClickSet(sorted);
+    const sorted = [...searchedData].sort((a, b) => a.price - b.price);
+    setData(sorted);
   }
 
   function RatingSort() {
-    const sorted = [...data].sort((a, b) => a.rating.count - b.rating.count);
+    const sorted = [...searchedData].sort(
+      (a, b) => a.rating.count - b.rating.count
+    );
     const sortedRating = sorted.sort((a, b) => b.rating.rate - a.rating.rate);
-    onClickSet(sortedRating);
+    setData(sortedRating);
   }
 
   return (

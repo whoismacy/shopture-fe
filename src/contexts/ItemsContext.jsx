@@ -1,31 +1,41 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useGetData } from "../hooks/useGetData";
 
 const ItemContext = createContext();
 
 function ItemProvider({ children }) {
-  const [searchQuery, setSearchQuery] = useState("");
   const { data: body, error, loading } = useGetData();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [data, setData] = useState([]);
+
+  useEffect(
+    function () {
+      if (body) setData(body);
+    },
+    [body]
+  );
+
   const searchedData =
-    searchQuery.length > 0
-      ? body.filter((item) =>
-          `${item.title} ${item.description}`
+    searchQuery.length > 0 && data?.length > 0
+      ? data.filter((item) =>
+          `${item.title} ${item.description} ${item.category}`
             .toLowerCase()
             .includes(searchQuery.toLowerCase())
         )
-      : body;
+      : data || [];
 
-  const resultsLength = searchedData.length;
+  const resultsLength = searchedData?.length || 0;
 
   return (
     <ItemContext.Provider
       value={{
-        body: searchedData,
         error,
         loading,
         searchQuery,
-        setSearchQuery,
+        searchedData,
         resultsLength,
+        setData,
+        setSearchQuery,
       }}
     >
       {children}
