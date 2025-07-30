@@ -29,7 +29,7 @@ export default function ItemContainer({ item, dispatch }) {
       </div>
       <div className="priceButton">
         <p className="itemCurrency">
-          KShs <span className="itemPrice">{price * 100}</span>
+          KES <span className="itemPrice">{price * 100}</span>
         </p>
         <button
           className="btn btnShopNow"

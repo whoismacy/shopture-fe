@@ -16,12 +16,12 @@ export default function Search() {
         className="btn"
         onClick={() => {
           if (searchQuery.length > 0) {
-            showInfoToast("Cleared Search Query");
+            showInfoToast("Cleared Search Input");
           }
           setSearchQuery("");
         }}
       >
-        Clear Search
+        Clear
       </button>
       <p>
         <span>{resultsLength}</span> item{resultsLength !== 1 ? "s" : ""} found.

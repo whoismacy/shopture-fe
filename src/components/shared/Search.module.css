@@ -6,14 +6,21 @@
 }
 
 .container input {
-  border: 1px solid grey;
+  border: 2px solid grey;
   border-radius: 9px;
-  padding: 1.2rem 0.6rem;
+  padding: 1.2rem 1.6rem;
   font-family: inherit;
   font-size: 1.6rem;
+  width: 70rem;
+}
+
+.container input:focus-visible {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
 .container span {
+  color: #de5509;
   font-weight: 700;
 }
 .container p {
