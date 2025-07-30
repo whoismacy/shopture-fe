@@ -1,0 +1,26 @@
+.spinnerContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner,
+.spinnerSmall {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  border: 15px solid #e5773a;
+  border-top: 15px solid #605c56;
+  animation: rotate 1.52s infinite linear;
+}
+
+.spinnerSmall {
+  margin: 0 auto;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}

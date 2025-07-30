@@ -174,30 +174,15 @@ a.active {
   padding: 2.4rem;
 }
 
-@keyframes spinner {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.loader {
-  margin: 0 auto;
-  width: 6rem;
-  height: 6rem;
-  border: 10px solid var(--primary-orange);
-  border-top: 10px solid var(--primary-grey);
-  border-radius: 50%;
-  animation: spinner 0.6s linear infinite;
-}
-
-/* sorting container*/
 .sortContainer {
   display: flex;
   justify-content: center;
   padding: 1.6rem 0;
   gap: 2.8rem;
   background-color: #fff;
+}
+
+.sortContainer button {
+  font-size: 1.8rem;
+  font-family: inherit;
 }

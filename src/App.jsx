@@ -1,4 +1,4 @@
-import { useReducer, useState, lazy } from "react";
+import { useReducer, useState, lazy, Suspense } from "react";
 import { createBrowserRouter, Route } from "react-router-dom";
 import { createRoutesFromElements } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
@@ -21,6 +21,7 @@ import "./styles/cart.css";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import RootLayout from "./layouts/ RootLayout";
 import AuthLayout from "./layouts/AuthLayout";
+import FullLoader from "./pages/FullPageLoader";
 const CreateAccount = lazy(() => import("./pages/auth/CreateAccount"));
 const LoginForm = lazy(() => import("./pages/auth/Login"));
 const ResetPassword = lazy(() => import("./pages/auth/ConfirmEmail"));
@@ -59,14 +60,37 @@ export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
-        <Route index element={<Home dispatch={dispatch} />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="faqs" element={<FAQ />} />
+        <Route
+          index
+          element={
+            <Suspense fallback={<FullLoader />}>
+              <Home dispatch={dispatch} />
+            </Suspense>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<FullLoader />}>
+              <NotFound />
+            </Suspense>
+          }
+        />
+        <Route
+          path="faqs"
+          element={
+            <Suspense fallback={<FullLoader />}>
+              <FAQ />
+            </Suspense>
+          }
+        />
         <Route
           path="profile"
           element={
             <ProtectedRoute>
-              <Profile />
+              <Suspense fallback={<FullLoader />}>
+                <Profile />
+              </Suspense>
             </ProtectedRoute>
           }
         />
@@ -74,11 +98,13 @@ export default function App() {
           path="success-checkout"
           element={
             <ProtectedRoute>
-              <CompletePurchase
-                len={stateLength}
-                data={[location]}
-                dispatch={dispatch}
-              />
+              <Suspense fallback={<FullLoader />}>
+                <CompletePurchase
+                  len={stateLength}
+                  data={[location]}
+                  dispatch={dispatch}
+                />
+              </Suspense>
             </ProtectedRoute>
           }
         />
@@ -86,7 +112,9 @@ export default function App() {
           path="checkout"
           element={
             <ProtectedRoute>
-              <Checkout items={state} location={location} />
+              <Suspense fallback={<FullLoader />}>
+                <Checkout items={state} location={location} />
+              </Suspense>
             </ProtectedRoute>
           }
         />
@@ -94,24 +122,44 @@ export default function App() {
           path="address"
           element={
             <ProtectedRoute>
-              <Address items={location} dispatch={setLocation} />
+              <Suspense fallback={<FullLoader />}>
+                <Address items={location} dispatch={setLocation} />
+              </Suspense>
             </ProtectedRoute>
           }
         />
         <Route
           path="cart"
           element={
-            <Cart data={Array.from(new Set(state))} dispatch={dispatch} />
+            <Suspense fallback={<FullLoader />}>
+              <Cart data={Array.from(new Set(state))} dispatch={dispatch} />
+            </Suspense>
           }
         />
         <Route path="auth" element={<AuthLayout />}>
-          <Route path="login" element={<LoginForm />} />
-          <Route path="create-account" element={<CreateAccount />} />
+          <Route
+            path="login"
+            element={
+              <Suspense fallback={<FullLoader />}>
+                <LoginForm />
+              </Suspense>
+            }
+          />
+          <Route
+            path="create-account"
+            element={
+              <Suspense fallback={<FullLoader />}>
+                <CreateAccount />
+              </Suspense>
+            }
+          />
           <Route
             path="confirm-email"
             element={
               <ProtectedRoute>
-                <ResetPassword />
+                <Suspense fallback={<FullLoader />}>
+                  <ResetPassword />
+                </Suspense>
               </ProtectedRoute>
             }
           />
@@ -119,7 +167,9 @@ export default function App() {
             path="reset-password"
             element={
               <ProtectedRoute>
-                <NewPassword />
+                <Suspense fallback={<FullLoader />}>
+                  <NewPassword />
+                </Suspense>
               </ProtectedRoute>
             }
           />
@@ -130,7 +180,9 @@ export default function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <Suspense fallback={<FullLoader />}>
+        <RouterProvider router={router} />
+      </Suspense>
       <ToastContainer />
     </>
   );

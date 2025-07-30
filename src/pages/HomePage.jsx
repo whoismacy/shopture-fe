@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useItemContext } from "../contexts/useItemContext";
+import Loader from "./Loader";
 import ItemContainer from "../components/common/ItemContainer";
 import SortBy from "../components/common/SortBy";
 
@@ -28,10 +29,6 @@ export default function Home({ dispatch }) {
       )}
     </>
   );
-}
-
-function Loader() {
-  return <div className="loader"></div>;
 }
 
 function ErrorComponent({ error }) {

@@ -79,3 +79,8 @@
   align-items: center;
   margin-top: 4.8rem;
 }
+
+.priceButton button {
+  font-family: inherit;
+  font-size: 1.6rem;
+}
