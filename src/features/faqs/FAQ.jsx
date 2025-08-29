@@ -1,5 +1,5 @@
-import faqData from "../../public/data/faqs";
-import Accordion from "../common/Accordion";
+import faqData from "../../../public/data/faqs";
+import Accordion from "../../common/Accordion";
 
 export default function FAQ() {
   return (

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { showSuccessToast } from "../../utils/toast";
-import { showErrorToast } from "../../utils/toast";
+import { showSuccessToast } from "../utils/toast";
+import { showErrorToast } from "../utils/toast";
 
 export default function Footer() {
   const [email, setEmail] = useState("");

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/useAuthContext";
+import { useAuth } from "../auth/useAuthContext";
 import { showErrorToast, showSuccessToast } from "../utils/toast";
 
 import Email from "../shared/Email";

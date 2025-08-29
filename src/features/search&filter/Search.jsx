@@ -1,4 +1,4 @@
-import { useItemContext } from "../../contexts/useItemContext";
+import { useItemContext } from "../products/useItemContext";
 import { showInfoToast } from "../../utils/toast";
 import styles from "./Search.module.css";
 

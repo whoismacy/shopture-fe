@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/useAuthContext";
+import { useAuth } from "../../auth/useAuthContext";
 import { showSuccessToast } from "../../utils/toast";
 
 import styles from "./Profile.module.css";

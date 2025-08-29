@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/useAuthContext";
+import { useAuth } from "../auth/AuthContext";
 import { showErrorToast, showSuccessToast } from "../utils/toast";
 
 import instance from "../provider/axiosConfig";

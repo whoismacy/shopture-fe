@@ -1,14 +1,12 @@
-import { useReducer, useState, lazy, Suspense } from "react";
-import { createBrowserRouter } from "react-router-dom";
-import { RouterProvider } from "react-router-dom";
+import { useReducer, useState, lazy } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import { showSuccessToast } from "./utils/toast";
 import { showErrorToast } from "./utils/toast";
 
-import "./styles/index.css";
+import "./index.css";
 import "./styles/footer.css";
 import "./styles/itemContainer.css";
 import "./styles/nav.css";
@@ -17,22 +15,20 @@ import "./styles/auth.css";
 import "./styles/faqs.css";
 import "./styles/cart.css";
 
-import ProtectedRoute from "./ui/ProtectedRoute";
 import RootLayout from "./layouts/RootLayout";
 import AuthLayout from "./layouts/AuthLayout";
-import FullLoader from "./ui/FullPageLoader";
 
 const CreateAccount = lazy(() => import("./auth/CreateAccount"));
 const LoginForm = lazy(() => import("./auth/Login"));
 const ResetPassword = lazy(() => import("./auth/ConfirmEmail"));
 const NewPassword = lazy(() => import("./auth/NewPassword"));
 const Home = lazy(() => import("./ui/HomePage"));
-const Checkout = lazy(() => import("./pages/Checkout"));
-const Address = lazy(() => import("./pages/Address"));
+const Checkout = lazy(() => import("./features/user/Checkout"));
+const Address = lazy(() => import("./features/user/Address"));
 const Profile = lazy(() => import("./features/user/Profile"));
 const CompletePurchase = lazy(() => import("./features/user/CompletePurchase"));
 const NotFound = lazy(() => import("./ui/NotFoundPage"));
-const FAQ = lazy(() => import("./ui/FAQ"));
+const FAQ = lazy(() => import("./features/faqs/FAQ"));
 const Cart = lazy(() => import("./features/cart/Cart"));
 
 function reducer(state, action) {
@@ -90,6 +86,7 @@ export default function App() {
         },
         {
           path: "/auth",
+          element: <AuthLayout />,
           children: [
             {
               path: "login",

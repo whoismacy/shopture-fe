@@ -1,5 +1,4 @@
-import { useItemContext } from "../contexts/useItemContext";
-
+import { useItemContext } from "../features/products/useItemContext";
 import Loader from "./Loader";
 import ItemContainer from "../features/products/ItemContainer";
 import SortBy from "../features/search&filter/SortBy";
