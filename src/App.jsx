@@ -1,34 +1,37 @@
-import { useReducer, useState, lazy } from "react";
+import { lazy, useReducer, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { showSuccessToast } from "./utils/toast";
-import { showErrorToast } from "./utils/toast";
+import { showErrorToast, showSuccessToast } from "./utils/toast";
 
 import "./index.css";
+import "./styles/auth.css";
+import "./styles/cart.css";
+import "./styles/faqs.css";
 import "./styles/footer.css";
 import "./styles/itemContainer.css";
 import "./styles/nav.css";
 import "./styles/queries.css";
-import "./styles/auth.css";
-import "./styles/faqs.css";
-import "./styles/cart.css";
 
-import RootLayout from "./layouts/RootLayout";
-import AuthLayout from "./layouts/AuthLayout";
+import AuthLayout from "./components/layout/AuthLayout";
+import RootLayout from "./components/layout/RootLayout";
 
-const CreateAccount = lazy(() => import("./auth/CreateAccount"));
-const LoginForm = lazy(() => import("./auth/Login"));
-const ResetPassword = lazy(() => import("./auth/ConfirmEmail"));
-const NewPassword = lazy(() => import("./auth/NewPassword"));
-const Home = lazy(() => import("./ui/HomePage"));
+const CreateAccount = lazy(() =>
+  import("./features/auth/components/CreateAccount")
+);
+const LoginForm = lazy(() => import("./features/auth/components/Login"));
+const ResetPassword = lazy(() => import("./components/forms/ConfirmEmail"));
+const NewPassword = lazy(() =>
+  import("./features/auth/components/NewPassword")
+);
+const Home = lazy(() => import("./pages/HomePage"));
 const Checkout = lazy(() => import("./features/user/Checkout"));
 const Address = lazy(() => import("./features/user/Address"));
 const Profile = lazy(() => import("./features/user/Profile"));
 const CompletePurchase = lazy(() => import("./features/user/CompletePurchase"));
-const NotFound = lazy(() => import("./ui/NotFoundPage"));
-const FAQ = lazy(() => import("./features/faqs/FAQ"));
+const NotFound = lazy(() => import("./pages/NotFoundPage"));
+const FAQ = lazy(() => import("./features/faqs/Faq"));
 const Cart = lazy(() => import("./features/cart/Cart"));
 
 function reducer(state, action) {

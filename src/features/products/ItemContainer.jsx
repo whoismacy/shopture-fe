@@ -1,4 +1,4 @@
-import StarRating from "../../common/StarRating";
+import StarRating from "../../components/ui/StarRating";
 
 export default function ItemContainer({ item, dispatch }) {
   const {

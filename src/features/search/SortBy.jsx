@@ -1,5 +1,5 @@
 import Search from "./Search";
-import { useItemContext } from "../products/useItemContext";
+import { useItemContext } from "../products/context/useItemContext";
 import { useState } from "react";
 
 export default function SortBy() {

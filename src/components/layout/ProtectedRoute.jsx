@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../auth/useAuthContext";
-import FullLoader from "./FullPageLoader";
+import { useAuth } from "../../features/auth/context/useAuthContext";
+import FullLoader from "../../ui/FullPageLoader";
 
 export default function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();

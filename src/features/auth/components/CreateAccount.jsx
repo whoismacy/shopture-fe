@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../auth/AuthContext";
+import { useAuth } from "../AuthContext";
 import { showErrorToast, showSuccessToast } from "../utils/toast";
 
 import instance from "../provider/axiosConfig";
 import Email from "../shared/Email";
 import Password from "../shared/Password";
-import ConfirmPassword from "../shared/ConfirmPassword";
+import ConfirmPassword from "./ConfirmPassword";
 import FormButton from "../common/Button";
 
 // only returns newUser

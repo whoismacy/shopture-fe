@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { useGetData } from "../../hooks/useGetData";
+import { useGetData } from "../../../hooks/useGetData";
 
 const ItemContext = createContext();
 

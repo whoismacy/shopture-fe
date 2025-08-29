@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Password from "../shared/Password";
-import ConfirmPassword from "../shared/ConfirmPassword";
+import ConfirmPassword from "./ConfirmPassword";
 import FormButton from "../common/Button";
 
 export default function NewPassword() {
