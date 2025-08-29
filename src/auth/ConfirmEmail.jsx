@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import Email from "../../components/shared/Email";
-import FormButton from "../../components/common/Button";
+import Email from "../shared/Email";
+import FormButton from "../common/Button";
 
 export default function ResetPassword() {
   const [email, setEmail] = useState("");

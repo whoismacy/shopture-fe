@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/useAuthContext";
-import { showSuccessToast } from "../utils/toast";
+import { showSuccessToast } from "../../utils/toast";
 
 import styles from "./Profile.module.css";
-import instance from "../provider/axiosConfig";
+import instance from "../../provider/axiosConfig";
 
 export default function Profile() {
   const navigate = useNavigate();

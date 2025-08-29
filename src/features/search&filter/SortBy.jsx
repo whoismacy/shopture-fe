@@ -1,4 +1,4 @@
-import Search from "../shared/Search";
+import Search from "./Search";
 import { useItemContext } from "../../contexts/useItemContext";
 import { useState } from "react";
 

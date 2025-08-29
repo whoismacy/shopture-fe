@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/useAuthContext";
-import { showErrorToast, showSuccessToast } from "../../utils/toast";
+import { showErrorToast, showSuccessToast } from "../utils/toast";
 
-import Email from "../../components/shared/Email";
-import Password from "../../components/shared/Password";
-import FormButton from "../../components/common/Button";
-import instance from "../../provider/axiosConfig";
+import Email from "../shared/Email";
+import Password from "../shared/Password";
+import FormButton from "../common/Button";
+import instance from "../provider/axiosConfig";
 
 // only returns user
 export default function LoginForm() {

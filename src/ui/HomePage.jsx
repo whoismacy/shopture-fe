@@ -1,9 +1,9 @@
 import { useItemContext } from "../contexts/useItemContext";
 
 import Loader from "./Loader";
-import ItemContainer from "../components/common/ItemContainer";
-import SortBy from "../components/common/SortBy";
-import NoSearchMatch from "../components/common/NoSearchMatch";
+import ItemContainer from "../features/products/ItemContainer";
+import SortBy from "../features/search&filter/SortBy";
+import NoSearchMatch from "../features/search&filter/NoSearchMatch";
 
 export default function Home({ dispatch }) {
   const { searchedData: displayData, error, loading } = useItemContext();

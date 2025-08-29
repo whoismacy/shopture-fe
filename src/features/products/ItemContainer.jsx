@@ -1,4 +1,4 @@
-import StarRating from "./StarRating";
+import StarRating from "../../common/StarRating";
 
 export default function ItemContainer({ item, dispatch }) {
   const {
