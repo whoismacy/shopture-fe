@@ -1,6 +1,9 @@
+import { useDispatch } from "react-redux";
 import StarRating from "../../components/ui/StarRating";
+import { addItem } from "../../store/slices/cartSlice";
+import { showSuccessToast } from "../../utils/toast";
 
-export default function ItemContainer({ item, dispatch }) {
+export default function ItemContainer({ item }) {
   const {
     title,
     category,
@@ -9,6 +12,7 @@ export default function ItemContainer({ item, dispatch }) {
     image,
     rating: { rate, count },
   } = item;
+  const dispatch = useDispatch();
   return (
     <div className="itemContainer">
       <div className="itemImageContainer">
@@ -33,7 +37,10 @@ export default function ItemContainer({ item, dispatch }) {
         </p>
         <button
           className="btn btnShopNow"
-          onClick={() => dispatch({ type: "addToCart", load: item })}
+          onClick={() => {
+            dispatch(addItem(item));
+            showSuccessToast("Added Item to Cart.");
+          }}
         >
           <span>
             <svg

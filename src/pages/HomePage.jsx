@@ -3,19 +3,24 @@ import Loader from "../components/ui/Loader";
 import ItemContainer from "../features/products/ItemContainer";
 import SortBy from "../features/search/SortBy";
 import NoSearchMatch from "../features/search/NoSearchMatch";
+import ErrorComponent from "../components/ui/ErrorComponent";
+import { useLoaderData, useNavigation } from "react-router-dom";
 
-export default function Home({ dispatch }) {
+function Home({ dispatch }) {
   const { searchedData: displayData, error, loading } = useItemContext();
+  const data = useLoaderData();
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
 
   return (
     <>
-      {loading && <Loader />}
+      {isLoading && <Loader />}
       {error && <ErrorComponent error={error} />}
-      {!loading && !error && (
+      {!isLoading && !error && (
         <div className="container">
           <SortBy />
           <div className="Container">
-            {displayData.map((item) => (
+            {data.map((item) => (
               <ItemContainer item={item} key={item.id} dispatch={dispatch} />
             ))}
           </div>
@@ -26,10 +31,4 @@ export default function Home({ dispatch }) {
   );
 }
 
-function ErrorComponent({ error }) {
-  return (
-    <p style={{ color: "red", fontWeight: 600, fontSize: "24px" }}>
-      ⚠️ {error}
-    </p>
-  );
-}
+export default Home;

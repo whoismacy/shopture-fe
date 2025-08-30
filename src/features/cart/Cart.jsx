@@ -1,13 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { deleteItem, getCart } from "../../store/slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function Cart({ data, dispatch }) {
+export default function Cart({ dispatch }) {
   const navigate = useNavigate();
+  const cart = useSelector(getCart);
+  console.log(cart);
 
   return (
     <>
-      {data.length > 0 ? (
-        <CartItem data={data} dispatch={dispatch} />
+      {cart.length > 0 ? (
+        <CartItem data={cart} dispatch={dispatch} />
       ) : (
         <div className="cartHeading">
           <h3 className="faqHeading">You have no items in Your Cart :( </h3>
@@ -20,9 +24,10 @@ export default function Cart({ data, dispatch }) {
   );
 }
 
-function CartItem({ data, dispatch }) {
+function CartItem({ data }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(
     function () {
@@ -49,7 +54,7 @@ function CartItem({ data, dispatch }) {
               <p className="cartPrice">Kshs. {item.price * 100}</p>
               <button
                 className="btnRemove"
-                onClick={() => dispatch({ type: "dropItem", load: item })}
+                onClick={() => dispatch(deleteItem(item.id))}
               >
                 X
               </button>

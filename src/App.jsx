@@ -25,7 +25,6 @@ const ResetPassword = lazy(() => import("./components/forms/ConfirmEmail"));
 const NewPassword = lazy(() =>
   import("./features/auth/components/NewPassword")
 );
-const Home = lazy(() => import("./pages/HomePage"));
 const Checkout = lazy(() => import("./features/user/Checkout"));
 const Address = lazy(() => import("./features/user/Address"));
 const Profile = lazy(() => import("./features/user/Profile"));
@@ -33,6 +32,8 @@ const CompletePurchase = lazy(() => import("./features/user/CompletePurchase"));
 const NotFound = lazy(() => import("./pages/NotFoundPage"));
 const FAQ = lazy(() => import("./features/faqs/Faq"));
 const Cart = lazy(() => import("./features/cart/Cart"));
+import Home from "./pages/HomePage";
+import { loader as productsLoader } from "./pages/homePageLoader";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -60,7 +61,12 @@ export default function App() {
     {
       element: <RootLayout />,
       children: [
-        { path: "/", element: <Home dispatch={dispatch} /> },
+        {
+          path: "/",
+          element: <Home dispatch={dispatch} />,
+          loader: productsLoader,
+          errorElement: <ErrorBoundary />,
+        },
         { path: "/faqs", element: <FAQ /> },
         { path: "/profile", element: <Profile /> },
         {
