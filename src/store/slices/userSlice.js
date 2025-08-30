@@ -10,7 +10,12 @@ const initialState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    addAddress(state, action) {
+      state.address = action.payload;
+    },
+  },
 });
 
+export const { addAddress } = userSlice.actions;
 export default userSlice.reducer;

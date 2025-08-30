@@ -1,13 +1,10 @@
-import { useItemContext } from "../features/products/context/useItemContext";
 import Loader from "../components/ui/Loader";
 import ItemContainer from "../features/products/ItemContainer";
 import SortBy from "../features/search/SortBy";
 import NoSearchMatch from "../features/search/NoSearchMatch";
-import ErrorComponent from "../components/ui/ErrorComponent";
 import { useLoaderData, useNavigation } from "react-router-dom";
 
-function Home({ dispatch }) {
-  const { searchedData: displayData, error, loading } = useItemContext();
+function Home() {
   const data = useLoaderData();
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
@@ -15,18 +12,17 @@ function Home({ dispatch }) {
   return (
     <>
       {isLoading && <Loader />}
-      {error && <ErrorComponent error={error} />}
-      {!isLoading && !error && (
+      {!isLoading && (
         <div className="container">
           <SortBy />
           <div className="Container">
             {data.map((item) => (
-              <ItemContainer item={item} key={item.id} dispatch={dispatch} />
+              <ItemContainer item={item} key={item.id} />
             ))}
           </div>
         </div>
       )}
-      {!loading && !error && displayData.length === 0 && <NoSearchMatch />}
+      {!isLoading && data.length === 0 && <NoSearchMatch />}
     </>
   );
 }

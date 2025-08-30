@@ -16,6 +16,7 @@ import "./styles/queries.css";
 
 import AuthLayout from "./components/layout/AuthLayout";
 import RootLayout from "./components/layout/RootLayout";
+import ErrorBoundary from "./pages/ErrorBoundary";
 
 const CreateAccount = lazy(() =>
   import("./features/auth/components/CreateAccount")
@@ -32,30 +33,13 @@ const CompletePurchase = lazy(() => import("./features/user/CompletePurchase"));
 const NotFound = lazy(() => import("./pages/NotFoundPage"));
 const FAQ = lazy(() => import("./features/faqs/Faq"));
 const Cart = lazy(() => import("./features/cart/Cart"));
-import Home from "./pages/HomePage";
+const Home = lazy(() => import("./pages/HomePage"));
+
 import { loader as productsLoader } from "./pages/homePageLoader";
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "addToCart":
-      showSuccessToast("Item added to Cart :)");
-      return [...state, action.load];
-    case "dropItem":
-      showErrorToast("Removed item from Cart");
-      return [...state].filter((item) => item.id !== action.load.id);
-    case "reset":
-      return [];
-    default:
-      return state;
-  }
-}
-
-const initialState = [];
+import { action as addressAction } from "./features/user/addressAction";
 
 export default function App() {
   const [location, setLocation] = useState({});
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const stateLength = () => state.length;
 
   const router = createBrowserRouter([
     {
@@ -63,7 +47,7 @@ export default function App() {
       children: [
         {
           path: "/",
-          element: <Home dispatch={dispatch} />,
+          element: <Home />,
           loader: productsLoader,
           errorElement: <ErrorBoundary />,
         },
@@ -86,12 +70,11 @@ export default function App() {
         {
           path: "/address",
           element: <Address items={location} dispatch={setLocation} />,
+          action: addressAction,
         },
         {
           path: "/cart",
-          element: (
-            <Cart data={Array.from(new Set(state))} dispatch={dispatch} />
-          ),
+          element: <Cart />,
         },
         {
           path: "/auth",
@@ -119,13 +102,5 @@ export default function App() {
       <RouterProvider router={router} />
       <ToastContainer />
     </>
-  );
-}
-
-function ErrorComponent(error) {
-  return (
-    <div>
-      <p>⚠️ Error {error}</p>
-    </div>
   );
 }

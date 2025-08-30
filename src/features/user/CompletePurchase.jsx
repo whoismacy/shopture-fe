@@ -1,11 +1,16 @@
-import styles from "./CompletePurchase.module.css";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getCart } from "../../store/slices/cartSlice";
+import styles from "./CompletePurchase.module.css";
 
 export default function CompletePurchase({ len, data, dispatch }) {
   const [{ building, street, county }] = data;
   const string = `${building},${street} ${county} county`;
   const navigate = useNavigate();
   dispatch({ type: "reset" });
+
+  const cart = useSelector(getCart);
+  const cartLength = cart.length;
 
   return (
     <div className={styles.container}>

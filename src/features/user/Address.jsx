@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { showSuccessToast } from "../utils/toast";
 
 import styles from "./Address.module.css";
@@ -23,13 +23,14 @@ export default function Address({ dispatch }) {
   return (
     <div className={styles.formContainer}>
       <h2 className={styles.deliveryHeader}>Delivery details</h2>
-      <form action="">
+      <Form method="POST" action="">
         <div className={styles.containerGroup}>
           <label htmlFor="county">County</label>
           <input
             type="text"
             value={county}
             onChange={(e) => setCounty(e.target.value)}
+            name="county"
             required
           />
         </div>
@@ -38,6 +39,7 @@ export default function Address({ dispatch }) {
           <input
             type="text"
             required
+            name="building"
             value={building}
             onChange={(e) => setBuilding(e.target.value)}
           />
@@ -49,6 +51,7 @@ export default function Address({ dispatch }) {
             required
             value={street}
             onChange={(e) => setStreet(e.target.value)}
+            name="street"
           />
         </div>
         <div className={styles.containerGroup}>
@@ -58,6 +61,7 @@ export default function Address({ dispatch }) {
             required
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+            name="phone"
           />
         </div>
         <div className={styles.containerGroup}>
@@ -81,7 +85,7 @@ export default function Address({ dispatch }) {
         >
           Complete Purchase
         </button>
-      </form>
+      </Form>
     </div>
   );
 }

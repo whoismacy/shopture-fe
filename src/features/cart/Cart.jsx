@@ -3,15 +3,14 @@ import { useEffect, useState } from "react";
 import { deleteItem, getCart } from "../../store/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Cart({ dispatch }) {
+export default function Cart() {
   const navigate = useNavigate();
   const cart = useSelector(getCart);
-  console.log(cart);
 
   return (
     <>
       {cart.length > 0 ? (
-        <CartItem data={cart} dispatch={dispatch} />
+        <CartItem data={cart} />
       ) : (
         <div className="cartHeading">
           <h3 className="faqHeading">You have no items in Your Cart :( </h3>
