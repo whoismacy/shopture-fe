@@ -4,7 +4,7 @@ const initialState = {
   data: [],
   filteredState: [],
   currentStatus: "",
-  error: "",
+  error: null,
 };
 
 export const fetchProducts = createAsyncThunk(
@@ -22,37 +22,40 @@ const dataSlice = createSlice({
   initialState,
   reducers: {
     initialSort(state) {
-      state.filteredState = state.data;
+      state.filteredState = [...state.data];
     },
     alphabeticalSort(state) {
-      state.filteredState = state.filteredState.sort((a, b) =>
+      state.filteredState = [...state.filteredState].sort((a, b) =>
         a.title.localeCompare(b.title, { ignorePunctuation: true })
       );
     },
     categorySort(state) {
-      state.filteredState = state.filteredState.sort((a, b) =>
+      state.filteredState = [...state.filteredState].sort((a, b) =>
         a.category.localeCompare(b.category, { ignorePunctuation: true })
       );
     },
     priceSort(state) {
-      state.filteredState = state.filteredState.sort(
+      state.filteredState = [...state.filteredState].sort(
         (a, b) => a.price - b.price
       );
     },
     ratingSort(state) {
-      state.filteredState = state.filteredState.sort(
-        (a, b) => a.rating.count - b.rating.count
-      );
-      state.filteredState = state.filteredState.sort(
-        (a, b) => b.rating.rate - a.rating.rate
-      );
+      state.filteredState = [...state.filteredState].sort((a, b) => {
+        if (a.rating.rate !== b.rating.rate) {
+          return b.rating.rate - a.rating.rate;
+        }
+        return b.rating.count - a.rating.count;
+      });
     },
     searchQuery(state, action) {
-      state.filteredState = state.data.filter((item) =>
-        `${item.title} ${item.description} ${item.category}`
-          .toLowerCase()
-          .includes(action.payload.toLowerCase())
-      );
+      state.filteredState = [...state.data].filter((item) => {
+        const searchContext =
+          `${item.category} ${item.title} ${item.description}`.toLowerCase();
+        const searchWords = action.payload
+          .split(/\s+/)
+          .filter((word) => word.length > 0);
+        return searchWords.every((word) => searchContext.includes(word));
+      });
     },
   },
   extraReducers: (builder) =>
