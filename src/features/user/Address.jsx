@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form } from "react-router-dom";
+import { Form, useActionData } from "react-router-dom";
 import styles from "./Address.module.css";
 
 export default function Address() {
@@ -8,6 +8,7 @@ export default function Address() {
   const [street, setStreet] = useState("");
   const [phone, setPhone] = useState("");
   const [note, setNote] = useState("");
+  const errors = useActionData();
 
   return (
     <div className={styles.formContainer}>
@@ -52,6 +53,13 @@ export default function Address() {
             onChange={(e) => setPhone(e.target.value)}
             name="phone"
           />
+          {errors?.phone ? (
+            <p
+              style={{ color: "red", backgroundColor: "pink", padding: "4px" }}
+            >
+              {errors.phone}
+            </p>
+          ) : null}
         </div>
         <div className={styles.containerGroup}>
           <label htmlFor="Note">Optional Note</label>

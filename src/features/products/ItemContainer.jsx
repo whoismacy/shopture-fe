@@ -4,6 +4,7 @@ import { addItem, deleteItem, getItemById } from "../../store/slices/cartSlice";
 import { showErrorToast, showSuccessToast } from "../../utils/toast";
 
 export default function ItemContainer({ item }) {
+  const dispatch = useDispatch();
   const {
     id,
     title,
@@ -13,13 +14,13 @@ export default function ItemContainer({ item }) {
     image,
     rating: { rate, count },
   } = item;
-  const dispatch = useDispatch();
   const presentInCart = useSelector(getItemById(id));
   const cartItem = {
     id,
     title,
     price,
     category,
+    description,
     unitPrice: price,
     quantity: 1,
   };
@@ -50,7 +51,7 @@ export default function ItemContainer({ item }) {
           className="btn btnShopNow"
           onClick={() => {
             if (presentInCart) {
-              dispatch(deleteItem(cartItem));
+              dispatch(deleteItem(cartItem.id));
               showErrorToast("Removed item from cart.");
             } else {
               dispatch(addItem(cartItem));

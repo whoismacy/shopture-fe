@@ -20,7 +20,34 @@ export const fetchProducts = createAsyncThunk(
 const dataSlice = createSlice({
   name: "data",
   initialState,
-  reducers: {},
+  reducers: {
+    initialSort(state) {
+      state.filteredState = state.data;
+    },
+    alphabeticalSort(state) {
+      state.filteredState = state.filteredState.sort((a, b) =>
+        a.title.localeCompare(b.title, { ignorePunctuation: true })
+      );
+    },
+    categorySort(state) {
+      state.filteredState = state.filteredState.sort((a, b) =>
+        a.category.localeCompare(b.category, { ignorePunctuation: true })
+      );
+    },
+    priceSort(state) {
+      state.filteredState = state.filteredState.sort(
+        (a, b) => a.price - b.price
+      );
+    },
+    ratingSort(state) {
+      state.filteredState = state.filteredState.sort(
+        (a, b) => a.rating.count - b.rating.count
+      );
+      state.filteredState = state.filteredState.sort(
+        (a, b) => b.rating.rate - a.rating.rate
+      );
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(
@@ -38,6 +65,13 @@ const dataSlice = createSlice({
       }),
 });
 
-export const getLoadingStatus = (state) => state.data?.currentStatus;
-export const getProducts = (state) => state.data?.data;
+export const getLoadingStatus = (state) => state.data.currentStatus;
+export const getProducts = (state) => state.data.filteredState;
+export const {
+  initialSort,
+  alphabeticalSort,
+  categorySort,
+  priceSort,
+  ratingSort,
+} = dataSlice.actions;
 export default dataSlice.reducer;

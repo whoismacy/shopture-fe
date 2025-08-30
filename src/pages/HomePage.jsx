@@ -1,12 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts, getLoadingStatus } from "../store/slices/dataSlice";
+import {
+  fetchProducts,
+  getLoadingStatus,
+  getProducts,
+} from "../store/slices/dataSlice";
 import Loader from "../components/ui/Loader";
 import ItemContainer from "../features/products/ItemContainer";
 import SortBy from "../features/search/SortBy";
 import NoSearchMatch from "../features/search/NoSearchMatch";
 import ErrorBoundary from "./ErrorBoundary";
-import { getProducts } from "../store/slices/dataSlice";
 
 function Home() {
   const dispatch = useDispatch();
@@ -28,8 +31,8 @@ function Home() {
         <div className="container">
           <SortBy />
           <div className="Container">
-            {data?.map((item) => (
-              <ItemContainer item={item} key={item.id} />
+            {data?.map((item, index) => (
+              <ItemContainer item={item} key={item?.id || index} />
             ))}
           </div>
         </div>

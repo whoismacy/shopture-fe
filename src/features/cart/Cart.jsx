@@ -1,6 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { deleteItem, getCart } from "../../store/slices/cartSlice";
+import {
+  deleteItem,
+  getCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "../../store/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Cart() {
@@ -35,6 +40,7 @@ function CartItem({ data }) {
     },
     [data]
   );
+
   return (
     <>
       <h1 className="cartHeading">Cart</h1>
@@ -48,6 +54,42 @@ function CartItem({ data }) {
                   ? `${item.description.slice(0, 50)}...`
                   : item.description}
               </p>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: "16px",
+                gap: "8px",
+                alignItems: "center",
+              }}
+            >
+              <button
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  border: "none",
+                  backgroundColor: "inherit",
+                  cursor: "pointer",
+                }}
+                onClick={() => dispatch(decreaseQuantity(item.id))}
+              >
+                -
+              </button>
+              <p style={{ fontWeight: "bold", fontSize: "20px" }}>
+                {item.quantity}
+              </p>
+              <button
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  border: "none",
+                  backgroundColor: "inherit",
+                  cursor: "pointer",
+                }}
+                onClick={() => dispatch(increaseQuantity(item.id))}
+              >
+                +
+              </button>
             </div>
             <div className="cartPriceExit">
               <p className="cartPrice">Kshs. {item.price * 100}</p>
