@@ -47,6 +47,13 @@ const dataSlice = createSlice({
         (a, b) => b.rating.rate - a.rating.rate
       );
     },
+    searchQuery(state, action) {
+      state.filteredState = state.data.filter((item) =>
+        `${item.title} ${item.description} ${item.category}`
+          .toLowerCase()
+          .includes(action.payload.toLowerCase())
+      );
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -73,5 +80,6 @@ export const {
   categorySort,
   priceSort,
   ratingSort,
+  searchQuery,
 } = dataSlice.actions;
 export default dataSlice.reducer;
