@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import StarRating from "../../components/ui/StarRating";
-import { addItem } from "../../store/slices/cartSlice";
-import { showSuccessToast } from "../../utils/toast";
+import { addItem, deleteItem, getItemById } from "../../store/slices/cartSlice";
+import { showErrorToast, showSuccessToast } from "../../utils/toast";
 
 export default function ItemContainer({ item }) {
   const {
+    id,
     title,
     category,
     description,
@@ -13,6 +14,16 @@ export default function ItemContainer({ item }) {
     rating: { rate, count },
   } = item;
   const dispatch = useDispatch();
+  const presentInCart = useSelector(getItemById(id));
+  const cartItem = {
+    id,
+    title,
+    price,
+    category,
+    unitPrice: price,
+    quantity: 1,
+  };
+
   return (
     <div className="itemContainer">
       <div className="itemImageContainer">
@@ -38,8 +49,13 @@ export default function ItemContainer({ item }) {
         <button
           className="btn btnShopNow"
           onClick={() => {
-            dispatch(addItem(item));
-            showSuccessToast("Added Item to Cart.");
+            if (presentInCart) {
+              dispatch(deleteItem(cartItem));
+              showErrorToast("Removed item from cart.");
+            } else {
+              dispatch(addItem(cartItem));
+              showSuccessToast("Added item to cart.");
+            }
           }}
         >
           <span>
@@ -58,7 +74,7 @@ export default function ItemContainer({ item }) {
               />
             </svg>
           </span>
-          Add to Cart
+          {presentInCart ? "Remove" : "Add to Cart"}
         </button>
       </div>
     </div>

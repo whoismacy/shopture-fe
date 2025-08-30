@@ -33,7 +33,6 @@ const FAQ = lazy(() => import("./features/faqs/Faq"));
 const Cart = lazy(() => import("./features/cart/Cart"));
 const Home = lazy(() => import("./pages/HomePage"));
 
-import { loader as productsLoader } from "./pages/homePageLoader";
 import { action as addressAction } from "./features/user/addressAction";
 
 export default function App() {
@@ -44,8 +43,6 @@ export default function App() {
         {
           path: "/",
           element: <Home />,
-          loader: productsLoader,
-          errorElement: <ErrorBoundary />,
         },
         { path: "/faqs", element: <FAQ /> },
         { path: "/profile", element: <Profile /> },

@@ -1,28 +1,40 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts, getLoadingStatus } from "../store/slices/dataSlice";
 import Loader from "../components/ui/Loader";
 import ItemContainer from "../features/products/ItemContainer";
 import SortBy from "../features/search/SortBy";
 import NoSearchMatch from "../features/search/NoSearchMatch";
-import { useLoaderData, useNavigation } from "react-router-dom";
+import ErrorBoundary from "./ErrorBoundary";
+import { getProducts } from "../store/slices/dataSlice";
 
 function Home() {
-  const data = useLoaderData();
-  const navigation = useNavigation();
-  const isLoading = navigation.state === "loading";
+  const dispatch = useDispatch();
+  const loadingStatus = useSelector(getLoadingStatus);
+  const data = useSelector(getProducts);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  const isLoading = loadingStatus === "loading";
+  const error = loadingStatus === "error";
 
   return (
     <>
       {isLoading && <Loader />}
-      {!isLoading && (
+      {error && <ErrorBoundary />}
+      {!isLoading && !error && (
         <div className="container">
           <SortBy />
           <div className="Container">
-            {data.map((item) => (
+            {data?.map((item) => (
               <ItemContainer item={item} key={item.id} />
             ))}
           </div>
         </div>
       )}
-      {!isLoading && data.length === 0 && <NoSearchMatch />}
+      {!isLoading && !error && data?.length === 0 && <NoSearchMatch />}
     </>
   );
 }

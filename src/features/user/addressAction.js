@@ -16,3 +16,7 @@ export async function action({ request }) {
   store.dispatch(addAddress(userInformation));
   return redirect("/success-checkout");
 }
+
+// add the errors section, in branch tailwind
+// add increase and decrease quantity in twcss branch
+// fix deleteitem
