@@ -1,9 +1,7 @@
-import { lazy, useReducer, useState } from "react";
+import { lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { showErrorToast, showSuccessToast } from "./utils/toast";
 
 import "./index.css";
 import "./styles/auth.css";
@@ -39,8 +37,6 @@ import { loader as productsLoader } from "./pages/homePageLoader";
 import { action as addressAction } from "./features/user/addressAction";
 
 export default function App() {
-  const [location, setLocation] = useState({});
-
   const router = createBrowserRouter([
     {
       element: <RootLayout />,
@@ -55,21 +51,15 @@ export default function App() {
         { path: "/profile", element: <Profile /> },
         {
           path: "/success-checkout",
-          element: (
-            <CompletePurchase
-              len={stateLength}
-              data={[location]}
-              dispatch={dispatch}
-            />
-          ),
+          element: <CompletePurchase />,
         },
         {
           path: "/checkout",
-          element: <Checkout items={state} location={location} />,
+          element: <Checkout />,
         },
         {
           path: "/address",
-          element: <Address items={location} dispatch={setLocation} />,
+          element: <Address />,
           action: addressAction,
         },
         {

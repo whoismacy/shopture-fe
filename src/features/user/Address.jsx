@@ -1,24 +1,13 @@
 import { useState } from "react";
-import { Form, useNavigate } from "react-router-dom";
-import { showSuccessToast } from "../utils/toast";
-
+import { Form } from "react-router-dom";
 import styles from "./Address.module.css";
 
-export default function Address({ dispatch }) {
+export default function Address() {
   const [county, setCounty] = useState("");
   const [building, setBuilding] = useState("");
   const [street, setStreet] = useState("");
   const [phone, setPhone] = useState("");
   const [note, setNote] = useState("");
-  const navigate = useNavigate();
-
-  function reset() {
-    setCounty("");
-    setBuilding("");
-    setStreet("");
-    setPhone("");
-    setNote("");
-  }
 
   return (
     <div className={styles.formContainer}>
@@ -70,19 +59,10 @@ export default function Address({ dispatch }) {
             type="text"
             value={note}
             onChange={(e) => setNote(e.target.value)}
+            name="note"
           />
         </div>
-        <button
-          onClick={(event) => {
-            event.preventDefault();
-            if (!county || !building || !street || !phone) return;
-            dispatch({ county, building, street, phone, note });
-            reset();
-            showSuccessToast("Successfully Completed Purchase.");
-            navigate("/success-checkout");
-          }}
-          className={`btn btnShopNow ${styles.btnCO}`}
-        >
+        <button type="submit" className={`btn btnShopNow ${styles.btnCO}`}>
           Complete Purchase
         </button>
       </Form>

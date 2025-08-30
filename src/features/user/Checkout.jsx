@@ -1,15 +1,20 @@
 import { useNavigate } from "react-router-dom";
-import { showInfoToast, showSuccessToast } from "../utils/toast";
+import { showInfoToast, showSuccessToast } from "../../utils/toast";
 
 import styles from "./Checkout.module.css";
+import { useSelector } from "react-redux";
+import { getCart } from "../../store/slices/cartSlice";
+import { getAddress } from "../../store/slices/userSlice";
 
-export default function Checkout({ items, location }) {
-  let lengthItems = items?.length;
-  let initialCost = items?.reduce((a, b) => a + b.price, 0) * 100;
+export default function Checkout() {
+  const navigate = useNavigate();
+  const cart = useSelector(getCart);
+  const address = useSelector(getAddress);
+  let lengthItems = cart.length;
+  let initialCost = cart.reduce((a, b) => a + b.price, 0) * 100;
   let deliveryCost = Math.round(initialCost * 0.085);
   let tax = Math.round(initialCost * 0.16);
   let totalCost = Math.round(initialCost + deliveryCost + tax);
-  const navigate = useNavigate();
 
   return (
     <div className={styles.container}>
@@ -39,7 +44,7 @@ export default function Checkout({ items, location }) {
         </div>
         <button
           onClick={() => {
-            if (Object.keys(location).length < 1) {
+            if (!address.phone) {
               showInfoToast("Input address to complete purchase.");
               navigate("/address");
             } else {
