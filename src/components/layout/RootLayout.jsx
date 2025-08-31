@@ -4,12 +4,12 @@ import Footer from "../layout/Footer";
 
 export default function RootLayout() {
   return (
-    <div className="RootLayout">
+    <section className="grid h-screen grid-rows-[auto_1fr_auto]">
       <Header />
-      <div className="Outlet">
+      <main className="mx-auto max-w-3xl">
         <Outlet />
-      </div>
+      </main>
       <Footer />
-    </div>
+    </section>
   );
 }

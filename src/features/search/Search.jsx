@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { initialSort, searchQuery } from "../../store/slices/dataSlice";
-import styles from "./Search.module.css";
 
 export default function Search() {
   const [query, setQuery] = useState("");
@@ -26,23 +25,28 @@ export default function Search() {
 
   function clearSearch() {
     setQuery("");
-    dispatch(searchQuery(""));
+    dispatch(initialSort());
   }
 
   return (
-    <div className={styles.container}>
+    <div className="flex justify-center items-center gap-8">
       <input
         type="text"
         value={query}
         onChange={handleInputChange}
         placeholder="Search products by name, category & description"
+        className="border py-4 px-6 text-2xl w-2xl placeholder:text-1xl placeholder:text-left focus:outline-none focus:ring focus:ring-yellow-200"
       />
       <button className="btn" onClick={clearSearch}>
         Clear
       </button>
       <p>
-        <span>{resultsLength}</span> item{resultsLength !== 1 ? "s" : ""} found.
+        <span className="text-yellow-400 font-semibold">{resultsLength}</span>{" "}
+        item
+        {resultsLength !== 1 ? "s" : ""} found.
       </p>
     </div>
   );
 }
+
+// text-align: left

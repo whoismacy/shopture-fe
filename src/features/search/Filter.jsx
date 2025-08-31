@@ -9,7 +9,7 @@ import {
   ratingSort,
 } from "../../store/slices/dataSlice";
 
-export default function SortBy() {
+export default function Filter() {
   const [sortValue, setSortValue] = useState("");
   const dispatch = useDispatch();
 
@@ -47,7 +47,6 @@ export default function SortBy() {
           <option value="price">Sort by Price</option>
           <option value="rating">Sort by Rating</option>
         </select>
-        <Search />
       </div>
     </>
   );

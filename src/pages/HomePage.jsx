@@ -7,7 +7,6 @@ import {
 } from "../store/slices/dataSlice";
 import Loader from "../components/ui/Loader";
 import ItemContainer from "../features/products/ItemContainer";
-import SortBy from "../features/search/SortBy";
 import NoSearchMatch from "../features/search/NoSearchMatch";
 import ErrorBoundary from "./ErrorBoundary";
 
@@ -29,7 +28,6 @@ function Home() {
       {error && <ErrorBoundary />}
       {!isLoading && !error && (
         <div className="container">
-          <SortBy />
           <div className="Container">
             {data?.map((item, index) => (
               <ItemContainer item={item} key={item?.id || index} />
