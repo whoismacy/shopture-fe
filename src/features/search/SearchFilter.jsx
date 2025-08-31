@@ -3,7 +3,7 @@ import Search from "./Search";
 
 export default function SearchFilter() {
   return (
-    <section>
+    <section className="flex gap-12">
       <Search />
       <Filter />
     </section>

@@ -1,4 +1,3 @@
-import Search from "./Search";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import {
@@ -35,11 +34,12 @@ export default function Filter() {
 
   return (
     <>
-      <div className="sortContainer">
+      <div className="flex justify-around py-4 gap-12 bg-white shadow-md">
         <select
           name="sort"
           value={sortValue}
           onChange={(event) => handleChange(event.target.value)}
+          className="font-semibold text-2xl px-6 py-4 text-center border-none transition-all duration-320 ease-in-out hover:bg-yellow-100"
         >
           <option value="">Sort Items</option>
           <option value="category">Sort by Category</option>

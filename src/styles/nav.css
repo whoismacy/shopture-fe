@@ -1,12 +1,3 @@
-.navContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.4rem 1.6rem;
-  box-shadow: var(--box-shadow-large-orange);
-  background-color: var(--primary-orange);
-}
-
 .logoImg {
   width: 7.5rem;
   height: 7.5rem;

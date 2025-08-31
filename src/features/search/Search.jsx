@@ -48,5 +48,3 @@ export default function Search() {
     </div>
   );
 }
-
-// text-align: left

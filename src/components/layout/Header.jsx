@@ -4,8 +4,8 @@ import SearchFilter from "../../features/search/SearchFilter";
 export default function Header() {
   return (
     <>
-      <header className="navContainer">
-        <div>
+      <header className="flex flex-col justify-start shadow-lg bg-yellow-500">
+        <div className="flex justify-between items-center px-2 py-8">
           <Link to="/">
             <img src="../../shopTureB.png" alt="logo" className="logoImg" />
           </Link>
