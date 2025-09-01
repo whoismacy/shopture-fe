@@ -9,6 +9,7 @@ import Loader from "../components/ui/Loader";
 import ItemContainer from "../features/products/ItemContainer";
 import NoSearchMatch from "../features/search/NoSearchMatch";
 import ErrorBoundary from "./ErrorBoundary";
+import SearchFilter from "../features/search/SearchFilter";
 
 function Home() {
   const dispatch = useDispatch();
@@ -27,8 +28,9 @@ function Home() {
       {isLoading && <Loader />}
       {error && <ErrorBoundary />}
       {!isLoading && !error && (
-        <div className="container">
-          <div className="grid grid-cols-4">
+        <div className="">
+        <SearchFilter/>
+          <div className="grid grid-cols-4 gap-8 p-4  ">
             {data?.map((item, index) => (
               <ItemContainer item={item} key={item?.id || index} />
             ))}

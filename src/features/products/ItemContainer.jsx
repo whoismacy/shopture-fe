@@ -26,9 +26,13 @@ export default function ItemContainer({ item }) {
   };
 
   return (
-    <div className="m-4 p-8 shadow-sm max-w-4xs bg-white rounded-lg transition-all duration-300 ease-in-out hover:bg-amber-100 hover:shadow-lg">
+    <div className="m-4 p-8 shadow-sm max-w-4xs bg-white rounded-lg transition-all duration-300 ease-in-out hover:shadow-lg">
       <div className="relative h-[300px] w-[300px]">
-        <img src={image} alt={title} className="itemImage" />
+        <img
+          src={image}
+          alt={title}
+          className="absolute max-h-[100%] max-w-[100%] h-auto w-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        />
       </div>
       <h3 className="mt-6 mb-4 text-2xl">
         {title.length > 40 ? `${title.slice(0, 40)}...` : title}

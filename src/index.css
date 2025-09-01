@@ -161,12 +161,3 @@ a {
   font-size: 2.4rem;
   width: 25rem;
 }
-
-.Container {
-  display: grid;
-  grid-template-columns: repeat(4, max-content);
-  gap: 3.2rem;
-  align-items: center;
-  justify-content: center;
-  padding: 2.4rem;
-}

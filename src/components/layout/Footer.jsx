@@ -16,52 +16,55 @@ export default function Footer() {
 
   return (
     <>
-      <footer>
-        <div className="gridContainer">
-          <div className="footerNewsLetter">
-            <p>Sign Up For Our Newsletter</p>
-            <div className="emailInput">
+      <footer className="bg-white pt-12 px-8 mt-96">
+        <div className="grid grid-cols-[1.5fr_2.5fr]">
+          <div className="flex flex-col justify-center items-center w-full gap-4 p-4">
+            <p className="text-3xl font-semibold uppercase border-b">
+              Sign Up For Our Newsletter
+            </p>
+            <div className="flex justify-center items-center w-full">
               <input
                 type="text"
                 placeholder="Input your email address"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
+                className="h-16 w-[75%] px-2 py-6 border-stone-700 rounded-full text-2xl focus:outline-none placeholder:italic placeholder:text-2xl"
               />
               <button onClick={handleEmail}>Submit</button>
             </div>
           </div>
-          <div className="footerExtras">
-            <div className="footerLinks">
+          <div className="">
+            <div className="grid grid-cols-3">
               <div className="customerCare">
-                <h3 className="footerHeader">Customer Care</h3>
-                <ul>
-                  <li>Contact Us</li>
-                  <li>Delivery</li>
-                  <li>Returns</li>
-                  <li>FAQ</li>
+                <h3 className="mb-6">Customer Care</h3>
+                <ul className="list-none flex flex-col gap-4">
+                  <li className="cursor-pointer">Contact Us</li>
+                  <li className="cursor-pointer">Delivery</li>
+                  <li className="cursor-pointer">Returns</li>
+                  <li className="cursor-pointer">FAQ</li>
                 </ul>
               </div>
-              <div className="explore">
-                <h3 className="footerHeader">Explore</h3>
-                <ul>
-                  <li>Our Story</li>
-                  <li>Blog</li>
-                  <li>#ShopTure</li>
-                  <li>Track Your Order</li>
+              <div className="">
+                <h3 className="mb-6">Explore</h3>
+                <ul className="list-none flex flex-col gap-4">
+                  <li className="cursor-pointer">Our Story</li>
+                  <li className="cursor-pointer">Blog</li>
+                  <li className="cursor-pointer">#ShopTure</li>
+                  <li className="cursor-pointer">Track Your Order</li>
                 </ul>
               </div>
-              <div className="extras">
-                <h3 className="footerHeader">Extras</h3>
-                <ul>
-                  <li>Refer a Friend</li>
-                  <li>Spare Clothes</li>
-                  <li>Loyalty & Rewards</li>
-                  <li>Recycling Products</li>
+              <div className="">
+                <h3 className="mb-6">Extras</h3>
+                <ul className="list-none flex flex-col gap-4">
+                  <li className="cursor-pointer">Refer a Friend</li>
+                  <li className="cursor-pointer">Spare Clothes</li>
+                  <li className="cursor-pointer">Loyalty & Rewards</li>
+                  <li className="cursor-pointer">Recycling Products</li>
                 </ul>
               </div>
             </div>
-            <div className="footerSocials">
-              <ul>
+            <div className="">
+              <ul className="flex list-none items-center justify-start my-12 gap-8">
                 <li>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -124,22 +127,28 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="footerCopyright">
-              <div>
+            <div className="flex flex-col">
+              <div className="flex items-center gap-6 mb-8">
                 <p>
-                  <a>Privacy Policy</a>
+                  <a className="cursor-pointer text-stone-400 hover:border-b">
+                    Privacy Policy
+                  </a>
                 </p>
                 <p>
-                  <a>Terms and Conditions</a>
+                  <a className="cursor-pointer text-stone-400 hover:border-b">
+                    Terms and Conditions
+                  </a>
                 </p>
                 <p>
-                  <a>Security Policy</a>
+                  <a className="cursor-pointer text-stone-400 hover:border-b">
+                    Security Policy
+                  </a>
                 </p>
                 <p>
-                  <a>Cookie Policy</a>
+                  <a className="cursor-pointer text-stone-400">Cookie Policy</a>
                 </p>
               </div>
-              <p className="copyrightText">&copy; Shopture Inc. 2025</p>
+              <p className="text-stone-400">&copy; Shopture Inc. 2025</p>
             </div>
           </div>
         </div>
