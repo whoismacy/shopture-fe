@@ -4,14 +4,14 @@ import SearchFilter from "../../features/search/SearchFilter";
 export default function Header() {
   return (
     <>
-      <header className="flex flex-col justify-start shadow-lg bg-yellow-500">
-        <div className="flex justify-between items-center px-2 py-8">
+      <header className="flex flex-col justify-start shadow-lg p-2 ">
+        <div className="flex justify-between items-center ">
           <Link to="/">
-            <img src="../../shopTureB.png" alt="logo" className="logoImg" />
+            <img src="../../shopTureB.png" alt="logo" className="h-[75px] w-[75px] rounded-full object-cover" />
           </Link>
-          <ul className="endNav">
+          <ul className="flex justify-evenly gap-4">
             <NavLink to="/">
-              <li className="category">
+              <li className="h-[40px] w-[40px]">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -23,11 +23,10 @@ export default function Header() {
                     <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                   </svg>
                 </span>
-                <span>Home</span>
               </li>
             </NavLink>
             <NavLink to="cart">
-              <li className="category">
+              <li className="h-[40px] w-[40px]">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -42,11 +41,10 @@ export default function Header() {
                     />
                   </svg>
                 </span>
-                <span>Cart</span>
               </li>
             </NavLink>
             <NavLink to="profile">
-              <li className="category">
+              <li className="h-[40px] w-[40px]">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -61,11 +59,10 @@ export default function Header() {
                     />
                   </svg>
                 </span>
-                <span>Profile</span>
               </li>
             </NavLink>
             <NavLink to="faqs">
-              <li className="category">
+              <li className="h-[40px] w-[40px]">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -76,13 +73,9 @@ export default function Header() {
                     <path d="M80 160c0-35.3 28.7-64 64-64l32 0c35.3 0 64 28.7 64 64l0 3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74l0 1.4c0 17.7 14.3 32 32 32s32-14.3 32-32l0-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7l0-3.6c0-70.7-57.3-128-128-128l-32 0C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z" />
                   </svg>
                 </span>
-                <span>FAQs</span>
               </li>
             </NavLink>
           </ul>
-        </div>
-        <div>
-          <SearchFilter />
         </div>
       </header>
     </>

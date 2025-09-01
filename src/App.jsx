@@ -3,14 +3,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import "./index.css";
+/* import "./index.css";
 import "./styles/auth.css";
 import "./styles/cart.css";
 import "./styles/faqs.css";
 import "./styles/footer.css";
 import "./styles/itemContainer.css";
 import "./styles/nav.css";
-import "./styles/queries.css";
+import "./styles/queries.css"; */
 
 import AuthLayout from "./components/layout/AuthLayout";
 import RootLayout from "./components/layout/RootLayout";

@@ -29,21 +29,23 @@ export default function Search() {
   }
 
   return (
-    <div className="flex justify-center items-center gap-8">
-      <input
-        type="text"
-        value={query}
-        onChange={handleInputChange}
-        placeholder="Search products by name, category & description"
-        className="border py-4 px-6 text-2xl w-2xl placeholder:text-1xl placeholder:text-left focus:outline-none focus:ring focus:ring-yellow-200"
-      />
-      <button className="btn" onClick={clearSearch}>
-        Clear
-      </button>
-      <p>
-        <span className="text-yellow-400 font-semibold">{resultsLength}</span>{" "}
+    <div className="flex items-center gap-8 px-4 py-8">
+      <div className="relative">
+        <input
+          type="text"
+          value={query}
+          onChange={handleInputChange}
+          placeholder="Search..."
+          className="px-6 py-2 text-3xl border-b w-xl"
+        />
+        <button className="absolute text-white bg-red-400 py-2 px-4 rounded-full font-bold text-1xl right-4 top-3 focus:outline-none " onClick={clearSearch} >
+          X
+        </button>
+      </div>
+      <p className="text-2xl italic">
+        <span className="text-orange-400 font-semibold">{resultsLength}</span>{" "}
         item
-        {resultsLength !== 1 ? "s" : ""} found.
+        {resultsLength !== 1 ? "s" : ""} found
       </p>
     </div>
   );

@@ -28,7 +28,7 @@ function Home() {
       {error && <ErrorBoundary />}
       {!isLoading && !error && (
         <div className="container">
-          <div className="Container">
+          <div className="grid grid-cols-4">
             {data?.map((item, index) => (
               <ItemContainer item={item} key={item?.id || index} />
             ))}

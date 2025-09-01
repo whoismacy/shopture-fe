@@ -26,26 +26,28 @@ export default function ItemContainer({ item }) {
   };
 
   return (
-    <div className="itemContainer">
-      <div className="itemImageContainer">
+    <div className="m-4 p-8 shadow-sm max-w-4xs bg-white rounded-lg transition-all duration-300 ease-in-out hover:bg-amber-100 hover:shadow-lg">
+      <div className="relative h-[300px] w-[300px]">
         <img src={image} alt={title} className="itemImage" />
       </div>
-      <h3 className="itemTitle">
+      <h3 className="mt-6 mb-4 text-2xl">
         {title.length > 40 ? `${title.slice(0, 40)}...` : title}
       </h3>
-      <p className="itemCategory">Category: {category}</p>
-      <p className="itemDescription">
+      <p className="italic font-light text-stone-400 mb-4">
+        Category: {category}
+      </p>
+      <p className="mb-8 italic text-stone-800 font-medium text-2xl">
         {description.length > 100
           ? `${description.slice(0, 100)}...`
           : description}
       </p>
-      <div className="itemRating">
+      <div className="flex gap-8 mb-6 items-center">
         <StarRating star_rating={Math.round(rate)} size={24} color="red" />
-        <span className="itemRatingText">{count} ratings.</span>
+        <span className="italic">{count} ratings.</span>
       </div>
-      <div className="priceButton">
-        <p className="itemCurrency">
-          KES <span className="itemPrice">{price * 100}</span>
+      <div className="flex justify-between items-center mt-12">
+        <p className="text-2xl font-medium">
+          KES <span className="mb-8 text-2xl font-bold">{price * 100}</span>
         </p>
         <button
           className="btn btnShopNow"

@@ -34,7 +34,7 @@ export default function Filter() {
 
   return (
     <>
-      <div className="flex justify-around py-4 gap-12 bg-white shadow-md">
+      <div className="bg-white shadow-md h-16">
         <select
           name="sort"
           value={sortValue}
