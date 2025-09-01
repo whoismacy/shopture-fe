@@ -21,7 +21,7 @@ export default function Address() {
             County
           </label>
           <input
-            className="px-1 py-2 text-2xl"
+            className="border-b px-1 py-2 text-2xl focus:outline-none"
             type="text"
             value={county}
             onChange={(e) => setCounty(e.target.value)}
@@ -34,7 +34,7 @@ export default function Address() {
             Building & Building Number
           </label>
           <input
-            className="px-1 py-2 text-2xl"
+            className="border-b px-1 py-2 text-2xl focus:outline-none"
             type="text"
             required
             name="building"
@@ -47,7 +47,7 @@ export default function Address() {
             Street
           </label>
           <input
-            className="px-1 py-2 text-2xl"
+            className="border-b px-1 py-2 text-2xl focus:outline-none"
             type="text"
             required
             value={street}
@@ -60,7 +60,7 @@ export default function Address() {
             Phone Number
           </label>
           <input
-            className="px-1 py-2 text-2xl"
+            className="border-b px-1 py-2 text-2xl focus:outline-none"
             type="text"
             required
             value={phone}
@@ -68,11 +68,7 @@ export default function Address() {
             name="phone"
           />
           {errors?.phone ? (
-            <p
-              style={{ color: "red", backgroundColor: "pink", padding: "4px" }}
-            >
-              {errors.phone}
-            </p>
+            <p className="bg-red-300 p-1 text-red-500">{errors.phone}</p>
           ) : null}
         </div>
         <div className="mb-6 flex flex-col gap-4">
@@ -80,7 +76,7 @@ export default function Address() {
             Optional Note
           </label>
           <input
-            className="px-1 py-2 text-2xl"
+            className="border-b px-1 py-2 text-2xl focus:outline-none"
             type="text"
             value={note}
             onChange={(e) => setNote(e.target.value)}

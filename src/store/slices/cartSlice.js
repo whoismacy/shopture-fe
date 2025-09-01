@@ -14,8 +14,7 @@ const cartSlice = createSlice({
     deleteItem(state, action) {
       state.cart = state.cart.filter((item) => item.id !== action.payload);
     },
-    //eslint-disable-next-line
-    dropCart(state, action) {
+    dropCart(state) {
       state.cart = [];
     },
     increaseQuantity(state, action) {
@@ -38,5 +37,10 @@ export const getCart = (state) => state.cart.cart;
 export const getItemById = (id) => (state) =>
   state.cart.cart.find((item) => item.id === id);
 export default cartSlice.reducer;
-export const { addItem, deleteItem, increaseQuantity, decreaseQuantity } =
-  cartSlice.actions;
+export const {
+  addItem,
+  deleteItem,
+  increaseQuantity,
+  decreaseQuantity,
+  dropCart,
+} = cartSlice.actions;
