@@ -17,8 +17,10 @@ export default function Cart() {
       {cart.length > 0 ? (
         <CartItem data={cart} />
       ) : (
-        <div className="cartHeading">
-          <h3 className="faqHeading">You have no items in Your Cart :( </h3>
+        <div className="align-center text-4xl">
+          <h3 className="align-center text-4xl">
+            You have no items in Your Cart :({" "}
+          </h3>
           <button className="btn btnCart" onClick={() => navigate("/")}>
             Add Items
           </button>
@@ -38,18 +40,21 @@ function CartItem({ data }) {
       const total = data.reduce((a, b) => a + b.price, 0);
       setTotalPrice(total * 100);
     },
-    [data]
+    [data],
   );
 
   return (
     <>
-      <h1 className="cartHeading">Cart</h1>
-      <div className="cartContainer">
+      <h1 className="align-center text-4xl">Cart</h1>
+      <div className="flex flex-col gap-8 p-6">
         {data.map((item) => (
-          <div className="cartItem" key={item.id}>
+          <div
+            className="align-center flex justify-between rounded-md px-6 py-8 shadow-2xs transition-all duration-200 ease-in-out"
+            key={item.id}
+          >
             <div>
-              <h3 className="cartSubHeading">{item.title}</h3>
-              <p className="cartDescription">
+              <h3 className="">{item.title}</h3>
+              <p className="">
                 {item.description.length > 50
                   ? `${item.description.slice(0, 50)}...`
                   : item.description}
@@ -64,37 +69,23 @@ function CartItem({ data }) {
               }}
             >
               <button
-                style={{
-                  fontSize: "24px",
-                  fontWeight: "bold",
-                  border: "none",
-                  backgroundColor: "inherit",
-                  cursor: "pointer",
-                }}
+                className="cursor-pointer border-none bg-inherit text-2xl font-semibold"
                 onClick={() => dispatch(decreaseQuantity(item.id))}
               >
                 -
               </button>
-              <p style={{ fontWeight: "bold", fontSize: "20px" }}>
-                {item.quantity}
-              </p>
+              <p className="text-2xl font-semibold">{item.quantity}</p>
               <button
-                style={{
-                  fontSize: "24px",
-                  fontWeight: "bold",
-                  border: "none",
-                  backgroundColor: "inherit",
-                  cursor: "pointer",
-                }}
+                className="cursor-pointer border-none bg-inherit text-2xl font-bold"
                 onClick={() => dispatch(increaseQuantity(item.id))}
               >
                 +
               </button>
             </div>
-            <div className="cartPriceExit">
-              <p className="cartPrice">Kshs. {item.price * 100}</p>
+            <div className="flex items-center gap-4">
+              <p className="text-2xl font-semibold">Kshs. {item.price * 100}</p>
               <button
-                className="btnRemove"
+                className="flex h-[1rem] w-[1rem] cursor-pointer items-center justify-center rounded-full border-none bg-red-500 p-6 text-2xl font-semibold text-white"
                 onClick={() => dispatch(deleteItem(item.id))}
               >
                 X
@@ -102,16 +93,18 @@ function CartItem({ data }) {
             </div>
           </div>
         ))}
-        <div className="cartLower">
+        <div className="flex justify-between">
           <button
             onClick={() => navigate("/checkout")}
             className="btn btnShopNow btnCancel"
           >
             Checkout
           </button>
-          <p className="cartPriceText">
+          <p className="text-2xl font-normal italic">
             Total Price:{" "}
-            <span className="cartPrice">Kshs. {Math.round(totalPrice)}</span>
+            <span className="text-2xl font-bold">
+              Kshs. {Math.round(totalPrice)}
+            </span>
           </p>
         </div>
       </div>

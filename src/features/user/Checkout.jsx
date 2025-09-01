@@ -1,10 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { showInfoToast, showSuccessToast } from "../../utils/toast";
-
-import styles from "./Checkout.module.css";
 import { useSelector } from "react-redux";
+import { showInfoToast, showSuccessToast } from "../../utils/toast";
 import { getCart } from "../../store/slices/cartSlice";
 import { getAddress } from "../../store/slices/userSlice";
+import styles from "./Checkout.module.css";
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -17,30 +16,30 @@ export default function Checkout() {
   let totalCost = Math.round(initialCost + deliveryCost + tax);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.headGroup}>
-        <div className={styles.containerGroup}>
+    <div className="mx-auto my-[4.5rem] max-w-[80rem] rounded-md bg-white p-8 shadow-md">
+      <div className="mb-8 flex flex-col justify-between">
+        <div className="flex items-center justify-between">
           <h3>Total Items</h3>
           <p>{lengthItems}</p>
         </div>
         <hr />
       </div>
-      <div className={styles.paragraphDiv}>
-        <div className={styles.containerGroup}>
-          <p className={styles.paragraph}>Price:</p>
-          <p className={styles.price}>Kshs. {initialCost}</p>
+      <div className="flex flex-col gap-6">
+        <div className="flex items-center justify-between">
+          <p className="text-2xl font-light">Price:</p>
+          <p className="text-2xl">Kshs. {initialCost}</p>
         </div>
-        <div className={styles.containerGroup}>
-          <p className={styles.paragraph}>Tax:</p>
-          <p className={styles.price}>Kshs. {tax}</p>
+        <div className="flex items-center justify-between">
+          <p className="text-2xl font-light">Tax:</p>
+          <p className="text-2xl">Kshs. {tax}</p>
         </div>
-        <div className={styles.containerGroup}>
-          <p className={styles.paragraph}>Delivery Cost:</p>
-          <p className={styles.price}>Kshs. {deliveryCost}</p>
+        <div className="flex items-center justify-between">
+          <p className="text-2xl font-light">Delivery Cost:</p>
+          <p className="text-2xl">Kshs. {deliveryCost}</p>
         </div>
-        <div className={styles.containerGroup}>
-          <p className={styles.paragraph}>Total Cost:</p>
-          <p className={styles.price}>Kshs. {totalCost}</p>
+        <div className="flex items-center justify-between">
+          <p className="text-2xl font-light">Total Cost:</p>
+          <p className="text-2xl">Kshs. {totalCost}</p>
         </div>
         <button
           onClick={() => {

@@ -22,15 +22,20 @@ export default function Footer() {
             <p className="text-3xl font-semibold uppercase border-b">
               Sign Up For Our Newsletter
             </p>
-            <div className="flex justify-center items-center w-full">
+            <div className="flex justify-center items-center w-full mt-8">
               <input
                 type="text"
                 placeholder="Input your email address"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="h-16 w-[75%] px-2 py-6 border-stone-700 rounded-full text-2xl focus:outline-none placeholder:italic placeholder:text-2xl"
+                className="h-16 w-[60%] px-2 py-6 border-b text-2xl focus:outline-none placeholder:italic placeholder:text-2xl"
               />
-              <button onClick={handleEmail}>Submit</button>
+              <button
+                className="block text-2xl bg-black text-white text-semibold px-6 py-4 transition-all ease-in duration-25 rounded-full cursor-pointer hover:bg-stone-600"
+                onClick={handleEmail}
+              >
+                Submit
+              </button>
             </div>
           </div>
           <div className="">

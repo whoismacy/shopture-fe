@@ -29,8 +29,8 @@ function Home() {
       {error && <ErrorBoundary />}
       {!isLoading && !error && (
         <div className="">
-        <SearchFilter/>
-          <div className="grid grid-cols-4 gap-8 p-4  ">
+          <SearchFilter />
+          <div className="grid grid-cols-4 gap-8 p-4">
             {data?.map((item, index) => (
               <ItemContainer item={item} key={item?.id || index} />
             ))}
