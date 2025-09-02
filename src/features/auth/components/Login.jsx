@@ -5,7 +5,7 @@ import { showErrorToast, showSuccessToast } from "../utils/toast";
 
 import Email from "../shared/Email";
 import Password from "../shared/Password";
-import FormButton from "../common/Button";
+import Button from "../common/Button";
 import instance from "../provider/axiosConfig";
 
 // only returns user
@@ -69,7 +69,7 @@ export default function LoginForm() {
           </Link>
         </div>
 
-        <FormButton variant="primary">Log In</FormButton>
+        <Button type="primary">Log In</Button>
       </form>
       <div className="loginAdditional">
         <p>Not registered ?</p>

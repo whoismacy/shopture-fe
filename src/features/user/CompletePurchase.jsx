@@ -13,7 +13,7 @@ export default function CompletePurchase() {
   const dispatch = useDispatch();
 
   function completePurchase() {
-    dispatch(dropCart);
+    dispatch(dropCart());
     navigate("/");
   }
 
@@ -35,7 +35,9 @@ export default function CompletePurchase() {
       <p className="mt-8 text-2xl font-light italic">
         Thank you for shopping with us.
       </p>
-      <button onClick={completePurchase}>Shop More</button>
+      <Button onClick={completePurchase} type="primary">
+        Shop More
+      </Button>
     </div>
   );
 }

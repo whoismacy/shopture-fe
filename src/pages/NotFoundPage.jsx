@@ -6,9 +6,9 @@ export default function NotFound() {
   return (
     <div>
       <h1 style={{ marginBottom: "48px" }}>404 Error: Page Not Found</h1>
-      <button onClick={() => navigate("/")} className="btn">
+      <Button onClick={() => navigate("/")} type="primary">
         Go Home
-      </button>
+      </Button>
     </div>
   );
 }

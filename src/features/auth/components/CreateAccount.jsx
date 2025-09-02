@@ -7,7 +7,7 @@ import instance from "../provider/axiosConfig";
 import Email from "../shared/Email";
 import Password from "../shared/Password";
 import ConfirmPassword from "./ConfirmPassword";
-import FormButton from "../common/Button";
+import Button from "../common/Button";
 
 // only returns newUser
 export default function CreateAccount() {
@@ -96,7 +96,7 @@ export default function CreateAccount() {
           onChange={handleConfirmPassword}
         />
 
-        <FormButton variant="primary">Sign Up</FormButton>
+        <Button type="primary">Sign Up</Button>
       </form>
 
       <p className="confirmPassword">Passwords do not match</p>

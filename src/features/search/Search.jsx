@@ -36,19 +36,19 @@ export default function Search() {
           value={query}
           onChange={handleInputChange}
           placeholder="Search..."
-          className="px-6 py-2 text-3xl border-b w-xl  focus:outline-none "
+          className="w-xl border-b px-6 py-2 text-3xl focus:outline-none"
         />
-        <button className="absolute text-white bg-red-400 py-2 px-4 rounded-full font-bold text-1xl right-4 top-3" onClick={clearSearch} >
+        <Button type="absolute" onClick={clearSearch}>
           X
-        </button>
+        </Button>
       </div>
-    {query.length > 0 ? (
-      <p className="text-2xl italic">
-        <span className="text-orange-400 font-semibold">{resultsLength}</span>{" "}
-        item
-        {resultsLength !== 1 ? "s" : ""} found
-      </p>
-    ) : null}
+      {query.length > 0 ? (
+        <p className="text-2xl italic">
+          <span className="font-semibold text-orange-400">{resultsLength}</span>{" "}
+          item
+          {resultsLength !== 1 ? "s" : ""} found
+        </p>
+      ) : null}
     </div>
   );
 }

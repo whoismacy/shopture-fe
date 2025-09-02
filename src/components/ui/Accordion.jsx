@@ -30,12 +30,9 @@ function AccordionItem({ data, index, curOpen, onOpen }) {
       <div className="accordionHeader">
         <p className="accNumber">{index < 9 ? `0${index + 1}` : index + 1}</p>
         <p className="accQuestion">{data.question}</p>
-        <button
-          className={isOpen ? "accIcon open" : "accIcon"}
-          onClick={handleClick}
-        >
+        <Button type="aggregate" onClick={handleClick}>
           {isOpen ? "-" : "+"}
-        </button>
+        </Button>
       </div>
       {isOpen ? (
         <div className="accordionInfo">

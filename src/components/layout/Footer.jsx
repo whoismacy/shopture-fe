@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { showSuccessToast } from "../../utils/toast";
 import { showErrorToast } from "../../utils/toast";
+import Button from "../ui/Button";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -16,33 +17,30 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-white pt-12 px-8 mt-96">
+      <footer className="mt-96 bg-white px-8 pt-12">
         <div className="grid grid-cols-[1.5fr_2.5fr]">
-          <div className="flex flex-col justify-center items-center w-full gap-4 p-4">
-            <p className="text-3xl font-semibold uppercase border-b">
+          <div className="flex w-full flex-col items-center justify-center gap-4 p-4">
+            <p className="border-b text-3xl font-semibold uppercase">
               Sign Up For Our Newsletter
             </p>
-            <div className="flex justify-center items-center w-full mt-8">
+            <div className="mt-8 flex w-full items-center justify-center">
               <input
                 type="text"
                 placeholder="Input your email address"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="h-16 w-[60%] px-2 py-6 border-b text-2xl focus:outline-none placeholder:italic placeholder:text-2xl"
+                className="h-16 w-[60%] border-b px-2 py-6 text-2xl placeholder:text-2xl placeholder:italic focus:outline-none"
               />
-              <button
-                className="block text-2xl bg-black text-white text-semibold px-6 py-4 transition-all ease-in duration-25 rounded-full cursor-pointer hover:bg-stone-600"
-                onClick={handleEmail}
-              >
+              <Button type="dark" onClick={handleEmail}>
                 Submit
-              </button>
+              </Button>
             </div>
           </div>
           <div className="">
             <div className="grid grid-cols-3">
               <div className="customerCare">
                 <h3 className="mb-6">Customer Care</h3>
-                <ul className="list-none flex flex-col gap-4">
+                <ul className="flex list-none flex-col gap-4">
                   <li className="cursor-pointer">Contact Us</li>
                   <li className="cursor-pointer">Delivery</li>
                   <li className="cursor-pointer">Returns</li>
@@ -51,7 +49,7 @@ export default function Footer() {
               </div>
               <div className="">
                 <h3 className="mb-6">Explore</h3>
-                <ul className="list-none flex flex-col gap-4">
+                <ul className="flex list-none flex-col gap-4">
                   <li className="cursor-pointer">Our Story</li>
                   <li className="cursor-pointer">Blog</li>
                   <li className="cursor-pointer">#ShopTure</li>
@@ -60,7 +58,7 @@ export default function Footer() {
               </div>
               <div className="">
                 <h3 className="mb-6">Extras</h3>
-                <ul className="list-none flex flex-col gap-4">
+                <ul className="flex list-none flex-col gap-4">
                   <li className="cursor-pointer">Refer a Friend</li>
                   <li className="cursor-pointer">Spare Clothes</li>
                   <li className="cursor-pointer">Loyalty & Rewards</li>
@@ -69,7 +67,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="">
-              <ul className="flex list-none items-center justify-start my-12 gap-8">
+              <ul className="my-12 flex list-none items-center justify-start gap-8">
                 <li>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +131,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="flex flex-col">
-              <div className="flex items-center gap-6 mb-8">
+              <div className="mb-8 flex items-center gap-6">
                 <p>
                   <a className="cursor-pointer text-stone-400 hover:border-b">
                     Privacy Policy

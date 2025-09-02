@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { showInfoToast, showSuccessToast } from "../../utils/toast";
 import { getCart } from "../../store/slices/cartSlice";
 import { getAddress } from "../../store/slices/userSlice";
-import styles from "./Checkout.module.css";
+import Button from "../../components/ui/Button";
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ export default function Checkout() {
           <p className="text-2xl font-light">Total Cost:</p>
           <p className="text-2xl">Kshs. {totalCost}</p>
         </div>
-        <button
+        <Button
           onClick={() => {
             if (!address.phone) {
               showInfoToast("Input address to complete purchase.");
@@ -51,10 +51,10 @@ export default function Checkout() {
               navigate("/success-checkout");
             }
           }}
-          className={`${styles.btnCompletePurchase} btn btnShopNow`}
+          type="primary"
         >
           Complete Purchase
-        </button>
+        </Button>
       </div>
     </div>
   );

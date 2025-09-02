@@ -21,9 +21,9 @@ export default function Cart() {
           <h3 className="align-center text-4xl">
             You have no items in Your Cart :({" "}
           </h3>
-          <button className="btn btnCart" onClick={() => navigate("/")}>
+          <Button type="primary" onClick={() => navigate("/")}>
             Add Items
-          </button>
+          </Button>
         </div>
       )}
     </>
@@ -68,38 +68,35 @@ function CartItem({ data }) {
                 alignItems: "center",
               }}
             >
-              <button
-                className="cursor-pointer border-none bg-inherit text-2xl font-semibold"
+              <Button
+                type="aggreagate"
                 onClick={() => dispatch(decreaseQuantity(item.id))}
               >
                 -
-              </button>
+              </Button>
               <p className="text-2xl font-semibold">{item.quantity}</p>
-              <button
-                className="cursor-pointer border-none bg-inherit text-2xl font-bold"
+              <Button
+                type="aggregate"
                 onClick={() => dispatch(increaseQuantity(item.id))}
               >
                 +
-              </button>
+              </Button>
             </div>
             <div className="flex items-center gap-4">
               <p className="text-2xl font-semibold">Kshs. {item.price * 100}</p>
-              <button
-                className="flex h-[1rem] w-[1rem] cursor-pointer items-center justify-center rounded-full border-none bg-red-500 p-6 text-2xl font-semibold text-white"
+              <Button
+                type="cancel"
                 onClick={() => dispatch(deleteItem(item.id))}
               >
                 X
-              </button>
+              </Button>
             </div>
           </div>
         ))}
         <div className="flex justify-between">
-          <button
-            onClick={() => navigate("/checkout")}
-            className="btn btnShopNow btnCancel"
-          >
+          <Button onClick={() => navigate("/checkout")} type="primary">
             Checkout
-          </button>
+          </Button>
           <p className="text-2xl font-normal italic">
             Total Price:{" "}
             <span className="text-2xl font-bold">

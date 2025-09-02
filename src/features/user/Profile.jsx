@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/context/useAuthContext";
 import { showSuccessToast } from "../../utils/toast";
 import instance from "../../provider/axiosConfig";
+import Button from "../../components/ui/Button";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -24,9 +25,9 @@ export default function Profile() {
       <p className="text-2xl font-semibold">
         id: <span className="text-sm font-light italic">{id}</span>
       </p>
-      <button className="btn" onClick={logOut}>
+      <Button type="primary" onClick={logOut}>
         Log Out
-      </button>
+      </Button>
     </div>
   );
 }

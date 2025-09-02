@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Form, useActionData } from "react-router-dom";
-import styles from "./Address.module.css";
 
 export default function Address() {
   const [county, setCounty] = useState("");
@@ -83,9 +82,7 @@ export default function Address() {
             name="note"
           />
         </div>
-        <button type="submit" className={`btn btnShopNow ${styles.btnCO}`}>
-          Complete Purchase
-        </button>
+        <Button type="primary">Complete Purchase</Button>
       </Form>
     </div>
   );
