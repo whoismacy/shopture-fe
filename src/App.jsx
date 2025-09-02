@@ -3,27 +3,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-/* import "./index.css";
-import "./styles/auth.css";
-import "./styles/cart.css";
-import "./styles/faqs.css";
-import "./styles/footer.css";
-import "./styles/itemContainer.css";
-import "./styles/nav.css";
-import "./styles/queries.css"; */
-
 import AuthLayout from "./components/layout/AuthLayout";
 import RootLayout from "./components/layout/RootLayout";
-import ErrorBoundary from "./pages/ErrorBoundary";
 
-const CreateAccount = lazy(() =>
-  import("./features/auth/components/CreateAccount")
+const CreateAccount = lazy(
+  () => import("./features/auth/components/CreateAccount"),
 );
 const LoginForm = lazy(() => import("./features/auth/components/Login"));
-const ResetPassword = lazy(() => import("./components/forms/ConfirmEmail"));
-const NewPassword = lazy(() =>
-  import("./features/auth/components/NewPassword")
-);
 const Checkout = lazy(() => import("./features/user/Checkout"));
 const Address = lazy(() => import("./features/user/Address"));
 const Profile = lazy(() => import("./features/user/Profile"));
@@ -75,8 +61,6 @@ export default function App() {
               path: "create-account",
               element: <CreateAccount />,
             },
-            { path: "confirm-email", element: <ResetPassword /> },
-            { path: "reset-password", element: <NewPassword /> },
           ],
         },
         { path: "*", element: <NotFound /> },

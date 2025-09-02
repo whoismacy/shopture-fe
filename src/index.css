@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+  --animation-spinner: spinner 1s linear infinite;
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
 :root {
   --primary-white: #f0e6d8;
   --primary-orange: #de5509;
@@ -31,12 +44,6 @@
   --border-medium: 3px solid var(--secondary-grey);
   --border-large: 5px solid var(--secondary-grey);
 }
-
-/* * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-} */
 
 html {
   font-size: 62.5%;
