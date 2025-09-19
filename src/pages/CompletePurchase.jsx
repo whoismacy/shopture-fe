@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { dropCart, getCart } from "../../store/slices/cartSlice";
-import { getAddress } from "../../store/slices/userSlice";
+import { dropCart, getCart } from "../store/slices/cartSlice";
+import { getAddress } from "../store/slices/userSlice";
+import Button from "../components/ui/Button";
 
 export default function CompletePurchase() {
   const address = useSelector(getAddress);

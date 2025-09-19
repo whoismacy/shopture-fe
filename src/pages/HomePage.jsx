@@ -8,7 +8,6 @@ import {
 import Loader from "../components/ui/Loader";
 import ItemContainer from "../features/products/ItemContainer";
 import NoSearchMatch from "../features/search/NoSearchMatch";
-import ErrorBoundary from "./ErrorBoundary";
 import SearchFilter from "../features/search/SearchFilter";
 
 function Home() {

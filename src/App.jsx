@@ -3,19 +3,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import AuthLayout from "./components/layout/AuthLayout";
 import RootLayout from "./components/layout/RootLayout";
-
-const CreateAccount = lazy(
-  () => import("./features/auth/components/CreateAccount"),
-);
-const LoginForm = lazy(() => import("./features/auth/components/Login"));
-const Checkout = lazy(() => import("./features/user/Checkout"));
-const Address = lazy(() => import("./features/user/Address"));
-const Profile = lazy(() => import("./features/user/Profile"));
-const CompletePurchase = lazy(() => import("./features/user/CompletePurchase"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const Address = lazy(() => import("./pages/Address"));
+const CompletePurchase = lazy(() => import("./pages/CompletePurchase"));
 const NotFound = lazy(() => import("./pages/NotFoundPage"));
-const FAQ = lazy(() => import("./features/faqs/Faq"));
+const FAQ = lazy(() => import("./pages/Faq"));
 const Cart = lazy(() => import("./features/cart/Cart"));
 const Home = lazy(() => import("./pages/HomePage"));
 
@@ -31,7 +24,6 @@ export default function App() {
           element: <Home />,
         },
         { path: "/faqs", element: <FAQ /> },
-        { path: "/profile", element: <Profile /> },
         {
           path: "/success-checkout",
           element: <CompletePurchase />,
@@ -49,20 +41,6 @@ export default function App() {
           path: "/cart",
           element: <Cart />,
         },
-        {
-          path: "/auth",
-          element: <AuthLayout />,
-          children: [
-            {
-              path: "login",
-              element: <LoginForm />,
-            },
-            {
-              path: "create-account",
-              element: <CreateAccount />,
-            },
-          ],
-        },
         { path: "*", element: <NotFound /> },
       ],
     },
@@ -75,3 +53,22 @@ export default function App() {
     </>
   );
 }
+
+// necessary changes required for the shopture app
+// I) Improve the styling on the cart's and styling page
+// II) Use React Query to fetch data for the homepage
+// III) use React Form hook for the checkout form
+// IV) uniform styling for the whole app
+// V ) Use React Icons
+// VI) use react toast icons
+
+/*
+PAGES:
+i) homepage
+ii) cart
+iii) checkout
+iv) address
+v) successful-checkout
+vi) faq-page with pagination
+vii) not found page
+*/

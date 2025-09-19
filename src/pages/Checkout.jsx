@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { showInfoToast, showSuccessToast } from "../../utils/toast";
-import { getCart } from "../../store/slices/cartSlice";
-import { getAddress } from "../../store/slices/userSlice";
-import Button from "../../components/ui/Button";
+import { showInfoToast, showSuccessToast } from "../utils/toast";
+import { getCart } from "../store/slices/cartSlice";
+import { getAddress } from "../store/slices/userSlice";
+import Button from "../components/ui/Button";
 
 export default function Checkout() {
   const navigate = useNavigate();
