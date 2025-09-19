@@ -1,7 +1,7 @@
 export default function Button({ children, type = "primary", onClick }) {
   const styles = {
     primary:
-      "block rouned-md cursor-pointer border-none bg-orange-500 font-semibold text-white transition-all duration-400 ease-out",
+      "block px-6 py-4 rounded-full cursor-pointer border-none bg-orange-500 font-semibold text-white transition-all duration-400 ease-out hover:bg-orange-400 flex items-center justify-center gap-2",
     cancel:
       "flex h-[1rem] w-[1rem] cursor-pointer items-center justify-center rounded-full border-none bg-red-600 p-6 text-2xl font-semibold text-white",
     aggregate:

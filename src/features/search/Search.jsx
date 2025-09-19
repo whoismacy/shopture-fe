@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { initialSort, searchQuery } from "../../store/slices/dataSlice";
+import Button from "../../components/ui/Button";
 
 export default function Search() {
   const [query, setQuery] = useState("");

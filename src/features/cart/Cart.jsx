@@ -7,6 +7,7 @@ import {
   decreaseQuantity,
 } from "../../store/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "../../components/ui/Button";
 
 export default function Cart() {
   const navigate = useNavigate();

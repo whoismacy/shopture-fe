@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import StarRating from "../../components/ui/StarRating";
 import { addItem, deleteItem, getItemById } from "../../store/slices/cartSlice";
 import { showErrorToast, showSuccessToast } from "../../utils/toast";
+import Button from "../../components/ui/Button";
 
 export default function ItemContainer({ item }) {
   const dispatch = useDispatch();
