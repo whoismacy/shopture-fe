@@ -7,7 +7,7 @@ export default function Header() {
     <>
       <header className="flex w-full flex-col justify-start p-2 shadow-md">
         <div className="mx-auto flex items-center justify-between gap-12">
-          <Link to="/">
+          <Link to="/home">
             <img
               src="../../shopTureB.png"
               alt="logo"
@@ -17,7 +17,7 @@ export default function Header() {
           <SearchFilter />
           <ul className="flex justify-evenly gap-12">
             <NavLink
-              to="/"
+              to="/home"
               className={({ isActive }) =>
                 `flex items-center space-x-1 ${isActive ? "font-bold text-stone-900" : "text-stone-600 hover:text-stone-900"}`
               }

@@ -70,7 +70,14 @@ export default function App() {
             </PrivateRoute>
           ),
         },
-        { path: "*", element: <NotFound /> },
+        {
+          path: "*",
+          element: (
+            <PrivateRoute allowed={allowed}>
+              <NotFound />
+            </PrivateRoute>
+          ),
+        },
       ],
     },
   ]);
