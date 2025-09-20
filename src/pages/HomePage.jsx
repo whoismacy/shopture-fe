@@ -1,25 +1,23 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchProducts,
-  getLoadingStatus,
-  getProducts,
-} from "../store/slices/dataSlice";
+import { useDispatch } from "react-redux";
 import Loader from "../components/ui/Loader";
 import ItemContainer from "../features/products/ItemContainer";
 import NoSearchMatch from "../features/search/NoSearchMatch";
+import { useGetData } from "../services/useGetData";
+import { setData } from "../store/slices/dataSlice";
 
 function Home() {
+  const { data, isLoading, error } = useGetData();
   const dispatch = useDispatch();
-  const loadingStatus = useSelector(getLoadingStatus);
-  const data = useSelector(getProducts);
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
-
-  const isLoading = loadingStatus === "loading";
-  const error = loadingStatus === "error";
+  useEffect(
+    function () {
+      if (data) {
+        dispatch(setData(data));
+      }
+    },
+    [dispatch, data],
+  );
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   data: [],
@@ -7,36 +7,31 @@ const initialState = {
   error: null,
 };
 
-export const fetchProducts = createAsyncThunk(
-  "data/fetchProducts",
-  async function () {
-    const res = await fetch("https://fakestoreapi.com/products");
-    if (!res.ok) throw new Error("Failed to fetch Products");
-    const data = await res.json();
-    return data;
-  }
-);
-
 const dataSlice = createSlice({
   name: "data",
   initialState,
   reducers: {
+    setData(state, action) {
+      state.data = action.payload;
+      state.filteredState = action.payload;
+      state.currentStatus = "idle";
+    },
     initialSort(state) {
       state.filteredState = [...state.data];
     },
     alphabeticalSort(state) {
       state.filteredState = [...state.filteredState].sort((a, b) =>
-        a.title.localeCompare(b.title, { ignorePunctuation: true })
+        a.title.localeCompare(b.title, { ignorePunctuation: true }),
       );
     },
     categorySort(state) {
       state.filteredState = [...state.filteredState].sort((a, b) =>
-        a.category.localeCompare(b.category, { ignorePunctuation: true })
+        a.category.localeCompare(b.category, { ignorePunctuation: true }),
       );
     },
     priceSort(state) {
       state.filteredState = [...state.filteredState].sort(
-        (a, b) => a.price - b.price
+        (a, b) => a.price - b.price,
       );
     },
     ratingSort(state) {
@@ -58,26 +53,12 @@ const dataSlice = createSlice({
       });
     },
   },
-  extraReducers: (builder) =>
-    builder
-      .addCase(
-        fetchProducts.pending,
-        (state) => void (state.currentStatus = "loading")
-      )
-      .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.data = action.payload;
-        state.filteredState = action.payload;
-        state.currentStatus = "idle";
-      })
-      .addCase(fetchProducts.rejected, (state, action) => {
-        state.currentStatus = "error";
-        state.error = action.error.message;
-      }),
 });
 
 export const getLoadingStatus = (state) => state.data.currentStatus;
 export const getProducts = (state) => state.data.filteredState;
 export const {
+  setData,
   initialSort,
   alphabeticalSort,
   categorySort,
