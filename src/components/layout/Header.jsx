@@ -15,30 +15,40 @@ export default function Header() {
             />
           </Link>
           <SearchFilter />
-          <ul className="flex justify-evenly gap-6">
+          <ul className="flex justify-evenly gap-12">
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `flex items-center space-x-1 ${isActive ? "font-bold text-stone-600" : "text-stone-500 hover:text-stone-600"}`
+                `flex items-center space-x-1 ${isActive ? "font-bold text-stone-900" : "text-stone-600 hover:text-stone-900"}`
               }
             >
               <li>
                 <span>
-                  <FaHome className="text-lg" />
+                  <FaHome className="text-4xl" />
                 </span>
               </li>
             </NavLink>
-            <NavLink to="cart">
-              <li className="h-[40px] w-[40px]">
+            <NavLink
+              to="cart"
+              className={({ isActive }) =>
+                `flex items-center space-x-1 ${isActive ? "font-bold text-stone-900" : "text-stone-600 hover:text-stone-900"}`
+              }
+            >
+              <li>
                 <span>
-                  <FaShoppingCart />
+                  <FaShoppingCart className="text-4xl" />
                 </span>
               </li>
             </NavLink>
-            <NavLink to="faqs">
-              <li className="h-[40px] w-[40px]">
+            <NavLink
+              to="faqs"
+              className={({ isActive }) =>
+                `flex items-center space-x-1 ${isActive ? "font-bold text-stone-900" : "text-stone-600 hover:text-stone-900"}`
+              }
+            >
+              <li>
                 <span>
-                  <FaQuestionCircle />
+                  <FaQuestionCircle className="text-4xl" />
                 </span>
               </li>
             </NavLink>

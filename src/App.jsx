@@ -48,21 +48,23 @@ export default function App() {
   return (
     <>
       <Toaster
-        position="top-right"
+        position="top-center"
         gutter={12}
         toastOptions={{
           style: {
-            fontFamily: "Rubik",
-            backgroundColor: "oklch(98.5% 0.001 106.423)",
-            padding: "8px 4px",
-            fontSize: "12px",
+            fontFamily: "Poppins, sans-serif",
+            backgroundColor: "#fafaf9",
+            padding: "8px 12",
+            fontSize: "16px",
             maxWidth: "500px",
+            color: "#0c0a09",
           },
           success: {
             duration: 3000,
           },
           error: {
             duration: 3000,
+            backgroundColor: "#ff6467",
           },
         }}
       />

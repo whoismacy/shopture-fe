@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { showInfoToast, showSuccessToast } from "../utils/toast";
 import { getCart } from "../store/slices/cartSlice";
 import { getAddress } from "../store/slices/userSlice";
 import Button from "../components/ui/Button";
+import toast from "react-hot-toast";
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -44,10 +44,10 @@ export default function Checkout() {
         <Button
           onClick={() => {
             if (!address.phone) {
-              showInfoToast("Input address to complete purchase.");
+              toast.success("Input address to complete purchase.");
               navigate("/address");
             } else {
-              showSuccessToast("Successfully completed purchase.");
+              toast.success("Successfully completed purchase.");
               navigate("/success-checkout");
             }
           }}

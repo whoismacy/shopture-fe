@@ -29,7 +29,7 @@ export default function ItemContainer({ item }) {
   };
 
   return (
-    <div className="flex w-full flex-col overflow-hidden rounded-xl bg-white p-6 shadow-md transition-all duration-300 ease-in-out hover:shadow-xl">
+    <div className="mt-12 flex w-full flex-col overflow-hidden rounded-xl bg-white p-6 shadow-md transition-all duration-300 ease-in-out hover:shadow-xl">
       <div className="relative flex h-64 w-full items-center justify-center p-4">
         <img src={image} alt={title} className="h-full w-full object-contain" />
       </div>
@@ -53,11 +53,11 @@ export default function ItemContainer({ item }) {
 
       <div className="mt-auto pt-6">
         <div className="flex items-center justify-between">
-          <span className="text-xl font-bold text-gray-800">
+          <span className="text-xl font-bold text-stone-800">
             KES {(price * 100).toLocaleString()}
           </span>
           <Button
-            type={presentInCart ? "secondary" : "primary"}
+            type="primary"
             onClick={() => {
               if (presentInCart) {
                 dispatch(deleteItem(cartItem.id));
