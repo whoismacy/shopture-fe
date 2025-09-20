@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { initialSort, searchQuery } from "../../store/slices/dataSlice";
+import { LuX } from "react-icons/lu";
 import Button from "../../components/ui/Button";
 
 export default function Search() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
-
-  const resultsLength = useSelector((state) => state.data.filteredState.length);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -37,19 +36,12 @@ export default function Search() {
           value={query}
           onChange={handleInputChange}
           placeholder="Search..."
-          className="w-xl border-b px-6 py-2 text-3xl focus:outline-none"
+          className="w-2xl rounded-full border-1 border-black px-4 py-2 text-base focus:ring-1 focus:ring-stone-300 focus:outline-none"
         />
         <Button type="absolute" onClick={clearSearch}>
-          X
+          <LuX className="text-xs font-bold" />
         </Button>
       </div>
-      {query.length > 0 ? (
-        <p className="text-2xl italic">
-          <span className="font-semibold text-orange-400">{resultsLength}</span>{" "}
-          item
-          {resultsLength !== 1 ? "s" : ""} found
-        </p>
-      ) : null}
     </div>
   );
 }

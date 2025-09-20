@@ -1,7 +1,6 @@
 import { lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "react-hot-toast";
 
 import RootLayout from "./components/layout/RootLayout";
 const Checkout = lazy(() => import("./pages/Checkout"));
@@ -48,8 +47,26 @@ export default function App() {
 
   return (
     <>
+      <Toaster
+        position="top-right"
+        gutter={12}
+        toastOptions={{
+          style: {
+            fontFamily: "Rubik",
+            backgroundColor: "oklch(98.5% 0.001 106.423)",
+            padding: "8px 4px",
+            fontSize: "12px",
+            maxWidth: "500px",
+          },
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 3000,
+          },
+        }}
+      />
       <RouterProvider router={router} />
-      <ToastContainer />
     </>
   );
 }

@@ -34,16 +34,16 @@ export default function Filter() {
 
   return (
     <>
-      <div className="bg-white shadow-md h-16">
+      <div className="flex h-12 w-auto items-center rounded-3xl bg-stone-50 shadow-md hover:bg-stone-100">
         <select
           name="sort"
           value={sortValue}
           onChange={(event) => handleChange(event.target.value)}
-          className="font-semibold text-2xl px-6 py-4 text-center border-none transition-all duration-320 ease-in-out hover:bg-yellow-100"
+          className="rounded-3xl border-none py-4 text-center text-lg font-semibold transition-all duration-320 ease-in-out"
         >
           <option value="">Sort Items</option>
           <option value="category">Sort by Category</option>
-          <option value="alphabetical">Sort by Alphabetical Order</option>
+          <option value="alphabetical">Sort Alphabetically</option>
           <option value="price">Sort by Price</option>
           <option value="rating">Sort by Rating</option>
         </select>
