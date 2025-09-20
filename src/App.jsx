@@ -1,8 +1,10 @@
 import { lazy } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
-
 import RootLayout from "./components/layout/RootLayout";
+
 const Checkout = lazy(() => import("./pages/Checkout"));
 const Address = lazy(() => import("./pages/Address"));
 const CompletePurchase = lazy(() => import("./pages/CompletePurchase"));
@@ -11,7 +13,9 @@ const FAQ = lazy(() => import("./pages/Faq"));
 const Cart = lazy(() => import("./features/cart/Cart"));
 const Home = lazy(() => import("./pages/HomePage"));
 
-import { action as addressAction } from "./features/user/addressAction";
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { staleTime: 1200 } },
+});
 
 export default function App() {
   const router = createBrowserRouter([
@@ -34,7 +38,6 @@ export default function App() {
         {
           path: "/address",
           element: <Address />,
-          action: addressAction,
         },
         {
           path: "/cart",
@@ -46,7 +49,8 @@ export default function App() {
   ]);
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <Toaster
         position="top-center"
         gutter={12}
@@ -69,22 +73,8 @@ export default function App() {
         }}
       />
       <RouterProvider router={router} />
-    </>
+    </QueryClientProvider>
   );
 }
 
-// necessary changes required for the shopture app
-// I) Improve the styling on the cart's and styling page
 // II) Use React Query to fetch data for the homepage
-// III) use React Form hook for the checkout form
-// IV) uniform styling for the whole app
-
-/*
-PAGES:
-ii) cart
-iii) checkout
-iv) address
-v) successful-checkout
-vi) faq-page with pagination
-vii) not found page
-*/

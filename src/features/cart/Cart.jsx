@@ -26,8 +26,8 @@ export default function Cart() {
           </div>
           <div className="flex flex-col items-center justify-center">
             <div className="mb-8">
-              <h3 className="mb-4 border-b-2 border-stone-900 text-2xl font-semibold text-stone-800">
-                You have no items in Your Cart :({" "}
+              <h3 className="mb-4 border-b-2 border-stone-900 text-center text-2xl font-semibold text-stone-800">
+                Empty Cart :(
               </h3>
               <p className="align-center tracking-normal italic">
                 Looks like you have no items in Your Cart
