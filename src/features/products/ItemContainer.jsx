@@ -34,10 +34,10 @@ export default function ItemContainer({ item }) {
         <img src={image} alt={title} className="h-full w-full object-contain" />
       </div>
       <div className="flex-grow">
-        <h3 className="mt-4 mb-3 truncate text-xl font-semibold text-stone-800">
+        <h3 className="mt-4 mb-3 truncate text-xl font-semibold text-stone-800 capitalize">
           {title}
         </h3>
-        <p className="mb-4 text-sm text-stone-500">{category}</p>
+        <p className="mb-4 text-sm text-stone-500 capitalize">{category}</p>
         <div className="mb-8 flex items-center">
           <StarRating
             star_rating={Math.round(rate)}
@@ -46,7 +46,7 @@ export default function ItemContainer({ item }) {
           />
           <span className="ml-6 text-sm text-stone-600">({count})</span>
         </div>
-        <p className="mt-4 line-clamp-3 text-sm text-stone-700">
+        <p className="mt-4 line-clamp-3 text-sm text-stone-700 capitalize">
           {description}
         </p>
       </div>

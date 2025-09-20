@@ -78,12 +78,9 @@ export default function App() {
 // II) Use React Query to fetch data for the homepage
 // III) use React Form hook for the checkout form
 // IV) uniform styling for the whole app
-// V ) Use React Icons
-// VI) use react toast icons
 
 /*
 PAGES:
-i) homepage
 ii) cart
 iii) checkout
 iv) address
