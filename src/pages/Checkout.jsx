@@ -66,7 +66,7 @@ export default function Checkout() {
 
         <div className="flex items-center justify-between text-lg">
           <p className="flex items-center gap-2 font-medium text-gray-700">
-            Delivery Cost
+            Delivery
           </p>
           <span className="font-semibold text-gray-900">
             KES {deliveryCost.toLocaleString()}
@@ -76,7 +76,9 @@ export default function Checkout() {
 
         <div className="flex items-center justify-between pt-2 text-base font-bold text-gray-900">
           <p>Order Total: </p>
-          <span>KES {totalCost.toLocaleString()}</span>
+          <span className="border-b-2 border-stone-900">
+            KES {totalCost.toLocaleString()}
+          </span>
         </div>
       </div>
 

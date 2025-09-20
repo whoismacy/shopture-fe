@@ -11,17 +11,20 @@ export default function Address() {
   const errors = useActionData();
 
   return (
-    <div className="mx-auto my-12 max-w-100 rounded-md bg-white px-8 py-6">
-      <h2 className="align-center mb-8 text-2xl text-orange-400 uppercase">
-        Delivery details
+    <div className="mx-auto my-16 max-w-xl rounded-xl bg-white p-8 shadow-2xl md:p-12">
+      <h2 className="mb-8 text-center text-3xl font-bold text-gray-800">
+        Delivery Details
       </h2>
-      <Form method="POST" action="">
-        <div className="mb-6 flex flex-col gap-4">
-          <label className="text-2xl font-semibold" htmlFor="county">
+      <Form method="POST" action="" className="space-y-6">
+        <div className="flex flex-col">
+          <label
+            className="mb-2 text-sm font-medium text-gray-600"
+            htmlFor="county"
+          >
             County
           </label>
           <input
-            className="border-b px-1 py-2 text-2xl focus:outline-none"
+            className="rounded-md border border-gray-300 px-4 py-2 text-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
             type="text"
             value={county}
             onChange={(e) => setCounty(e.target.value)}
@@ -29,12 +32,16 @@ export default function Address() {
             required
           />
         </div>
-        <div className="mb-6 flex flex-col gap-4">
-          <label className="text-2xl font-semibold" htmlFor="Building">
+
+        <div className="flex flex-col">
+          <label
+            className="mb-2 text-sm font-medium text-gray-600"
+            htmlFor="building"
+          >
             Building & Building Number
           </label>
           <input
-            className="border-b px-1 py-2 text-2xl focus:outline-none"
+            className="rounded-md border border-gray-300 px-4 py-2 text-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
             type="text"
             required
             name="building"
@@ -42,12 +49,16 @@ export default function Address() {
             onChange={(e) => setBuilding(e.target.value)}
           />
         </div>
-        <div className="mb-6 flex flex-col gap-4">
-          <label className="text-2xl font-semibold" htmlFor="Street">
+
+        <div className="flex flex-col">
+          <label
+            className="mb-2 text-sm font-medium text-gray-600"
+            htmlFor="street"
+          >
             Street
           </label>
           <input
-            className="border-b px-1 py-2 text-2xl focus:outline-none"
+            className="rounded-md border border-gray-300 px-4 py-2 text-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
             type="text"
             required
             value={street}
@@ -55,35 +66,50 @@ export default function Address() {
             name="street"
           />
         </div>
-        <div className="mb-6 flex flex-col gap-4">
-          <label className="text-2xl font-semibold" htmlFor="Phone Number">
+
+        <div className="flex flex-col">
+          <label
+            className="mb-2 text-sm font-medium text-gray-600"
+            htmlFor="phone"
+          >
             Phone Number
           </label>
           <input
-            className="border-b px-1 py-2 text-2xl focus:outline-none"
+            className={`rounded-md border ${
+              errors?.phone ? "border-red-500" : "border-gray-300"
+            } px-4 py-2 text-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none`}
             type="text"
             required
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             name="phone"
           />
-          {errors?.phone ? (
-            <p className="bg-red-300 p-1 text-red-500">{errors.phone}</p>
-          ) : null}
+          {errors?.phone && (
+            <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+          )}
         </div>
-        <div className="mb-6 flex flex-col gap-4">
-          <label className="text-2xl font-semibold" htmlFor="Note">
+
+        <div className="flex flex-col">
+          <label
+            className="mb-2 text-sm font-medium text-gray-600"
+            htmlFor="note"
+          >
             Optional Note
           </label>
           <input
-            className="border-b px-1 py-2 text-2xl focus:outline-none"
+            className="rounded-md border border-gray-300 px-4 py-2 text-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
             type="text"
             value={note}
             onChange={(e) => setNote(e.target.value)}
             name="note"
           />
         </div>
-        <Button type="primary">Complete Purchase</Button>
+
+        <div className="mt-8 flex justify-center">
+          <Button type="primary" className="w-full py-3">
+            Complete Purchase
+          </Button>
+        </div>
       </Form>
     </div>
   );

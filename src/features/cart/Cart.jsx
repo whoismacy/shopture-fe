@@ -16,7 +16,7 @@ export default function Cart() {
   const cart = useSelector(getCart);
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex items-center justify-center">
       {cart.length > 0 ? (
         <CartItem data={cart} />
       ) : (
