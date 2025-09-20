@@ -1,0 +1,12 @@
+{
+  "short_name": "ShopTure",
+  "name": "ShopTure: e-commerce",
+  "icons": [
+    {
+      "src": "/shopTureT.png",
+      "type": "image/png",
+      "sizes": "512X512"
+    }
+  ],
+  "start_url": "/"
+}
