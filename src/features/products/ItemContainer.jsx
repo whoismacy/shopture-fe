@@ -21,6 +21,7 @@ export default function ItemContainer({ item }) {
   const cartItem = {
     id,
     title,
+    image,
     price,
     category,
     description,

@@ -4,55 +4,84 @@ import { getCart } from "../store/slices/cartSlice";
 import { getAddress } from "../store/slices/userSlice";
 import Button from "../components/ui/Button";
 import toast from "react-hot-toast";
+import { FaShoppingCart, FaHome, FaCheckCircle } from "react-icons/fa";
 
 export default function Checkout() {
   const navigate = useNavigate();
   const cart = useSelector(getCart);
   const address = useSelector(getAddress);
-  let lengthItems = cart.length;
-  let initialCost = cart.reduce((a, b) => a + b.price, 0) * 100;
-  let deliveryCost = Math.round(initialCost * 0.085);
-  let tax = Math.round(initialCost * 0.16);
-  let totalCost = Math.round(initialCost + deliveryCost + tax);
+
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+  const subtotal =
+    cart.reduce((total, item) => total + item.price * item.quantity, 0) * 100;
+  const tax = Math.round(subtotal * 0.16);
+  const deliveryCost = Math.round(subtotal * 0.085);
+  const totalCost = subtotal + deliveryCost + tax;
+
+  function handlePurchase() {
+    if (!address.phone) {
+      toast.error("Please add your address to complete the purchase.");
+      navigate("/address");
+    } else {
+      toast.success(
+        "Purchase completed successfully! Thank you for your order.",
+      );
+      navigate("/success-checkout");
+    }
+  }
 
   return (
-    <div className="mx-auto my-[4.5rem] max-w-[80rem] rounded-md bg-white p-8 shadow-md">
-      <div className="mb-8 flex flex-col justify-between">
-        <div className="flex items-center justify-between">
-          <h3>Total Items</h3>
-          <p>{lengthItems}</p>
+    <div className="mx-auto my-8 max-w-lg rounded-xl bg-white p-8 shadow-2xl">
+      <h2 className="mb-6 text-center text-3xl font-bold text-gray-800">
+        Order Summary
+      </h2>
+      <div className="space-y-4">
+        <div className="flex items-center justify-between text-lg">
+          <p className="flex items-center gap-2 font-medium text-gray-700">
+            Items
+          </p>
+          <span className="font-semibold text-gray-900">{totalItems}</span>
         </div>
-        <hr />
+        <hr className="border-gray-200" />
+
+        <div className="flex items-center justify-between text-lg">
+          <p className="flex items-center gap-2 font-medium text-gray-700">
+            Subtotal
+          </p>
+          <span className="font-semibold text-gray-900">
+            KES {subtotal.toLocaleString()}
+          </span>
+        </div>
+        <hr className="border-gray-200" />
+
+        <div className="flex items-center justify-between text-lg">
+          <p className="flex items-center gap-2 font-medium text-gray-700">
+            Tax (16%)
+          </p>
+          <span className="font-semibold text-gray-900">
+            KES {tax.toLocaleString()}
+          </span>
+        </div>
+        <hr className="border-gray-200" />
+
+        <div className="flex items-center justify-between text-lg">
+          <p className="flex items-center gap-2 font-medium text-gray-700">
+            Delivery Cost
+          </p>
+          <span className="font-semibold text-gray-900">
+            KES {deliveryCost.toLocaleString()}
+          </span>
+        </div>
+        <hr className="border-gray-200" />
+
+        <div className="flex items-center justify-between pt-2 text-base font-bold text-gray-900">
+          <p>Order Total: </p>
+          <span>KES {totalCost.toLocaleString()}</span>
+        </div>
       </div>
-      <div className="flex flex-col gap-6">
-        <div className="flex items-center justify-between">
-          <p className="text-2xl font-light">Price:</p>
-          <p className="text-2xl">Kshs. {initialCost}</p>
-        </div>
-        <div className="flex items-center justify-between">
-          <p className="text-2xl font-light">Tax:</p>
-          <p className="text-2xl">Kshs. {tax}</p>
-        </div>
-        <div className="flex items-center justify-between">
-          <p className="text-2xl font-light">Delivery Cost:</p>
-          <p className="text-2xl">Kshs. {deliveryCost}</p>
-        </div>
-        <div className="flex items-center justify-between">
-          <p className="text-2xl font-light">Total Cost:</p>
-          <p className="text-2xl">Kshs. {totalCost}</p>
-        </div>
-        <Button
-          onClick={() => {
-            if (!address.phone) {
-              toast.success("Input address to complete purchase.");
-              navigate("/address");
-            } else {
-              toast.success("Successfully completed purchase.");
-              navigate("/success-checkout");
-            }
-          }}
-          type="primary"
-        >
+
+      <div className="mt-8">
+        <Button onClick={handlePurchase} type="primary" className="w-full py-3">
           Complete Purchase
         </Button>
       </div>

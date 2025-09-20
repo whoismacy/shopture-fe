@@ -55,6 +55,8 @@ export function CartItem({ data }) {
     [data],
   );
 
+  console.log(data);
+
   return (
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 p-4">
       <h1 className="mb-4 text-center text-3xl font-bold text-gray-800">
