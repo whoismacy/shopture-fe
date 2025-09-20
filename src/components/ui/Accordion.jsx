@@ -1,15 +1,17 @@
 import { useState } from "react";
 import Button from "./Button";
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 export default function Accordion({ faqData }) {
   const [currentlyOpen, setCurrentlyOpen] = useState(null);
+
   return (
-    <div className="mx-auto my-8 grid max-w-[1200px] grid-cols-1 gap-6 p-2">
+    <div className="mx-auto my-12 w-full max-w-4xl space-y-4 rounded-xl bg-gray-50 p-6 shadow-xl md:p-8">
       {faqData.map((faq, index) => (
         <AccordionItem
           data={faq}
           index={index}
-          key={index + 1}
+          key={index}
           onOpen={setCurrentlyOpen}
           curOpen={currentlyOpen}
         />
@@ -27,26 +29,33 @@ function AccordionItem({ data, index, curOpen, onOpen }) {
 
   return (
     <div
-      className={
-        isOpen
-          ? "max-h-150 rounded-md bg-amber-50 p-3 text-base"
-          : "max-h-150 rounded-md bg-white p-3 text-base"
-      }
+      className={`rounded-lg p-6 shadow-md transition-all duration-300 ease-in-out ${
+        isOpen ? "bg-white ring-2 ring-gray-500" : "bg-white hover:shadow-lg"
+      }`}
     >
-      <div className="flex items-center justify-between px-3 py-2">
-        <p className="text-3xl font-semibold text-stone-400">
+      <div
+        className="flex cursor-pointer items-center justify-between gap-4"
+        onClick={handleClick}
+      >
+        <span className="text-xl font-bold text-gray-400">
           {index < 9 ? `0${index + 1}` : index + 1}
+        </span>
+        <p className="flex-grow text-lg font-semibold text-gray-800">
+          {data.question}
         </p>
-        <p className="text-4xl font-semibold">{data.question}</p>
-        <Button type="aggregate" onClick={handleClick}>
-          {isOpen ? "-" : "+"}
-        </Button>
-      </div>
-      {isOpen ? (
-        <div className="p-3 transition-all duration-300 ease-out">
-          <p className="align-center text-2xl">{data.answer}</p>
+        <div className="flex-shrink-0">
+          {isOpen ? (
+            <FaMinus className="text-xl text-gray-600" />
+          ) : (
+            <FaPlus className="text-xl text-gray-600" />
+          )}
         </div>
-      ) : null}
+      </div>
+      {isOpen && (
+        <div className="mt-4 animate-accordion-down border-t border-gray-200 pt-4">
+          <p className="text-base text-gray-600">{data.answer}</p>
+        </div>
+      )}
     </div>
   );
 }
