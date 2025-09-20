@@ -62,7 +62,7 @@ export function CartItem({ data }) {
       <h1 className="mb-4 text-center text-3xl font-bold text-gray-800">
         Your Cart
       </h1>
-      <div className="flex flex-col gap-4 rounded-xl bg-white p-6 shadow-md">
+      <div className="flex flex-col gap-4 rounded-3xl bg-white p-6 shadow-lg">
         {data.map((item) => (
           <div
             className="flex flex-col gap-4 border-b border-gray-200 py-4 last:border-b-0 md:flex-row md:items-center md:justify-between"

@@ -14,7 +14,7 @@ const Cart = lazy(() => import("./features/cart/Cart"));
 const Home = lazy(() => import("./pages/HomePage"));
 
 const queryClient = new QueryClient({
-  defaultOptions: { queries: { staleTime: 1200 } },
+  defaultOptions: { queries: { staleTime: Infinity } },
 });
 
 export default function App() {
@@ -76,5 +76,3 @@ export default function App() {
     </QueryClientProvider>
   );
 }
-
-// II) Use React Query to fetch data for the homepage

@@ -1,15 +1,14 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/ui/Loader";
 import ItemContainer from "../features/products/ItemContainer";
 import NoSearchMatch from "../features/search/NoSearchMatch";
 import { useGetData } from "../services/useGetData";
-import { setData } from "../store/slices/dataSlice";
+import { getProducts, setData } from "../store/slices/dataSlice";
 
 function Home() {
   const { data, isLoading, error } = useGetData();
   const dispatch = useDispatch();
-
   useEffect(
     function () {
       if (data) {
@@ -18,6 +17,7 @@ function Home() {
     },
     [dispatch, data],
   );
+  const products = useSelector(getProducts);
 
   return (
     <>
@@ -26,7 +26,7 @@ function Home() {
       {!isLoading && !error && (
         <div className="">
           <div className="grid grid-cols-4 gap-8 p-4">
-            {data?.map((item, index) => (
+            {products?.map((item, index) => (
               <ItemContainer item={item} key={item?.id || index} />
             ))}
           </div>
