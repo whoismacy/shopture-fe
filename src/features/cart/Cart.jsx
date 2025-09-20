@@ -33,7 +33,7 @@ export default function Cart() {
                 Looks like you have no items in Your Cart
               </p>
             </div>
-            <Button type="primary" onClick={() => navigate("/")}>
+            <Button type="primary" onClick={() => navigate("/home")}>
               Add Items
             </Button>
           </div>

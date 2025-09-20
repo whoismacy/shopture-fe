@@ -5,6 +5,7 @@ const initialState = {
   address: {},
   status: "",
   error: "",
+  allowed: "",
 };
 
 const userSlice = createSlice({
@@ -14,9 +15,13 @@ const userSlice = createSlice({
     addAddress(state, action) {
       state.address = action.payload;
     },
+    setAllow(state) {
+      state.allowed = true;
+    },
   },
 });
 
 export const getAddress = (state) => state.user.address;
-export const { addAddress } = userSlice.actions;
+export const getAllowedState = (state) => state.user.allowed;
+export const { addAddress, setAllow } = userSlice.actions;
 export default userSlice.reducer;

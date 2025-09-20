@@ -16,7 +16,7 @@ export default function NotFound() {
           OOPS, the page you are looking for could not be found{" "}
         </p>
       </div>
-      <Button onClick={() => navigate("/")} type="primary">
+      <Button onClick={() => navigate("/home")} type="primary">
         Go Home
       </Button>
     </div>

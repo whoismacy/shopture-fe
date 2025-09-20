@@ -16,7 +16,7 @@ export default function CompletePurchase() {
 
   function completePurchase() {
     dispatch(dropCart());
-    navigate("/");
+    navigate("/home");
   }
 
   return (
