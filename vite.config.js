@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/",
+  base: "/shopture-fe",
   plugins: [react(), tailwindcss()],
   preview: {
     port: 9090,

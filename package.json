@@ -1,13 +1,13 @@
 {
-  "homepage": "https://whoismacy.github.io/shopture-fe",
   "name": "shopture",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://whoismacy.github.io/shopture-fe/",
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
